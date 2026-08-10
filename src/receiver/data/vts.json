@@ -1,0 +1,6009 @@
+{
+  "base_url": "http://10.168.60.12:8080",
+  "listVTS": {
+    "belawan": {
+      "name": "belawan",
+      "telnet": {
+        "host": "36.66.34.62",
+        "port": 6040,
+        "parser": "BSVDM"
+      }
+    },
+    "bengkalis": {
+      "name": "bengkalis",
+      "telnet": {
+        "host": "36.94.86.22",
+        "port": 18040,
+        "parser": "ABVDM"
+      }
+    },
+    "sorong": {
+      "name": "sorong",
+      "telnet": {
+        "name": "sorong",
+        "host": "36.64.173.226",
+        "port": "8031",
+        "parser": "ABVDM"
+      }
+    },
+    "kuala_tanjung": {
+      "name": "kuala_tanjung",
+      "telnet": {
+        "host": "36.66.34.62",
+        "port": 7040,
+        "parser": "ABVDM"
+      }
+    },
+    "ule_lheue": {
+      "name": "ule_lheue",
+      "telnet": {
+        "host": "36.66.34.61",
+        "port": 18031,
+        "parser": "ABVDM"
+      }
+    },
+    "meulaboh": {
+      "name": "meulaboh",
+      "telnet": {
+        "host": "36.66.34.61",
+        "port": 28031,
+        "parser": "ABVDM"
+      }
+    },
+    "surabaya": {
+      "name": "surabaya",
+      "telnet": {
+        "name": "surabaya",
+        "host": "203.173.90.237",
+        "port": "8040",
+        "parser": "ABVDM"
+      }
+    },
+    "samarinda": {
+      "name": "samarinda",
+      "telnet": {
+        "host": "36.89.246.162",
+        "port": 8030,
+        "parser": "ABVDM"
+      }
+    },
+    "kuala_langsa": {
+      "name": "kuala_langsa",
+      "telnet": {
+        "host": "36.66.34.62",
+        "port": 9040,
+        "parser": "BSVDM"
+      }
+    },
+    "pangkalan_susu": {
+      "name": "pangkalan_susu",
+      "telnet": {
+        "host": "36.66.34.62",
+        "port": 8040,
+        "parser": "AIVDM"
+      }
+    },
+    "ais_sat": {
+      "name": "ais_sat",
+      "telnet": {
+        "name": "ais_sat",
+        "host": "10.200.24.24",
+        "port": 8051,
+        "parser": "ABVDM"
+      }
+    },
+    "bitung": {
+      "name": "bitung",
+      "telnet": {
+        "host": "103.206.168.132",
+        "port": 5235,
+        "parser": "BSVDM"
+      }
+    },
+    "karimunjawa": {
+      "name": "karimunjawa",
+      "telnet": {
+        "host": "36.66.34.61",
+        "port": 5340,
+        "parser": "BSVDM"
+      }
+    },
+    "Semarang": {
+      "name": "Semarang",
+      "telnet": {
+        "name": "Semarang",
+        "host": "103.17.244.71",
+        "port": 8040,
+        "parser": "ABVDM"
+      }
+    },
+    "cilacap": {
+      "name": "cilacap",
+      "telnet": {
+        "host": "103.176.181.36",
+        "port": 8151,
+        "parser": "BSVDM"
+      }
+    },
+    "pare_pare": {
+      "name": "pare_pare",
+      "telnet": {
+        "host": "36.95.95.66",
+        "port": 4751,
+        "parser": "BSVDM"
+      }
+    },
+    "selayar": {
+      "name": "selayar",
+      "telnet": {
+        "host": "36.92.219.162",
+        "port": 4712,
+        "parser": "BSVDM"
+      }
+    },
+    "lps_merak": {
+      "name": "lps_merak",
+      "telnet": {
+        "name": "lps_merak",
+        "host": "51.79.190.90",
+        "port": 49201,
+        "parser": "ABVDM"
+      }
+    },
+    "tanjung_santan": {
+      "name": "tanjung_santan",
+      "telnet": {
+        "host": "36.95.249.135",
+        "port": 8040,
+        "parser": "ABVDM"
+      }
+    },
+    "lps_gilimanuk": {
+      "name": "lps_gilimanuk",
+      "telnet": {
+        "host": "103.31.251.118",
+        "port": 49201,
+        "parser": "BSVDM"
+      }
+    },
+    "lps_ketapang": {
+      "name": "lps_ketapang",
+      "telnet": {
+        "host": "103.31.251.117",
+        "port": 49201,
+        "parser": "BSVDM"
+      }
+    },
+    "balikpapan": {
+      "name": "balikpapan",
+      "telnet": {
+        "name": "balikpapan",
+        "host": "36.95.98.197",
+        "port": "5234",
+        "parser": "ABVDM"
+      }
+    },
+    "dumai": {
+      "name": "dumai",
+      "telnet": {
+        "host": "27.124.93.154",
+        "port": 7777,
+        "parser": "ABVDM"
+      }
+    },
+    "lps_ketapang_ivef": {
+      "name": "lps_ketapang_ivef",
+      "telnet": {
+        "host": "51.79.190.90",
+        "port": 7091,
+        "parser": "ivef",
+        "sourceName": "ELM108"
+      }
+    },
+    "sensor_site_muara_pegah": {
+      "name": "sensor_site_muara_pegah",
+      "telnet": {
+        "host": "36.89.246.162",
+        "port": 8030,
+        "parser": "ABVDM"
+      }
+    },
+    "sensor_site_anggana": {
+      "name": "sensor_site_anggana",
+      "telnet": {
+        "host": "36.89.246.162",
+        "port": 8040,
+        "parser": "ABVDM"
+      }
+    },
+    "sensor_site_mangkalihat": {
+      "name": "sensor_site_mangkalihat",
+      "telnet": {
+        "host": "180.250.196.141",
+        "port": 8040,
+        "parser": "ABVDM"
+      }
+    },
+    "srop_tapaktuan": {
+      "name": "srop_tapaktuan",
+      "telnet": {
+        "host": "36.66.34.61",
+        "port": 38031,
+        "parser": "ABVDM"
+      }
+    },
+    "jambi": {
+      "name": "jambi",
+      "telnet": {
+        "host": "103.153.150.69",
+        "port": 8012,
+        "parser": "BSVDM"
+      }
+    },
+    "pangkal_balam": {
+      "name": "pangkal_balam",
+      "telnet": {
+        "host": "103.153.150.69",
+        "port": 8099,
+        "parser": "ABVDM"
+      }
+    },
+    "pulau_jemur": {
+      "name": "pulau_jemur",
+      "telnet": {
+        "host": "36.94.86.22",
+        "port": 18240,
+        "parser": "ABVDM"
+      }
+    },
+    "tanjung_sair": {
+      "name": "tanjung_sair",
+      "telnet": {
+        "host": "36.94.86.22",
+        "port": 18340,
+        "parser": "ABVDM"
+      }
+    },
+    "tanjung_parit": {
+      "name": "tanjung_parit",
+      "telnet": {
+        "host": "36.94.86.22",
+        "port": 18440,
+        "parser": "ABVDM"
+      }
+    },
+    "tanjung_medang": {
+      "name": "tanjung_medang",
+      "telnet": {
+        "host": "36.94.86.22",
+        "port": 18540,
+        "parser": "ABVDM"
+      }
+    },
+    "ajibata": {
+      "name": "ajibata",
+      "telnet": {
+        "host": "51.79.190.87",
+        "port": 5234,
+        "parser": "AIVDM"
+      }
+    },
+    "muntok": {
+      "name": "muntok",
+      "telnet": {
+        "host": "103.153.150.69",
+        "port": 8095,
+        "parser": "BSVDM"
+      }
+    },
+    "kuala_tungkal": {
+      "name": "kuala_tungkal",
+      "telnet": {
+        "host": "103.153.150.69",
+        "port": 8083,
+        "parser": "BSVDM"
+      }
+    },
+    "srop_ambon": {
+      "name": "srop_ambon",
+      "telnet": {
+        "name": "srop_ambon",
+        "host": "103.56.92.163",
+        "port": "5232",
+        "parser": "ABVDM"
+      }
+    },
+    "sibolga": {
+      "name": "sibolga",
+      "telnet": {
+        "name": "sibolga",
+        "host": "36.93.1.186",
+        "port": "4712",
+        "parser": "ABVDM"
+      }
+    },
+    "maumere": {
+      "name": "maumere",
+      "telnet": {
+        "host": "36.66.194.178",
+        "port": 4712,
+        "parser": "BSVDM"
+      }
+    },
+    "srop_labuan_bajo": {
+      "name": "srop_labuan_bajo",
+      "telnet": {
+        "host": "103.56.205.71",
+        "port": 49201,
+        "parser": "BSVDM"
+      }
+    },
+    "ketapang": {
+      "name": "ketapang",
+      "telnet": {
+        "name": "ketapang",
+        "host": "119.82.246.235",
+        "port": "8071",
+        "parser": "ABVDM"
+      }
+    },
+    "gili_trawangan": {
+      "name": "gili_trawangan",
+      "telnet": {
+        "host": "103.176.181.36",
+        "port": 8212,
+        "parser": "BSVDM"
+      }
+    },
+    "lembar": {
+      "name": "lembar",
+      "telnet": {
+        "host": "103.176.181.42",
+        "port": 8035,
+        "parser": "BSVDM"
+      }
+    },
+    "benoa": {
+      "name": "benoa",
+      "telnet": {
+        "host": "103.176.181.36",
+        "port": 8211,
+        "parser": "BSVDM"
+      }
+    },
+    "manado": {
+      "name": "manado",
+      "telnet": {
+        "host": "103.56.93.212",
+        "port": 4712,
+        "parser": "BSVDM"
+      }
+    },
+    "anggrek": {
+      "name": "anggrek",
+      "telnet": {
+        "host": "103.56.93.213",
+        "port": 4712,
+        "parser": "BSVDM"
+      }
+    },
+    "tahuna": {
+      "name": "tahuna",
+      "telnet": {
+        "host": "103.56.93.215",
+        "port": 4712,
+        "parser": "BSVDM"
+      }
+    },
+    "luwuk": {
+      "name": "luwuk",
+      "telnet": {
+        "host": "103.56.93.216",
+        "port": 4712,
+        "parser": "BSVDM"
+      }
+    },
+    "panjang": {
+      "name": "panjang",
+      "telnet": {
+        "host": "103.136.24.117",
+        "port": 7780,
+        "parser": "BSVDM"
+      }
+    },
+    "cirebon": {
+      "name": "cirebon",
+      "telnet": {
+        "host": "103.154.122.156",
+        "port": 7780,
+        "parser": "BSVDM"
+      }
+    },
+    "patimban": {
+      "name": "patimban",
+      "telnet": {
+        "host": "103.154.122.155",
+        "port": 7780,
+        "parser": "BSVDM"
+      }
+    },
+    "bengkulu": {
+      "name": "bengkulu",
+      "telnet": {
+        "host": "103.140.130.180",
+        "port": 7780,
+        "parser": "BSVDM"
+      }
+    },
+    "tanjung_pandan": {
+      "name": "tanjung_pandan",
+      "telnet": {
+        "host": "103.140.130.179",
+        "port": 7780,
+        "parser": "BSVDM"
+      }
+    },
+    "tarakan": {
+      "name": "tarakan",
+      "telnet": {
+        "host": "103.56.93.218",
+        "port": 5232,
+        "parser": "BSVDM"
+      }
+    },
+    "nunukan": {
+      "name": "nunukan",
+      "telnet": {
+        "host": "103.56.93.218",
+        "port": 6000,
+        "parser": "BSVDM"
+      }
+    },
+    "bontang": {
+      "name": "bontang",
+      "telnet": {
+        "host": "180.250.196.141",
+        "port": 8060,
+        "parser": "BSVDM"
+      }
+    },
+    "sensor_site_tanjung_intan": {
+      "name": "sensor_site_tanjung_intan",
+      "telnet": {
+        "host": "103.15.15.44",
+        "port": 8250,
+        "parser": "BSVDM"
+      }
+    },
+    "srop_waingapu": {
+      "name": "srop_waingapu",
+      "telnet": {
+        "host": "36.93.50.154",
+        "port": 4712,
+        "parser": "BSVDM"
+      }
+    },
+    "sabang": {
+      "name": "sabang",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": 8032,
+        "parser": "BSVDM"
+      }
+    },
+    "toli_toli": {
+      "name": "toli_toli",
+      "telnet": {
+        "host": "103.56.93.214",
+        "port": 4712,
+        "parser": "BSVDM"
+      }
+    },
+    "mamuju": {
+      "name": "mamuju",
+      "telnet": {
+        "host": "36.93.71.170",
+        "port": 4712,
+        "parser": "BSVDM"
+      }
+    },
+    "raha": {
+      "name": "raha",
+      "telnet": {
+        "name": "raha",
+        "host": "103.56.93.203",
+        "port": 5232,
+        "parser": "ABVDM"
+      }
+    },
+    "sintete": {
+      "name": "sintete",
+      "telnet": {
+        "host": "36.64.85.149",
+        "port": 8233,
+        "parser": "BSVDM"
+      }
+    },
+    "srop_sipora": {
+      "name": "srop_sipora",
+      "telnet": {
+        "host": "103.56.93.194",
+        "port": 5232,
+        "parser": "BSVDM"
+      }
+    },
+    "srop_pekanbaru": {
+      "name": "srop_pekanbaru",
+      "telnet": {
+        "host": "103.56.93.196",
+        "port": 5232,
+        "parser": "BSVDM"
+      }
+    },
+    "srop_tembilahan": {
+      "name": "srop_tembilahan",
+      "telnet": {
+        "host": "103.56.93.193",
+        "port": 5232,
+        "parser": "BSVDM"
+      }
+    },
+    "srop_sungai_guntung": {
+      "name": "srop_sungai_guntung",
+      "telnet": {
+        "host": "103.56.93.197",
+        "port": 5232,
+        "parser": "BSVDM"
+      }
+    },
+    "srop_rengat": {
+      "name": "srop_rengat",
+      "telnet": {
+        "host": "103.56.93.198",
+        "port": 5232,
+        "parser": "BSVDM"
+      }
+    },
+    "srop_sikakap": {
+      "name": "srop_sikakap",
+      "telnet": {
+        "host": "103.56.93.199",
+        "port": 5232,
+        "parser": "BSVDM"
+      }
+    },
+    "tanjung_balai_karimun": {
+      "name": "tanjung_balai_karimun",
+      "telnet": {
+        "host": "103.56.93.190",
+        "port": 5232,
+        "parser": "BSVDM"
+      }
+    },
+    "selat_panjang": {
+      "name": "selat_panjang",
+      "telnet": {
+        "host": "103.56.93.189",
+        "port": 5232,
+        "parser": "BSVDM"
+      }
+    },
+    "makasar": {
+      "name": "makasar",
+      "telnet": {
+        "name": "makasar",
+        "host": "36.67.93.230",
+        "port": 8031,
+        "parser": "ABVDM"
+      }
+    },
+    "srop_bima": {
+      "name": "srop_bima",
+      "telnet": {
+        "host": "103.176.181.36",
+        "port": 8019,
+        "parser": "BSVDM"
+      }
+    },
+    "fakfak": {
+      "name": "fakfak",
+      "telnet": {
+        "host": "36.93.69.178",
+        "port": 4712,
+        "parser": "BSVDM"
+      }
+    },
+    "TERSUS_pt_semen_padang_lampung": {
+      "name": "TERSUS_pt_semen_padang_lampung",
+      "telnet": {
+        "host": "41.216.186.119",
+        "port": 9041,
+        "parser": "BSVDM"
+      }
+    },
+    "tersus_pt_mitratama_perkasa_port_asamasam": {
+      "name": "tersus_pt_mitratama_perkasa_port_asamasam",
+      "telnet": {
+        "host": "194.233.83.72",
+        "port": 5006,
+        "parser": "BSVDM"
+      }
+    },
+    "TUKS_Gunung_Maras_Lestari": {
+      "name": "TUKS_Gunung_Maras_Lestari",
+      "telnet": {
+        "host": "202.10.40.122",
+        "port": 8210,
+        "parser": "BSVDM"
+      }
+    },
+    "TUKS_pt_baramutiara_prima": {
+      "name": "TUKS_pt_baramutiara_prima",
+      "telnet": {
+        "host": "103.56.92.164",
+        "port": 5232,
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_pt_galangan_moramo_maelo": {
+      "name": "TUKS_pt_galangan_moramo_maelo",
+      "telnet": {
+        "host": "103.115.164.127",
+        "port": 10500,
+        "parser": "BSVDM"
+      }
+    },
+    "TUKS_pt_gunung_pelawan_lestari": {
+      "name": "TUKS_pt_gunung_pelawan_lestari",
+      "telnet": {
+        "name": "TUKS_pt_gunung_pelawan_lestari",
+        "host": "103.84.207.245",
+        "port": "8210",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_pt_semen_gresik_pontianak": {
+      "name": "TUKS_pt_semen_gresik_pontianak",
+      "telnet": {
+        "host": "45.151.70.137",
+        "port": 9043,
+        "parser": "BSVDM"
+      }
+    },
+    "TUKS_pt_semen_padang_bengkulu": {
+      "name": "TUKS_pt_semen_padang_bengkulu",
+      "telnet": {
+        "host": "31.58.158.152",
+        "port": 9000,
+        "parser": "BSVDM"
+      }
+    },
+    "TUKS_pt_semen_tonasa": {
+      "name": "TUKS_pt_semen_tonasa",
+      "telnet": {
+        "host": "31.56.78.172",
+        "port": 9044,
+        "parser": "BSVDM"
+      }
+    },
+    "TUKS_pt_solusi_bangun_indonesia": {
+      "name": "TUKS_pt_solusi_bangun_indonesia",
+      "telnet": {
+        "host": "103.118.175.60",
+        "port": 9000,
+        "parser": "BSVDM"
+      }
+    },
+    "LPS_Kariangau_Penajam": {
+      "name": "LPS_Kariangau_Penajam",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": 2024,
+        "parser": "BSVDM"
+      }
+    },
+    "pt_timah_muntok": {
+      "name": "pt_timah_muntok",
+      "telnet": {
+        "host": "41.216.186.162",
+        "port": 8300,
+        "parser": "BSVDM"
+      }
+    },
+    "PT_Solusi_Bangun_Indonesia_Tuban": {
+      "name": "PT_Solusi_Bangun_Indonesia_Tuban",
+      "telnet": {
+        "host": "31.58.158.178",
+        "port": 9045,
+        "parser": "BSVDM"
+      }
+    },
+    "pt_golden_blossom_sumatra": {
+      "name": "pt_golden_blossom_sumatra",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": 51601,
+        "parser": "BSVDM"
+      }
+    },
+    "pt_mitra_persada_resources": {
+      "name": "pt_mitra_persada_resources",
+      "telnet": {
+        "name": "pt_mitra_persada_resources",
+        "host": "202.10.40.122",
+        "port": "8040",
+        "parser": "ABVDM"
+      }
+    },
+    "pt_usaha_mitra_persada": {
+      "name": "pt_usaha_mitra_persada",
+      "telnet": {
+        "host": "103.118.175.154",
+        "port": 8300,
+        "parser": "BSVDM"
+      }
+    },
+    "TERSUS_Mitratama_Perkasa_Pasirmas": {
+      "name": "TERSUS_Mitratama_Perkasa_Pasirmas",
+      "telnet": {
+        "host": "194.233.83.72",
+        "port": 5006,
+        "parser": "BSVDM"
+      }
+    },
+    "TERSUS_Dutabahari_Menara_Line_Dockyard_Pasirmas": {
+      "name": "TERSUS_Dutabahari_Menara_Line_Dockyard_Pasirmas",
+      "telnet": {
+        "host": "154.26.133.119",
+        "port": 5006,
+        "parser": "BSVDM"
+      }
+    },
+    "pt_pipit_jaya_abadi": {
+      "name": "pt_pipit_jaya_abadi",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": 2102,
+        "parser": "BSVDM"
+      }
+    },
+    "maratua": {
+      "name": "maratua",
+      "telnet": {
+        "host": "103.56.93.192",
+        "port": 5232,
+        "parser": "BSVDO"
+      }
+    },
+    "kendawangan": {
+      "name": "kendawangan",
+      "telnet": {
+        "host": "36.66.228.146",
+        "port": 5232,
+        "parser": "BSVDO"
+      }
+    },
+    "bima": {
+      "name": "bima",
+      "telnet": {
+        "host": "103.176.181.36",
+        "port": 8019,
+        "parser": "BSVDM"
+      }
+    },
+    "ksop_kendari": {
+      "name": "ksop_kendari",
+      "telnet": {
+        "host": "103.56.93.217",
+        "port": 5232,
+        "parser": "BSVDM"
+      }
+    },
+    "ternate": {
+      "name": "ternate",
+      "telnet": {
+        "name": "ternate",
+        "host": "103.56.92.232",
+        "port": "5232",
+        "parser": "ABVDM"
+      }
+    },
+    "seba": {
+      "name": "seba",
+      "telnet": {
+        "name": "seba",
+        "host": "31.57.178.47",
+        "port": 4712,
+        "parser": "ABVDM"
+      }
+    },
+    "tual": {
+      "name": "tual",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": 24024,
+        "parser": "BSVDM"
+      }
+    },
+    "elat": {
+      "name": "elat",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": 24014,
+        "parser": "BSVDM"
+      }
+    },
+    "tanjung_jambung": {
+      "name": "tanjung_jambung",
+      "telnet": {
+        "host": "103.153.150.69",
+        "port": 4712,
+        "parser": "BSVDM"
+      }
+    },
+    "sungai_guntung": {
+      "name": "sungai_guntung",
+      "telnet": {
+        "host": "103.56.93.197",
+        "port": 5232,
+        "parser": "BSVDO"
+      }
+    },
+    "TUKS_pt_mitratama_perkasa_pasir_manis": {
+      "name": "TUKS_pt_mitratama_perkasa_pasir_manis",
+      "telnet": {
+        "host": "82.197.68.137",
+        "port": 5007,
+        "parser": "BSVDO"
+      }
+    },
+    "TUKS_pt_dutabahari_menara_line_dockyard_pasir_mas": {
+      "name": "TUKS_pt_dutabahari_menara_line_dockyard_pasir_mas",
+      "telnet": {
+        "host": "154.26.133.119",
+        "port": 5006,
+        "parser": "BSVDO"
+      }
+    },
+    "TUKS_PT._Sriwijaya_Bara_Logistik": {
+      "name": "TUKS_PT._Sriwijaya_Bara_Logistik",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "51622",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Barito_Galangan_Nusantara": {
+      "name": "TUKS_PT._Barito_Galangan_Nusantara",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "56511",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_Maruwai_Coal": {
+      "name": "Tersus_Maruwai_Coal",
+      "telnet": {
+        "host": "36.93.27.234",
+        "port": "10110",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_Putra_Usaha_Energi": {
+      "name": "TUKS_Putra_Usaha_Energi",
+      "telnet": {
+        "host": "103.115.164.127",
+        "port": "10602",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Semen_Tonasa_Packing_Plant_Mamuju": {
+      "name": "TUKS_PT._Semen_Tonasa_Packing_Plant_Mamuju",
+      "telnet": {
+        "host": "191.101.190.130",
+        "port": "1010",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT_Timah_Tanjung_Gudang_Belinyu": {
+      "name": "TUKS_PT_Timah_Tanjung_Gudang_Belinyu",
+      "telnet": {
+        "host": "45.149.93.153",
+        "port": "8300",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT_Timah_Air_Kantung,_Sungailiat": {
+      "name": "TUKS_PT_Timah_Air_Kantung,_Sungailiat",
+      "telnet": {
+        "host": "45.149.93.130",
+        "port": "8300",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS__PT._Timah_Belitung": {
+      "name": "TUKS__PT._Timah_Belitung",
+      "telnet": {
+        "host": "103.118.175.181",
+        "port": "8300",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS__PT._Bahtera_Alam_Tamiang_Layang_": {
+      "name": "TUKS__PT._Bahtera_Alam_Tamiang_Layang_",
+      "telnet": {
+        "host": "103.115.164.127",
+        "port": "10601",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Semen_Gresik_Packing_Plant__Sorong": {
+      "name": "TUKS_PT._Semen_Gresik_Packing_Plant__Sorong",
+      "telnet": {
+        "host": "31.56.78.202",
+        "port": "9100",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Semen_Gresik_Packing_Plant__Banyuwangi": {
+      "name": "TUKS_PT._Semen_Gresik_Packing_Plant__Banyuwangi",
+      "telnet": {
+        "host": "31.58.158.180",
+        "port": "9101",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._SEMEN_GRESIK,_Packing_Plant_Banjarmasin": {
+      "name": "TUKS_PT._SEMEN_GRESIK,_Packing_Plant_Banjarmasin",
+      "telnet": {
+        "host": "191.101.190.229",
+        "port": "9215",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Semen_Tonasa_Packing_Plant__Samarinda": {
+      "name": "TUKS_PT._Semen_Tonasa_Packing_Plant__Samarinda",
+      "telnet": {
+        "host": "31.58.158.91",
+        "port": "9210",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Semen_Indonesia_Gresik": {
+      "name": "TUKS_PT._Semen_Indonesia_Gresik",
+      "telnet": {
+        "host": "191.101.190.163",
+        "port": "10987",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Semen_Tonasa_Packing_Plant_Bitung": {
+      "name": "TUKS_PT._Semen_Tonasa_Packing_Plant_Bitung",
+      "telnet": {
+        "host": "31.58.158.106",
+        "port": "9103",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT.Semen_Indonesia_Tuban": {
+      "name": "TERSUS_PT.Semen_Indonesia_Tuban",
+      "telnet": {
+        "host": "103.118.175.97",
+        "port": "9046",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Timah_Kundur": {
+      "name": "TUKS_PT._Timah_Kundur",
+      "telnet": {
+        "host": "45.149.93.140",
+        "port": "8300",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Putra_Dermawan_Pratama": {
+      "name": "TUKS_PT._Putra_Dermawan_Pratama",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2104",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Aneka_Bumi_Pratama": {
+      "name": "TUKS_PT._Aneka_Bumi_Pratama",
+      "telnet": {
+        "host": "194.233.84.224",
+        "port": "5006",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Sinar_Alam_Duta_Perdana_II": {
+      "name": "TUKS_PT._Sinar_Alam_Duta_Perdana_II",
+      "telnet": {
+        "host": "46.250.234.158",
+        "port": "5007",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Fossa_Bara_Indonesia": {
+      "name": "TUKS_PT._Fossa_Bara_Indonesia",
+      "telnet": {
+        "host": "82.197.70.124",
+        "port": "5007",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Abadi_Sejahtera_Makmur": {
+      "name": "TUKS_PT._Abadi_Sejahtera_Makmur",
+      "telnet": {
+        "host": "46.250.234.72",
+        "port": "5006",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Baramulti_Sugih_Sentosa": {
+      "name": "TUKS_PT._Baramulti_Sugih_Sentosa",
+      "telnet": {
+        "host": "46.250.236.199",
+        "port": "5007",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Tempirai_Energy_resources": {
+      "name": "TUKS_PT._Tempirai_Energy_resources",
+      "telnet": {
+        "host": "82.197.70.123",
+        "port": "5006",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Adhitya_Serayakorita": {
+      "name": "TUKS_PT._Adhitya_Serayakorita",
+      "telnet": {
+        "host": "103.56.92.155",
+        "port": "5232",
+        "parser": "ABVDM"
+      }
+    },
+    "PT_Mitrama_Perkasa_Mekarsari": {
+      "name": "PT_Mitrama_Perkasa_Mekarsari",
+      "telnet": {
+        "host": "194.233.83.72",
+        "port": "5006",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT_Riota_Jaya_Lestari_": {
+      "name": "TUKS_PT_Riota_Jaya_Lestari_",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2105",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._SEMEN_PADANG_PABRIK_DUMAI": {
+      "name": "TERSUS_PT._SEMEN_PADANG_PABRIK_DUMAI",
+      "telnet": {
+        "host": "41.216.186.63",
+        "port": "9108",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Bumi_Barito_utama_Banjarmasin": {
+      "name": "TUKS_PT._Bumi_Barito_utama_Banjarmasin",
+      "telnet": {
+        "host": "103.181.143.182",
+        "port": "15124",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Senamas_Energindo_Mineral": {
+      "name": "TUKS_PT._Senamas_Energindo_Mineral",
+      "telnet": {
+        "host": "103.181.143.182",
+        "port": "15185",
+        "parser": "ABVDM"
+      }
+    },
+    "PT_SUMBER_DIRI_SEMBILAN_(Lumbung_Karang_Sakti)": {
+      "name": "PT_SUMBER_DIRI_SEMBILAN_(Lumbung_Karang_Sakti)",
+      "telnet": {
+        "host": "46.250.230.252",
+        "port": "5007",
+        "parser": "ABVDM"
+      }
+    },
+    "PT_Baramulti_Sugih_Sentosa": {
+      "name": "PT_Baramulti_Sugih_Sentosa",
+      "telnet": {
+        "host": "46.250.236.199",
+        "port": "5007",
+        "parser": "ABVDM"
+      }
+    },
+    "PT_Wahana_Bara_Sentosa": {
+      "name": "PT_Wahana_Bara_Sentosa",
+      "telnet": {
+        "host": "46.250.231.149",
+        "port": "5006",
+        "parser": "ABVDM"
+      }
+    },
+    "PT_TRANS_ENERGY_INDONESIA": {
+      "name": "PT_TRANS_ENERGY_INDONESIA",
+      "telnet": {
+        "host": "82.197.70.94",
+        "port": "5007",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Indonesia_Power_Ambon": {
+      "name": "TUKS_PT._Indonesia_Power_Ambon",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "58102",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Semen_Padang_Packing_Plant__Teluk_Bayur": {
+      "name": "TUKS_PT._Semen_Padang_Packing_Plant__Teluk_Bayur",
+      "telnet": {
+        "host": "31.58.158.96",
+        "port": "9101",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Arung_Lintas_Samudra": {
+      "name": "TERSUS_PT._Arung_Lintas_Samudra",
+      "telnet": {
+        "host": "46.250.234.207",
+        "port": "5060",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Jatim_Propertindo_Jaya": {
+      "name": "TERSUS_PT._Jatim_Propertindo_Jaya",
+      "telnet": {
+        "host": "46.250.234.207",
+        "port": "5060",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._TRI_OETAMA_PERSADA": {
+      "name": "TERSUS_PT._TRI_OETAMA_PERSADA",
+      "telnet": {
+        "host": "103.181.143.182",
+        "port": "15181",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Semen_Tonasa_Packing_Plant_Oba_Utara": {
+      "name": "TUKS_PT._Semen_Tonasa_Packing_Plant_Oba_Utara",
+      "telnet": {
+        "host": "31.58.158.84",
+        "port": "9103",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._LIFERE_AGRO_KAPUAS": {
+      "name": "TERSUS_PT._LIFERE_AGRO_KAPUAS",
+      "telnet": {
+        "host": "103.115.164.127",
+        "port": "10603",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Kalimantan_Energi_Lestari": {
+      "name": "TUKS_PT._Kalimantan_Energi_Lestari",
+      "telnet": {
+        "host": "36.67.119.3",
+        "port": "4002",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._BAHTERA_ALAMA_TAMIAN_JETTY_BIMA": {
+      "name": "TERSUS_PT._BAHTERA_ALAMA_TAMIAN_JETTY_BIMA",
+      "telnet": {
+        "host": "103.181.143.182",
+        "port": "15183",
+        "parser": "ABVDM"
+      }
+    },
+    "Sensor_Site_Tanjung_Intan": {
+      "name": "Sensor_Site_Tanjung_Intan",
+      "telnet": {
+        "host": "103.148.49.205",
+        "port": "2052",
+        "parser": "ABVDM"
+      }
+    },
+    "Srop_Ketapang": {
+      "name": "Srop_Ketapang",
+      "telnet": {
+        "name": "Srop_Ketapang",
+        "host": "119.82.246.235",
+        "port": "8071",
+        "parser": "ABVDM"
+      }
+    },
+    "Srop_Sintete": {
+      "name": "Srop_Sintete",
+      "telnet": {
+        "name": "Srop_Sintete",
+        "host": "119.82.246.237",
+        "port": "8230",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Semen_Tonasa_Packing_Plant_Palu": {
+      "name": "PT._Semen_Tonasa_Packing_Plant_Palu",
+      "telnet": {
+        "host": "31.56.78.131",
+        "port": "9109",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._DSSP_Power_Kendari": {
+      "name": "PT._DSSP_Power_Kendari",
+      "telnet": {
+        "host": "103.56.92.157",
+        "port": "5234",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Semen_Tonasa_Packing_Plant_Ambon": {
+      "name": "TUKS_PT._Semen_Tonasa_Packing_Plant_Ambon",
+      "telnet": {
+        "host": "31.58.158.108",
+        "port": "9104",
+        "parser": "ABVDM"
+      }
+    },
+    "Tanjung_Balai_Karimun_New": {
+      "name": "Tanjung_Balai_Karimun_New",
+      "telnet": {
+        "host": "103.28.148.188",
+        "port": "5232",
+        "parser": "ABVDM"
+      }
+    },
+    "Srop_Kolonedale": {
+      "name": "Srop_Kolonedale",
+      "telnet": {
+        "host": "45.149.93.196",
+        "port": "4712",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Sinar_Wijaya_Energi": {
+      "name": "PT._Sinar_Wijaya_Energi",
+      "telnet": {
+        "name": "PT._Sinar_Wijaya_Energi",
+        "host": "194.233.89.188",
+        "port": "2123",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Borneo_Sawit_Gemilang": {
+      "name": "PT._Borneo_Sawit_Gemilang",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "56202",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Bangun_Nusantara_Jaya_Makmur_Perkasa": {
+      "name": "Tersus_PT._Bangun_Nusantara_Jaya_Makmur_Perkasa",
+      "telnet": {
+        "host": "103.115.164.127",
+        "port": "10605",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._MARUNDA_GRAHA_MINERAL_INTERMIDATE_STOCKPILE": {
+      "name": "PT._MARUNDA_GRAHA_MINERAL_INTERMIDATE_STOCKPILE",
+      "telnet": {
+        "host": "103.115.164.127",
+        "port": "10606",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Fortuna_Marina_Sejahtera": {
+      "name": "PT._Fortuna_Marina_Sejahtera",
+      "telnet": {
+        "host": "194.233.67.233",
+        "port": "5006",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._CITRA_SILIKA_MALLAWA": {
+      "name": "TUKS_PT._CITRA_SILIKA_MALLAWA",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2106",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._PP_London_Sumatra_Indonesia_tbk_": {
+      "name": "TUKS_PT._PP_London_Sumatra_Indonesia_tbk_",
+      "telnet": {
+        "host": "217.15.163.148",
+        "port": "5009",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_Inalum_PT._Indonesia_Asahan_Alumunium": {
+      "name": "TUKS_Inalum_PT._Indonesia_Asahan_Alumunium",
+      "telnet": {
+        "host": "194.233.69.229",
+        "port": "5061",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Semen_Andalas_Belawan": {
+      "name": "PT._Semen_Andalas_Belawan",
+      "telnet": {
+        "host": "45.64.99.134",
+        "port": "8888",
+        "parser": "ABVDM"
+      }
+    },
+    "Sensor_Site_Karang_Jamuang": {
+      "name": "Sensor_Site_Karang_Jamuang",
+      "telnet": {
+        "host": "203.173.90.237",
+        "port": "8140",
+        "parser": "ABVDM"
+      }
+    },
+    "VTS_Tanjung_Perak": {
+      "name": "VTS_Tanjung_Perak",
+      "telnet": {
+        "name": "VTS_Tanjung_Perak",
+        "host": "203.173.90.237",
+        "port": "8040",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._TRITUNAS_SINAR_BENUA": {
+      "name": "TERSUS_PT._TRITUNAS_SINAR_BENUA",
+      "telnet": {
+        "host": "103.206.255.186",
+        "port": "8010",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._MARUNDA_GRAHAMINERAL_COAL": {
+      "name": "TERSUS_PT._MARUNDA_GRAHAMINERAL_COAL",
+      "telnet": {
+        "host": "103.115.164.127",
+        "port": "10607",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._SEMEN_TONASA_PELABUHAN_BIRINGKASSI": {
+      "name": "TERSUS_PT._SEMEN_TONASA_PELABUHAN_BIRINGKASSI",
+      "telnet": {
+        "name": "TERSUS_PT._SEMEN_TONASA_PELABUHAN_BIRINGKASSI",
+        "host": "31.58.158.109",
+        "port": "8105",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Lamindo_Inter_Multikon_": {
+      "name": "TERSUS_PT._Lamindo_Inter_Multikon_",
+      "telnet": {
+        "host": "36.66.236.139",
+        "port": "8040",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Sinar_Jaya_Inti_Mulya": {
+      "name": "TUKS_PT._Sinar_Jaya_Inti_Mulya",
+      "telnet": {
+        "name": "TUKS_PT._Sinar_Jaya_Inti_Mulya",
+        "host": "5.181.178.21",
+        "port": "8001",
+        "parser": "ABVDM"
+      }
+    },
+    "PT.Bukit_Asam_Tekuk_Bayur": {
+      "name": "PT.Bukit_Asam_Tekuk_Bayur",
+      "telnet": {
+        "host": "103.181.143.182",
+        "port": "15182",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Karunia_Harapan_Sejati": {
+      "name": "PT._Karunia_Harapan_Sejati",
+      "telnet": {
+        "name": "PT._Karunia_Harapan_Sejati",
+        "host": "103.181.143.182",
+        "port": "15018",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Sumber_Tani_Agung_Oils_and_Fats": {
+      "name": "PT._Sumber_Tani_Agung_Oils_and_Fats",
+      "telnet": {
+        "host": "36.89.219.83",
+        "port": "8040",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Mustika": {
+      "name": "TUKS_PT._Mustika",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "56532",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Gema_Kreasi_Perdana": {
+      "name": "TUKS_PT._Gema_Kreasi_Perdana",
+      "telnet": {
+        "host": "103.56.92.156",
+        "port": "5232",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Citra_Mineral_Investindo": {
+      "name": "PT._Citra_Mineral_Investindo",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "56109",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Pusri_Palembang": {
+      "name": "PT._Pusri_Palembang",
+      "telnet": {
+        "host": "103.109.168.15",
+        "port": "3333",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Transportasi_Gas_Indonesia": {
+      "name": "PT._Transportasi_Gas_Indonesia",
+      "telnet": {
+        "host": "103.191.92.86",
+        "port": "8010",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Bonanza_Pratama_Abadi_": {
+      "name": "TUKS_PT._Bonanza_Pratama_Abadi_",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "56522",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Mitra_Tala": {
+      "name": "TUKS_PT._Mitra_Tala",
+      "telnet": {
+        "host": "103.181.143.182",
+        "port": "15027",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Wilmar_Nabati_Indonesia_Balikpapan": {
+      "name": "PT._Wilmar_Nabati_Indonesia_Balikpapan",
+      "telnet": {
+        "host": "114.7.22.226",
+        "port": "8042",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Kawasan_Industri_Dumai_Pelintung_(Wilmar_Group)": {
+      "name": "Tersus_PT._Kawasan_Industri_Dumai_Pelintung_(Wilmar_Group)",
+      "telnet": {
+        "host": "36.95.184.108",
+        "port": "8044",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Island_Connection_International": {
+      "name": "Tersus_PT._Island_Connection_International",
+      "telnet": {
+        "host": "116.254.99.49",
+        "port": "3333",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Wilmar_Nabati_Indonesia_Sampit_(Wilmar_Group)": {
+      "name": "TUKS_PT._Wilmar_Nabati_Indonesia_Sampit_(Wilmar_Group)",
+      "telnet": {
+        "name": "TUKS_PT._Wilmar_Nabati_Indonesia_Sampit_(Wilmar_Group)",
+        "host": "36.95.204.51",
+        "port": "8046",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Wilmar_Nabati_Indonesia_Gresik_(Wilmar_Group)": {
+      "name": "TUKS_PT._Wilmar_Nabati_Indonesia_Gresik_(Wilmar_Group)",
+      "telnet": {
+        "host": "36.95.205.91",
+        "port": "8057",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Multimas_Nabati_Asahan_Serang_(Wilmar_Group)": {
+      "name": "TUKS_PT._Multimas_Nabati_Asahan_Serang_(Wilmar_Group)",
+      "telnet": {
+        "host": "36.95.218.27",
+        "port": "8054",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Tapom_Lonsum": {
+      "name": "Tersus_PT._Tapom_Lonsum",
+      "telnet": {
+        "host": "217.15.165.73",
+        "port": "5006",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Sinar_Alam_Permai_Mariana_Palembang_(Wilmar_Group)": {
+      "name": "TUKS_PT._Sinar_Alam_Permai_Mariana_Palembang_(Wilmar_Group)",
+      "telnet": {
+        "host": "36.95.184.115",
+        "port": "8040",
+        "parser": "ABVDM"
+      }
+    },
+    "TES_DATA_AIS": {
+      "name": "TES_DATA_AIS",
+      "telnet": {
+        "name": "TES_DATA_AIS",
+        "host": "202.152.24.153",
+        "port": "6600",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Karyawaja_Putra_Sriwijaya": {
+      "name": "TERSUS_PT._Karyawaja_Putra_Sriwijaya",
+      "telnet": {
+        "host": "154.26.138.64",
+        "port": "5006",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Putra_Sultra_Samudra": {
+      "name": "TUKS_PT._Putra_Sultra_Samudra",
+      "telnet": {
+        "name": "TUKS_PT._Putra_Sultra_Samudra",
+        "host": "103.181.143.182",
+        "port": "15038",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Bahtera_Mulia_Kencana": {
+      "name": "Tersus_PT._Bahtera_Mulia_Kencana",
+      "telnet": {
+        "host": "154.26.138.64",
+        "port": "5007",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_Medco_E&P_Grissik_Ltd._(Ramba)": {
+      "name": "Tersus_Medco_E&P_Grissik_Ltd._(Ramba)",
+      "telnet": {
+        "host": "194.233.67.233",
+        "port": "5007",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._MAKMUR_UJUNG_JAYA": {
+      "name": "TUKS_PT._MAKMUR_UJUNG_JAYA",
+      "telnet": {
+        "host": "103.181.143.182",
+        "port": "15020",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_GALANGAN_KAPAL_BONTUNI_TIRTAMAS": {
+      "name": "TUKS_GALANGAN_KAPAL_BONTUNI_TIRTAMAS",
+      "telnet": {
+        "host": "103.181.143.182",
+        "port": "15024",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._TOP_PAMA_TELUK_TIMBAU": {
+      "name": "PT._TOP_PAMA_TELUK_TIMBAU",
+      "telnet": {
+        "host": "103.115.164.127",
+        "port": "10610",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._HOFFMAN_ENERGI_PERKASA": {
+      "name": "TERSUS_PT._HOFFMAN_ENERGI_PERKASA",
+      "telnet": {
+        "host": "103.181.143.182",
+        "port": "15029",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._RAMADHAN_MORAMO_RAYA": {
+      "name": "TERSUS_PT._RAMADHAN_MORAMO_RAYA",
+      "telnet": {
+        "host": "103.181.143.182",
+        "port": "15034",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._TOP_PARING_HALUNG_(PAMA)": {
+      "name": "TERSUS_PT._TOP_PARING_HALUNG_(PAMA)",
+      "telnet": {
+        "host": "103.115.164.127",
+        "port": "10609",
+        "parser": "ABVDM"
+      }
+    },
+    "PLTU_BARRU": {
+      "name": "PLTU_BARRU",
+      "telnet": {
+        "name": "PLTU_BARRU",
+        "host": "8.215.9.235",
+        "port": "4001",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Hok_Tong": {
+      "name": "TUKS_PT._Hok_Tong",
+      "telnet": {
+        "name": "TUKS_PT._Hok_Tong",
+        "host": "18.136.20.255",
+        "port": "9010",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._PLN_Indonesia_Power": {
+      "name": "TUKS_PT._PLN_Indonesia_Power",
+      "telnet": {
+        "name": "TUKS_PT._PLN_Indonesia_Power",
+        "host": "103.195.65.148",
+        "port": "8040",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Swi_Jetty_Nusantara": {
+      "name": "PT._Swi_Jetty_Nusantara",
+      "telnet": {
+        "host": "36.94.14.43",
+        "port": "4220",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._MEGA_MULTI_ENERGI": {
+      "name": "TERSUS_PT._MEGA_MULTI_ENERGI",
+      "telnet": {
+        "host": "103.181.143.182",
+        "port": "15012",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT_Pertamina_Patra_Niaga": {
+      "name": "TUKS_PT_Pertamina_Patra_Niaga",
+      "telnet": {
+        "host": "191.101.190.150",
+        "port": "8040",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._PERSADA_BANGUN_SENTOSA": {
+      "name": "TUKS_PT._PERSADA_BANGUN_SENTOSA",
+      "telnet": {
+        "host": "34.128.68.141",
+        "port": "9022",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._MCT_Embalut_(L2)": {
+      "name": "PT._MCT_Embalut_(L2)",
+      "telnet": {
+        "host": "103.187.146.114",
+        "port": "8041",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._STS": {
+      "name": "PT._STS",
+      "telnet": {
+        "host": "103.187.147.164",
+        "port": "8041",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._AKG": {
+      "name": "PT._AKG",
+      "telnet": {
+        "host": "103.189.235.233",
+        "port": "8041",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._DSN_Muara_Kaman": {
+      "name": "PT._DSN_Muara_Kaman",
+      "telnet": {
+        "host": "103.189.235.83",
+        "port": "8041",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._WIJAYA_MAS_MURNI": {
+      "name": "PT._WIJAYA_MAS_MURNI",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2107",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT_Tonia_Mitra_Sejahtera": {
+      "name": "TUKS_PT_Tonia_Mitra_Sejahtera",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "57509",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Multimas_Nabati_Asahan_Kuala_Tanjung": {
+      "name": "TUKS_PT._Multimas_Nabati_Asahan_Kuala_Tanjung",
+      "telnet": {
+        "host": "36.94.179.139",
+        "port": "8051",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Mitrabara_Adiperdana_Tbk": {
+      "name": "Tersus_PT._Mitrabara_Adiperdana_Tbk",
+      "telnet": {
+        "host": "194.233.85.239",
+        "port": "5007",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Sriyudi_Alam_Perkasa": {
+      "name": "TERSUS_PT._Sriyudi_Alam_Perkasa",
+      "telnet": {
+        "host": "103.154.79.218",
+        "port": "8040",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_Pelabuhan_Bukit_Prima": {
+      "name": "TUKS_Pelabuhan_Bukit_Prima",
+      "telnet": {
+        "host": "103.111.80.187",
+        "port": "3333",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT_Phoenix_Resources_International": {
+      "name": "TUKS_PT_Phoenix_Resources_International",
+      "telnet": {
+        "name": "TUKS_PT_Phoenix_Resources_International",
+        "host": "36.93.184.148",
+        "port": "5000",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Sandeir_Setia_Brothers": {
+      "name": "TUKS_PT._Sandeir_Setia_Brothers",
+      "telnet": {
+        "host": "41.216.191.179",
+        "port": "8300",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Adaro_Logistic_B2B_Klanis": {
+      "name": "TUKS_PT._Adaro_Logistic_B2B_Klanis",
+      "telnet": {
+        "host": "103.181.143.182",
+        "port": "15225",
+        "parser": "ABVDM"
+      }
+    },
+    "LPS_Kalabahi": {
+      "name": "LPS_Kalabahi",
+      "telnet": {
+        "host": "103.56.205.70",
+        "port": "5232",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._CROWINDO_UNGGUL_PERKASA": {
+      "name": "TERSUS_PT._CROWINDO_UNGGUL_PERKASA",
+      "telnet": {
+        "host": "103.181.143.182",
+        "port": "15223",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._TIARA_ABADI_SENTOSA": {
+      "name": "TERSUS_PT._TIARA_ABADI_SENTOSA",
+      "telnet": {
+        "host": "103.181.143.182",
+        "port": "15042",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT_ADARO_LOGISTICS_KM_0": {
+      "name": "TERSUS_PT_ADARO_LOGISTICS_KM_0",
+      "telnet": {
+        "host": "103.181.143.182",
+        "port": "15222",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._PIPIT_CITRA_PERDANA": {
+      "name": "PT._PIPIT_CITRA_PERDANA",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2108",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._HOKARI_LINEX_PRATAMA": {
+      "name": "TUKS_PT._HOKARI_LINEX_PRATAMA",
+      "telnet": {
+        "host": "103.195.65.135",
+        "port": "8300",
+        "parser": "ABVDM"
+      }
+    },
+    "PT.Musimas_(Jambi)": {
+      "name": "PT.Musimas_(Jambi)",
+      "telnet": {
+        "name": "PT.Musimas_(Jambi)",
+        "host": "36.92.39.83",
+        "port": "3333",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Bukit_Batu_Makmur": {
+      "name": "TERSUS_PT._Bukit_Batu_Makmur",
+      "telnet": {
+        "host": "41.216.191.216",
+        "port": "1379",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Musimas_(Jambi)": {
+      "name": "PT._Musimas_(Jambi)",
+      "telnet": {
+        "host": "36.92.39.83",
+        "port": "3333",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._BORNEO_PRIMA": {
+      "name": "TERSUS_PT._BORNEO_PRIMA",
+      "telnet": {
+        "name": "TERSUS_PT._BORNEO_PRIMA",
+        "host": "103.115.164.127",
+        "port": "10611",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._KUMAI_SENTOSA": {
+      "name": "PT._KUMAI_SENTOSA",
+      "telnet": {
+        "host": "103.56.92.231",
+        "port": "5232",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Bintan_Inti_Industrial_Estate_(BIIE)": {
+      "name": "PT._Bintan_Inti_Industrial_Estate_(BIIE)",
+      "telnet": {
+        "host": "41.216.191.205",
+        "port": "53160",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._SURYAMAS_CIPTA_PERKASA": {
+      "name": "TERSUS_PT._SURYAMAS_CIPTA_PERKASA",
+      "telnet": {
+        "host": "103.181.143.182",
+        "port": "15074",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._GUNUNG_MURO_WAHANAJAYA": {
+      "name": "TERSUS_PT._GUNUNG_MURO_WAHANAJAYA",
+      "telnet": {
+        "host": "103.115.164.127",
+        "port": "10608",
+        "parser": "ABVDM"
+      }
+    },
+    "Tarakan_Maratua": {
+      "name": "Tarakan_Maratua",
+      "telnet": {
+        "host": "103.56.206.118",
+        "port": "5232",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._AKR_CORPORINDO_TBK": {
+      "name": "TERSUS_PT._AKR_CORPORINDO_TBK",
+      "telnet": {
+        "host": "103.181.143.182",
+        "port": "15184",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Bukit_Granit_Mining_Mandiri_(BGMM)": {
+      "name": "PT._Bukit_Granit_Mining_Mandiri_(BGMM)",
+      "telnet": {
+        "host": "103.161.146.50",
+        "port": "62153",
+        "parser": "ABVDM"
+      }
+    },
+    "CV._NUSANTARA_DAYA_JAYA": {
+      "name": "CV._NUSANTARA_DAYA_JAYA",
+      "telnet": {
+        "host": "103.56.92.233",
+        "port": "5232",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_Medco_E&P_Indonesia_(Landing_Meta)": {
+      "name": "Tersus_Medco_E&P_Indonesia_(Landing_Meta)",
+      "telnet": {
+        "host": "46.250.226.33",
+        "port": "5008",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Elnusa_Petrofin_-_Amurang": {
+      "name": "Tersus_PT._Elnusa_Petrofin_-_Amurang",
+      "telnet": {
+        "host": "202.46.73.19",
+        "port": "8040",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Medco_E&P_Indonesia_(Tersus_Landing_Meta_Desa_Danau_Cala)": {
+      "name": "Tersus_PT._Medco_E&P_Indonesia_(Tersus_Landing_Meta_Desa_Danau_Cala)",
+      "telnet": {
+        "host": "46.250.226.33",
+        "port": "5008",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Medco_E&P_Indonesia_(Tersus_Landing_Matra_C_Desa_Bailangu)": {
+      "name": "Tersus_PT._Medco_E&P_Indonesia_(Tersus_Landing_Matra_C_Desa_Bailangu)",
+      "telnet": {
+        "host": "46.250.226.33",
+        "port": "5009",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._NUSA_KARYA_ARINDO": {
+      "name": "PT._NUSA_KARYA_ARINDO",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2109",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Karimun_Sembawang_Shipyard": {
+      "name": "PT._Karimun_Sembawang_Shipyard",
+      "telnet": {
+        "host": "113.212.162.6",
+        "port": "53160",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Damai_Fajar_Sentosa": {
+      "name": "TUKS_PT._Damai_Fajar_Sentosa",
+      "telnet": {
+        "host": "5.181.178.22",
+        "port": "13799",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Multi_Nabati_Sulawesi_Bitung_(Wilmar_Group)": {
+      "name": "TUKS_PT._Multi_Nabati_Sulawesi_Bitung_(Wilmar_Group)",
+      "telnet": {
+        "host": "36.95.182.227",
+        "port": "8053",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Hindoli_(Sungai_Lilin)": {
+      "name": "Tersus_PT._Hindoli_(Sungai_Lilin)",
+      "telnet": {
+        "name": "Tersus_PT._Hindoli_(Sungai_Lilin)",
+        "host": "41.216.191.217",
+        "port": "10110",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Sumber_Hijau_Permai": {
+      "name": "Tersus_PT._Sumber_Hijau_Permai",
+      "telnet": {
+        "host": "34.128.68.141",
+        "port": "9049",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_Biomasa_Jaya_Abadi": {
+      "name": "TUKS_Biomasa_Jaya_Abadi",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "57502",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._SUMATRA_TIMUR_INDONESIA": {
+      "name": "TUKS_PT._SUMATRA_TIMUR_INDONESIA",
+      "telnet": {
+        "host": "103.115.164.127",
+        "port": "10612",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Rimba_Hutani_Mas_": {
+      "name": "TUKS_PT._Rimba_Hutani_Mas_",
+      "telnet": {
+        "host": "34.128.68.141",
+        "port": "9046",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Bumi_Persada_Permai_": {
+      "name": "TUKS_PT._Bumi_Persada_Permai_",
+      "telnet": {
+        "name": "TUKS_PT._Bumi_Persada_Permai_",
+        "host": "34.128.68.141",
+        "port": "9042",
+        "parser": "ABVDM"
+      }
+    },
+    "pt_pipit_jaya_abadi_new": {
+      "name": "pt_pipit_jaya_abadi_new",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": 2102,
+        "parser": "BSVDM"
+      }
+    },
+    "TUKS_PT._PULAU_SAMBU_(GUNTUNG)": {
+      "name": "TUKS_PT._PULAU_SAMBU_(GUNTUNG)",
+      "telnet": {
+        "host": "103.115.164.127",
+        "port": "10613",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._DELI_PRATAMA_PELABUHAN": {
+      "name": "TERSUS_PT._DELI_PRATAMA_PELABUHAN",
+      "telnet": {
+        "host": "202.10.40.120",
+        "port": "8558",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._SUPRABARI_MAPANINDO_MINERAL": {
+      "name": "TERSUS_PT._SUPRABARI_MAPANINDO_MINERAL",
+      "telnet": {
+        "host": "103.181.143.182",
+        "port": "15098",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._RIAU_SAKTI_UNITED_PLANTATION": {
+      "name": "TUKS_PT._RIAU_SAKTI_UNITED_PLANTATION",
+      "telnet": {
+        "host": "103.115.164.127",
+        "port": "10614",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._MULTI_TAMBANG_UTAMA": {
+      "name": "TERSUS_PT._MULTI_TAMBANG_UTAMA",
+      "telnet": {
+        "host": "103.181.143.182",
+        "port": "15094",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._PULAU_SAMBU_(KUALA_ENOK)": {
+      "name": "TUKS_PT._PULAU_SAMBU_(KUALA_ENOK)",
+      "telnet": {
+        "name": "TUKS_PT._PULAU_SAMBU_(KUALA_ENOK)",
+        "host": "103.115.164.127",
+        "port": "10615",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_VICTOR_DUA_TIGA_MEGA": {
+      "name": "TERSUS_VICTOR_DUA_TIGA_MEGA",
+      "telnet": {
+        "host": "36.91.59.196",
+        "port": "6666",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._BUKIT_INTAN_SEJAHTERA_SENTOSA": {
+      "name": "TUKS_PT._BUKIT_INTAN_SEJAHTERA_SENTOSA",
+      "telnet": {
+        "host": "5.181.178.250",
+        "port": "8300",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._MENTARI_SUBUR_ABADI": {
+      "name": "TERSUS_PT._MENTARI_SUBUR_ABADI",
+      "telnet": {
+        "host": "202.158.14.226",
+        "port": "3336",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._WIRA_PENTA_KENCANA": {
+      "name": "TUKS_PT._WIRA_PENTA_KENCANA",
+      "telnet": {
+        "host": "103.172.205.59",
+        "port": "8010",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._PUTRA_MOBA_COAL": {
+      "name": "TERSUS_PT._PUTRA_MOBA_COAL",
+      "telnet": {
+        "host": "84.247.144.182",
+        "port": "1234",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Sentosa_Mulia_Bahagia": {
+      "name": "TERSUS_PT._Sentosa_Mulia_Bahagia",
+      "telnet": {
+        "host": "84.247.151.72",
+        "port": "5006",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Basin_Coal_Mining": {
+      "name": "TERSUS_PT._Basin_Coal_Mining",
+      "telnet": {
+        "name": "TERSUS_PT._Basin_Coal_Mining",
+        "host": "185.111.159.233",
+        "port": "20003",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._BRM_MARINE": {
+      "name": "TUKS_PT._BRM_MARINE",
+      "telnet": {
+        "host": "46.250.226.224",
+        "port": "5007",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._CAHYA_KIRANA_INDONESIA": {
+      "name": "TUKS_PT._CAHYA_KIRANA_INDONESIA",
+      "telnet": {
+        "host": "194.233.70.136",
+        "port": "5006",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._BARA_ALAM_UTAMA": {
+      "name": "TUKS_PT._BARA_ALAM_UTAMA",
+      "telnet": {
+        "host": "46.250.233.225",
+        "port": "5006",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._RMK_ENERGY": {
+      "name": "TUKS_PT._RMK_ENERGY",
+      "telnet": {
+        "host": "82.197.70.95",
+        "port": "5007",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT_Sumbawa_Jutaraya": {
+      "name": "TUKS_PT_Sumbawa_Jutaraya",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "55202",
+        "parser": "ABVDM"
+      }
+    },
+    "PT_TRIPLE_EIGHT_ENERGY": {
+      "name": "PT_TRIPLE_EIGHT_ENERGY",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2110",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._ARTHA_CONTRACTORS": {
+      "name": "TERSUS_PT._ARTHA_CONTRACTORS",
+      "telnet": {
+        "host": "203.80.10.201",
+        "port": "5010",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus.PT_Arutmin_Indonesia_Satui": {
+      "name": "Tersus.PT_Arutmin_Indonesia_Satui",
+      "telnet": {
+        "host": "185.111.159.233",
+        "port": "20000",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Adaro_Indonesia_Kelanis": {
+      "name": "TERSUS_PT._Adaro_Indonesia_Kelanis",
+      "telnet": {
+        "host": "34.128.68.141",
+        "port": "9062",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._PATRA_NIAGA": {
+      "name": "TUKS_PT._PATRA_NIAGA",
+      "telnet": {
+        "host": "41.216.191.192",
+        "port": "8040",
+        "parser": "ABVDM"
+      }
+    },
+    "BCT_Dermaga_Perkasa_Pratama": {
+      "name": "BCT_Dermaga_Perkasa_Pratama",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "56415",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._SABANG_RAYA_SHIPYARD": {
+      "name": "TUKS_PT._SABANG_RAYA_SHIPYARD",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2111",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT_Swarnadwipa_Dermaga_Jaya": {
+      "name": "TERSUS_PT_Swarnadwipa_Dermaga_Jaya",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2112",
+        "parser": "ABVDM"
+      }
+    },
+    "VTS_Banjarmasin": {
+      "name": "VTS_Banjarmasin",
+      "telnet": {
+        "host": "36.66.225.50",
+        "port": "8030",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT_Globalindo_Solaris_Jaya": {
+      "name": "Tersus_PT_Globalindo_Solaris_Jaya",
+      "telnet": {
+        "host": "185.111.159.233",
+        "port": "20004",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT_Banyu_Kahuripan_Indonesia": {
+      "name": "Tersus_PT_Banyu_Kahuripan_Indonesia",
+      "telnet": {
+        "host": "185.111.159.233",
+        "port": "20005",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT_Indonesia_Pomalaa_Industrial_Park": {
+      "name": "Tersus_PT_Indonesia_Pomalaa_Industrial_Park",
+      "telnet": {
+        "host": "185.111.159.233",
+        "port": "20006",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT_Arutmin_Indonesia_NPLCT_Tanjung_Pemancingan": {
+      "name": "Tersus_PT_Arutmin_Indonesia_NPLCT_Tanjung_Pemancingan",
+      "telnet": {
+        "host": "185.111.159.233",
+        "port": "20001",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_GMP_Musi-2": {
+      "name": "Tersus_GMP_Musi-2",
+      "telnet": {
+        "host": "185.111.159.233",
+        "port": "20007",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_GMP_Sungai_Lilin": {
+      "name": "Tersus_GMP_Sungai_Lilin",
+      "telnet": {
+        "host": "185.111.159.233",
+        "port": "20008",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Pacrim_Nusantara_Lestari_Foods": {
+      "name": "TUKS_PT._Pacrim_Nusantara_Lestari_Foods",
+      "telnet": {
+        "host": "103.230.48.226",
+        "port": "10110",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Minahasa_Cahaya_Lestari": {
+      "name": "TUKS_PT._Minahasa_Cahaya_Lestari",
+      "telnet": {
+        "host": "18.136.20.255",
+        "port": "9012",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._YASTRA_ENERGY": {
+      "name": "TERSUS_PT._YASTRA_ENERGY",
+      "telnet": {
+        "host": "103.115.164.127",
+        "port": "10616",
+        "parser": "ABVDM"
+      }
+    },
+    "SROP_Tobelo": {
+      "name": "SROP_Tobelo",
+      "telnet": {
+        "host": "103.28.148.189",
+        "port": "5232",
+        "parser": "ABVDM"
+      }
+    },
+    "SROP_Amahai_": {
+      "name": "SROP_Amahai_",
+      "telnet": {
+        "name": "SROP_Amahai_",
+        "host": "103.28.148.187",
+        "port": "5232",
+        "parser": "ABVDM"
+      }
+    },
+    "SROP_Namlea": {
+      "name": "SROP_Namlea",
+      "telnet": {
+        "host": "103.28.148.190",
+        "port": "5232",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT_Arutmin_Indonesia_Senakin": {
+      "name": "Tersus_PT_Arutmin_Indonesia_Senakin",
+      "telnet": {
+        "host": "185.111.159.233",
+        "port": "20002",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._CITRA_KHUSUMA_SULTRA": {
+      "name": "TERSUS_PT._CITRA_KHUSUMA_SULTRA",
+      "telnet": {
+        "host": "103.181.143.182",
+        "port": "15021",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Barakumala": {
+      "name": "TUKS_PT._Barakumala",
+      "telnet": {
+        "host": "103.76.120.190",
+        "port": "6042",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT_BANYUASIN_INDUSTRI_LESTARI": {
+      "name": "TUKS_PT_BANYUASIN_INDUSTRI_LESTARI",
+      "telnet": {
+        "host": "103.56.206.113",
+        "port": "5232",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Sinar_Tenggarong_Inti_Mulya": {
+      "name": "TERSUS_PT._Sinar_Tenggarong_Inti_Mulya",
+      "telnet": {
+        "name": "TERSUS_PT._Sinar_Tenggarong_Inti_Mulya",
+        "host": "31.57.178.226",
+        "port": "1101",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Nuansacipta_Coal_Investments": {
+      "name": "TUKS_PT._Nuansacipta_Coal_Investments",
+      "telnet": {
+        "host": "154.26.133.152",
+        "port": "5005",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT_Sinar_Alam_Persada_3_Ilir_Palembang_(Wilmar_Group)": {
+      "name": "TUKS_PT_Sinar_Alam_Persada_3_Ilir_Palembang_(Wilmar_Group)",
+      "telnet": {
+        "host": "36.95.190.67",
+        "port": "8060",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Sinar_Alam_Permai_Talang_Duku_Jambi_(Wilmar_Group)": {
+      "name": "TUKS_PT._Sinar_Alam_Permai_Talang_Duku_Jambi_(Wilmar_Group)",
+      "telnet": {
+        "host": "36.95.190.93",
+        "port": "8043",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._BATU_HITAM": {
+      "name": "TERSUS_PT._BATU_HITAM",
+      "telnet": {
+        "host": "103.181.143.182",
+        "port": "15133",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKSn_PT._Gunung_Bayan_Pratama_Coal": {
+      "name": "TUKSn_PT._Gunung_Bayan_Pratama_Coal",
+      "telnet": {
+        "name": "TUKSn_PT._Gunung_Bayan_Pratama_Coal",
+        "host": "202.150.138.45",
+        "port": "56409",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Gunung_Bayan_Pratama_Coal_": {
+      "name": "TUKS_PT._Gunung_Bayan_Pratama_Coal_",
+      "telnet": {
+        "name": "TUKS_PT._Gunung_Bayan_Pratama_Coal_",
+        "host": "202.150.138.45",
+        "port": "56409",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Adimitra_Lestari": {
+      "name": "Tersus_PT._Adimitra_Lestari",
+      "telnet": {
+        "host": "18.136.20.255",
+        "port": "9011",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT.WAHANA_LESTARI_MALMUR_SUKSESS": {
+      "name": "TERSUS_PT.WAHANA_LESTARI_MALMUR_SUKSESS",
+      "telnet": {
+        "host": "154.26.137.223",
+        "port": "1234",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_Tanjung_Karas": {
+      "name": "TUKS_Tanjung_Karas",
+      "telnet": {
+        "host": "18.136.20.255",
+        "port": "9013",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Semen_Bosowa_Banyuwangi": {
+      "name": "TUKS_PT._Semen_Bosowa_Banyuwangi",
+      "telnet": {
+        "host": "31.58.158.216",
+        "port": "9000",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._INDONESIA_FIBREBOARD_INDUSTRY": {
+      "name": "TERSUS_PT._INDONESIA_FIBREBOARD_INDUSTRY",
+      "telnet": {
+        "host": "217.15.163.148",
+        "port": "2001",
+        "parser": "ABVDM"
+      }
+    },
+    "PT_Bhumi_Sriwijaya_Perdana_Coal_(BSPC)": {
+      "name": "PT_Bhumi_Sriwijaya_Perdana_Coal_(BSPC)",
+      "telnet": {
+        "host": "18.136.20.255",
+        "port": "9015",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Nunukan_Jaya_Lestari": {
+      "name": "Tersus_PT._Nunukan_Jaya_Lestari",
+      "telnet": {
+        "host": "41.216.191.202",
+        "port": "8040",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Sumber_Indah_Perkasa": {
+      "name": "Tersus_PT._Sumber_Indah_Perkasa",
+      "telnet": {
+        "host": "103.136.24.70",
+        "port": "4210",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._TAMTAMA_PERKASA": {
+      "name": "Tersus_PT._TAMTAMA_PERKASA",
+      "telnet": {
+        "name": "Tersus_PT._TAMTAMA_PERKASA",
+        "host": "103.181.143.182",
+        "port": "15215",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Saricotama_Indonesia": {
+      "name": "TUKS_PT._Saricotama_Indonesia",
+      "telnet": {
+        "name": "TUKS_PT._Saricotama_Indonesia",
+        "host": "103.186.0.235",
+        "port": "8010",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PLTU_TELUK_SIRIH": {
+      "name": "TUKS_PLTU_TELUK_SIRIH",
+      "telnet": {
+        "host": "103.181.143.182",
+        "port": "15095",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Bukit_Alam_Persada": {
+      "name": "TUKS_PT._Bukit_Alam_Persada",
+      "telnet": {
+        "name": "TUKS_PT._Bukit_Alam_Persada",
+        "host": "203.145.34.188",
+        "port": "8010",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Hindoli_(Mukut)": {
+      "name": "TUKS_PT._Hindoli_(Mukut)",
+      "telnet": {
+        "host": "157.20.124.102",
+        "port": "10110",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT_Dizamatra_Powerindo_Pelabuhan_Patra_Tani": {
+      "name": "Tersus_PT_Dizamatra_Powerindo_Pelabuhan_Patra_Tani",
+      "telnet": {
+        "host": "154.26.138.64",
+        "port": "5010",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Sinar_Tayan_Inti_Mulya": {
+      "name": "Tersus_PT._Sinar_Tayan_Inti_Mulya",
+      "telnet": {
+        "host": "31.57.178.248",
+        "port": "13710",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._PLN_UPK_BABEL": {
+      "name": "PT._PLN_UPK_BABEL",
+      "telnet": {
+        "host": "103.118.175.216",
+        "port": "8300",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._A_RASMAMULIA": {
+      "name": "TUKS_PT._A_RASMAMULIA",
+      "telnet": {
+        "host": "103.115.164.127",
+        "port": "10617",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._PALU_INDAH_TEHNIK": {
+      "name": "TUKS_PT._PALU_INDAH_TEHNIK",
+      "telnet": {
+        "host": "103.115.164.127",
+        "port": "10618",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PLTU_Power_Up_Indramayu": {
+      "name": "TUKS_PLTU_Power_Up_Indramayu",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "53202",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_Teguh_Sinar_Abadi_TSA": {
+      "name": "TUKS_Teguh_Sinar_Abadi_TSA",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "56402",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._ANTAM_BULI": {
+      "name": "TERSUS_PT._ANTAM_BULI",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2116",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Akar_mas_Internasional": {
+      "name": "TERSUS_PT._Akar_mas_Internasional",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2115",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._AKR_CORPORINDO_TBK_(AKR_PALARAN": {
+      "name": "TUKS_PT._AKR_CORPORINDO_TBK_(AKR_PALARAN",
+      "telnet": {
+        "name": "TUKS_PT._AKR_CORPORINDO_TBK_(AKR_PALARAN",
+        "host": "103.181.143.182",
+        "port": "15046",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_Cirebon_2_Power_Plant": {
+      "name": "TUKS_Cirebon_2_Power_Plant",
+      "telnet": {
+        "host": "103.52.110.247",
+        "port": "3333",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._BARA_LAMBUNG_JAYA": {
+      "name": "TERSUS_PT._BARA_LAMBUNG_JAYA",
+      "telnet": {
+        "name": "TERSUS_PT._BARA_LAMBUNG_JAYA",
+        "host": "41.216.190.225",
+        "port": "4001",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_Pusri_Cilacap": {
+      "name": "TUKS_Pusri_Cilacap",
+      "telnet": {
+        "host": "36.66.165.142",
+        "port": "3333",
+        "parser": "ABVDM"
+      }
+    },
+    "PT_Agro_Murni": {
+      "name": "PT_Agro_Murni",
+      "telnet": {
+        "host": "114.7.3.242",
+        "port": "8040",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._USAHA_KITA_KINERJATAMA": {
+      "name": "TUKS_PT._USAHA_KITA_KINERJATAMA",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2117",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._SINTANG_RAYA": {
+      "name": "TERSUS_PT._SINTANG_RAYA",
+      "telnet": {
+        "host": "123.231.253.157",
+        "port": "8040",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Indocement_Tunggal_Prakarsa_Tbk": {
+      "name": "TERSUS_PT._Indocement_Tunggal_Prakarsa_Tbk",
+      "telnet": {
+        "host": "18.136.20.255",
+        "port": "9019",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._PLN_Nusantara_Power_UP_Sebalang": {
+      "name": "TERSUS_PT._PLN_Nusantara_Power_UP_Sebalang",
+      "telnet": {
+        "host": "36.94.86.59",
+        "port": "9119",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Smart_Tbk._(Tarjun)": {
+      "name": "TUKS_PT._Smart_Tbk._(Tarjun)",
+      "telnet": {
+        "host": "36.94.135.210",
+        "port": "10110",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT_Arthaco_Prima_Energy": {
+      "name": "Tersus_PT_Arthaco_Prima_Energy",
+      "telnet": {
+        "host": "185.111.159.233",
+        "port": "20003",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Meindo_Elang_Indah": {
+      "name": "TUKS_PT._Meindo_Elang_Indah",
+      "telnet": {
+        "host": "36.92.185.143",
+        "port": "3333",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_Terminal_Indocement_Sungai_Lais": {
+      "name": "TUKS_Terminal_Indocement_Sungai_Lais",
+      "telnet": {
+        "name": "TUKS_Terminal_Indocement_Sungai_Lais",
+        "host": "18.136.20.255",
+        "port": "9021",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_BintangDelapan_Mineral": {
+      "name": "TERSUS_BintangDelapan_Mineral",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "57202",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Multi_Nabati_Sulawesi_Maleo_(Wilmar_Group)": {
+      "name": "TUKS_PT._Multi_Nabati_Sulawesi_Maleo_(Wilmar_Group)",
+      "telnet": {
+        "host": "36.95.246.243",
+        "port": "8052",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Multi_Nabati_Sulawesi_Luwuk_(Wilmar_Group)": {
+      "name": "TERSUS_PT._Multi_Nabati_Sulawesi_Luwuk_(Wilmar_Group)",
+      "telnet": {
+        "host": "36.95.246.198",
+        "port": "8055",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Sari_Agrotama_Persada_(Wilmar_Group)": {
+      "name": "TUKS_PT._Sari_Agrotama_Persada_(Wilmar_Group)",
+      "telnet": {
+        "host": "36.95.204.131",
+        "port": "8050",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Multi_Nabati_Sulawesi_Loa_Duri_Samarinda_(Wilmar_Group)": {
+      "name": "TUKS_PT._Multi_Nabati_Sulawesi_Loa_Duri_Samarinda_(Wilmar_Group)",
+      "telnet": {
+        "host": "36.95.215.27",
+        "port": "8047",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Bintang_Harapan_Desa": {
+      "name": "Tersus_PT._Bintang_Harapan_Desa",
+      "telnet": {
+        "name": "Tersus_PT._Bintang_Harapan_Desa",
+        "host": "114.4.209.70",
+        "port": "8060",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_Gorontalo_Listrik_Perdana": {
+      "name": "TERSUS_Gorontalo_Listrik_Perdana",
+      "telnet": {
+        "host": "18.136.20.255",
+        "port": "9022",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Multi_Bangun_Galaxy": {
+      "name": "TUKS_PT._Multi_Bangun_Galaxy",
+      "telnet": {
+        "host": "18.136.20.255",
+        "port": "9023",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Mitra_Samudera_Kreasi_": {
+      "name": "PT._Mitra_Samudera_Kreasi_",
+      "telnet": {
+        "host": "103.56.93.245",
+        "port": "5232",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Parit_Mujur_Sejahtera": {
+      "name": "Tersus_PT._Parit_Mujur_Sejahtera",
+      "telnet": {
+        "name": "Tersus_PT._Parit_Mujur_Sejahtera",
+        "host": "45.149.93.146",
+        "port": "8300",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._ANTAM_KOLAKA": {
+      "name": "TERSUS_PT._ANTAM_KOLAKA",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2119",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._PALU_BATU_MADU": {
+      "name": "TUKS_PT._PALU_BATU_MADU",
+      "telnet": {
+        "host": "202.10.40.120",
+        "port": "9001",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS__PT._Mentari_Alam_Persada": {
+      "name": "TERSUS__PT._Mentari_Alam_Persada",
+      "telnet": {
+        "host": "103.17.172.198",
+        "port": "3333",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._PLN_Nusantara_Power_Muara_Tawar": {
+      "name": "TERSUS_PT._PLN_Nusantara_Power_Muara_Tawar",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2120",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._PLN_Indonesia_Power_PLTU_Tanjung_Balai_Karimun": {
+      "name": "TUKS_PT._PLN_Indonesia_Power_PLTU_Tanjung_Balai_Karimun",
+      "telnet": {
+        "name": "TUKS_PT._PLN_Indonesia_Power_PLTU_Tanjung_Balai_Karimun",
+        "host": "191.101.190.198",
+        "port": "53163",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Cristian_Eka_Pratama": {
+      "name": "Tersus_PT._Cristian_Eka_Pratama",
+      "telnet": {
+        "host": "20.212.135.220",
+        "port": "8300",
+        "parser": "ABVDM"
+      }
+    },
+    "PT.HARMONI_ENERGY_INDONESIA_PLTU_BARUTA": {
+      "name": "PT.HARMONI_ENERGY_INDONESIA_PLTU_BARUTA",
+      "telnet": {
+        "host": "103.31.251.108",
+        "port": "5232",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Indotrans_Sejahtera": {
+      "name": "TUKS_PT._Indotrans_Sejahtera",
+      "telnet": {
+        "host": "103.134.154.145",
+        "port": "8040",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._PELNAS_MITRA_SAMUDERA_PERKASA": {
+      "name": "TUKS_PT._PELNAS_MITRA_SAMUDERA_PERKASA",
+      "telnet": {
+        "host": "45.149.93.114",
+        "port": "5000",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._PLN_Indonesia_Power_PLTU_Tg._Balai_Karimun": {
+      "name": "TUKS_PT._PLN_Indonesia_Power_PLTU_Tg._Balai_Karimun",
+      "telnet": {
+        "host": "191.101.190.198",
+        "port": "53163",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._GENERAL_ENERGI_BALI,_CELUKAN_BAWANG": {
+      "name": "PT._GENERAL_ENERGI_BALI,_CELUKAN_BAWANG",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2114",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._KASMAR_TIAR_RAYA": {
+      "name": "TERSUS_PT._KASMAR_TIAR_RAYA",
+      "telnet": {
+        "host": "202.65.235.194",
+        "port": "8030",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Indocement_Tunggal_Prakarsa_Terminal_Pontianak": {
+      "name": "TUKS_PT._Indocement_Tunggal_Prakarsa_Terminal_Pontianak",
+      "telnet": {
+        "host": "18.136.20.255",
+        "port": "9024",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._TEKONINDO": {
+      "name": "TUKS_PT._TEKONINDO",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2121",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PLTU_Adipala": {
+      "name": "TUKS_PLTU_Adipala",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "53302",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Exploitasi_Energi_Indonesia.Tbk": {
+      "name": "TUKS_PT._Exploitasi_Energi_Indonesia.Tbk",
+      "telnet": {
+        "host": "18.136.20.255",
+        "port": "9026",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._PERMATA_BARITO_SHIPYARD_&_ENGINEERING": {
+      "name": "TUKS_PT._PERMATA_BARITO_SHIPYARD_&_ENGINEERING",
+      "telnet": {
+        "host": "103.181.143.182",
+        "port": "15081",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Timah_Pangkal_Balam": {
+      "name": "TUKS_PT._Timah_Pangkal_Balam",
+      "telnet": {
+        "host": "191.101.190.142",
+        "port": "8300",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._KHARISMA_ALAM_PERSADA": {
+      "name": "TUKS_PT._KHARISMA_ALAM_PERSADA",
+      "telnet": {
+        "host": "103.181.143.182",
+        "port": "15128",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Tanjungenim_Pulp_And_Paper": {
+      "name": "TUKS_PT._Tanjungenim_Pulp_And_Paper",
+      "telnet": {
+        "host": "103.118.175.135",
+        "port": "8787",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT_ARGHANIAGA_ASTA_TUNGGAL": {
+      "name": "TUKS_PT_ARGHANIAGA_ASTA_TUNGGAL",
+      "telnet": {
+        "host": "103.118.175.189",
+        "port": "8300",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Multi_Jayantara_Abadi": {
+      "name": "Tersus_PT._Multi_Jayantara_Abadi",
+      "telnet": {
+        "host": "18.136.20.255",
+        "port": "9017",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._BINTAN_KARISMA_PRATAMA": {
+      "name": "TUKS_PT._BINTAN_KARISMA_PRATAMA",
+      "telnet": {
+        "host": "45.149.93.57",
+        "port": "53163",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._TELADAN_PRIMA_AGRO": {
+      "name": "TERSUS_PT._TELADAN_PRIMA_AGRO",
+      "telnet": {
+        "host": "18.136.20.255",
+        "port": "9013",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Sentana_Adidaya_Pratama_Pontianak": {
+      "name": "TUKS_PT._Sentana_Adidaya_Pratama_Pontianak",
+      "telnet": {
+        "host": "36.95.204.83",
+        "port": "8056",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Wilmar_Cahaya_Indonesia_Pontianak_": {
+      "name": "TUKS_PT._Wilmar_Cahaya_Indonesia_Pontianak_",
+      "telnet": {
+        "host": "36.95.179.131",
+        "port": "8058",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Multimas_Nabati_Asahan_Wajok": {
+      "name": "TUKS_PT._Multimas_Nabati_Asahan_Wajok",
+      "telnet": {
+        "host": "36.95.204.76",
+        "port": "8059",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._OIL_TERMINAL_KARIMUN": {
+      "name": "TUKS_PT._OIL_TERMINAL_KARIMUN",
+      "telnet": {
+        "host": "36.64.115.218",
+        "port": "8010",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._KONAWE_NIKEL_NUSANTARA": {
+      "name": "TUKS_PT._KONAWE_NIKEL_NUSANTARA",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2122",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Trubaindo_Coal_Mining": {
+      "name": "TERSUS_PT._Trubaindo_Coal_Mining",
+      "telnet": {
+        "name": "TERSUS_PT._Trubaindo_Coal_Mining",
+        "host": "103.152.110.5",
+        "port": "4001",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PLN_NUSANTARA_POWER_PLTU_NII_TANASA": {
+      "name": "TERSUS_PLN_NUSANTARA_POWER_PLTU_NII_TANASA",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2123",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Jorong_Barutama_Greston": {
+      "name": "Tersus_PT._Jorong_Barutama_Greston",
+      "telnet": {
+        "name": "Tersus_PT._Jorong_Barutama_Greston",
+        "host": "202.152.24.153",
+        "port": "6601",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT_Musimmas_Buatan": {
+      "name": "TUKS_PT_Musimmas_Buatan",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "51519",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT_Rohul_Energi_Indonesia_": {
+      "name": "TUKS_PT_Rohul_Energi_Indonesia_",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "57402",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Adhi_Kartiko_Pratama": {
+      "name": "TUKS_PT._Adhi_Kartiko_Pratama",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2124",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Bhumi_Swadaya_Mineral": {
+      "name": "TERSUS_PT._Bhumi_Swadaya_Mineral",
+      "telnet": {
+        "host": "41.216.186.57",
+        "port": "16812",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._PUTRA_LABUAN_SULAWESI": {
+      "name": "TUKS_PT._PUTRA_LABUAN_SULAWESI",
+      "telnet": {
+        "host": "103.115.164.127",
+        "port": "10619",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._PACIFIC_GRANITAMA": {
+      "name": "TUKS_PT._PACIFIC_GRANITAMA",
+      "telnet": {
+        "host": "36.64.98.92",
+        "port": "62151",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_CV._Putera_Lestari_Jaya": {
+      "name": "TUKS_CV._Putera_Lestari_Jaya",
+      "telnet": {
+        "host": "103.250.10.74",
+        "port": "6040",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._SIRTU_KARYA_UTAMA": {
+      "name": "TUKS_PT._SIRTU_KARYA_UTAMA",
+      "telnet": {
+        "host": "103.115.164.127",
+        "port": "10620",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_Teknik_Alum_Service_(Morowali)_1": {
+      "name": "TUKS_Teknik_Alum_Service_(Morowali)_1",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "57208",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_Teknik_Alum_Service_(Morowali)_2": {
+      "name": "TUKS_Teknik_Alum_Service_(Morowali)_2",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "57209",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Thiess_Contractor_Indonesia": {
+      "name": "Tersus_PT._Thiess_Contractor_Indonesia",
+      "telnet": {
+        "name": "Tersus_PT._Thiess_Contractor_Indonesia",
+        "host": "202.152.24.153",
+        "port": "6602",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Bagus_Jaya_Abadi": {
+      "name": "TERSUS_PT._Bagus_Jaya_Abadi",
+      "telnet": {
+        "host": "5.181.178.60",
+        "port": "1683",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT_Fajar_Sakti_Prima": {
+      "name": "TUKS_PT_Fajar_Sakti_Prima",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "56433",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_Energy_Unggul_Persada": {
+      "name": "TUKS_Energy_Unggul_Persada",
+      "telnet": {
+        "host": "103.188.34.142",
+        "port": "3333",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._CINTA_JAYA": {
+      "name": "TUKS_PT._CINTA_JAYA",
+      "telnet": {
+        "name": "TUKS_PT._CINTA_JAYA",
+        "host": "103.115.164.127",
+        "port": "10621",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._MULTIPERSADA_GATRAMEGAH": {
+      "name": "TUKS_PT._MULTIPERSADA_GATRAMEGAH",
+      "telnet": {
+        "host": "103.181.143.182",
+        "port": "15083",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT.RIAUALAM_ANUGRAH_INDONESIA": {
+      "name": "TUKS_PT.RIAUALAM_ANUGRAH_INDONESIA",
+      "telnet": {
+        "name": "TUKS_PT.RIAUALAM_ANUGRAH_INDONESIA",
+        "host": "103.176.78.46",
+        "port": "8010",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Karya_Ardi_Prestasi": {
+      "name": "TUKS_PT._Karya_Ardi_Prestasi",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "51615",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Pelabuhan_Universal_Sumatera": {
+      "name": "PT._Pelabuhan_Universal_Sumatera",
+      "telnet": {
+        "host": "202.10.40.120",
+        "port": "9002",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_CMI_Site_Simpang_Keramat": {
+      "name": "TUKS_CMI_Site_Simpang_Keramat",
+      "telnet": {
+        "name": "TUKS_CMI_Site_Simpang_Keramat",
+        "host": "202.150.138.45",
+        "port": "56102",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._MAHKOTA_SEMESTA_NIKELINDO": {
+      "name": "TUKS_PT._MAHKOTA_SEMESTA_NIKELINDO",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2125",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT_Pacific_Indopalm_Industries": {
+      "name": "Tersus_PT_Pacific_Indopalm_Industries",
+      "telnet": {
+        "host": "203.153.21.3",
+        "port": "8040",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_Bayan_Muara_Pahu": {
+      "name": "TUKS_Bayan_Muara_Pahu",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "56444",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Duta_Tambang_Rekayasa": {
+      "name": "TUKS_PT._Duta_Tambang_Rekayasa",
+      "telnet": {
+        "host": "18.136.20.255",
+        "port": "8028",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._KURNIA_LUWUK_SEJATI": {
+      "name": "TERSUS_PT._KURNIA_LUWUK_SEJATI",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2126",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Baramulti_Suksessarana": {
+      "name": "TUKS_PT._Baramulti_Suksessarana",
+      "telnet": {
+        "host": "103.186.1.134",
+        "port": "6110",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT_Agro_Makmur_Raya": {
+      "name": "TUKS_PT_Agro_Makmur_Raya",
+      "telnet": {
+        "name": "TUKS_PT_Agro_Makmur_Raya",
+        "host": "220.247.171.150",
+        "port": "333",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PLTU_PELABUHAN_RATU": {
+      "name": "TUKS_PLTU_PELABUHAN_RATU",
+      "telnet": {
+        "name": "TUKS_PLTU_PELABUHAN_RATU",
+        "host": "5.181.178.18",
+        "port": "50522",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Integra_Mining_Nusantara_Indonesia": {
+      "name": "PT._Integra_Mining_Nusantara_Indonesia",
+      "telnet": {
+        "host": "191.101.190.129",
+        "port": "8300",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Galangan_Berkat_Fortuna": {
+      "name": "TUKS_PT._Galangan_Berkat_Fortuna",
+      "telnet": {
+        "name": "TUKS_PT._Galangan_Berkat_Fortuna",
+        "host": "103.189.234.61",
+        "port": "6040",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Galangan_Berkat_Fortuna": {
+      "name": "PT._Galangan_Berkat_Fortuna",
+      "telnet": {
+        "name": "PT._Galangan_Berkat_Fortuna",
+        "host": "103.189.234.61",
+        "port": "6040",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Sinar_Alam_Permai_Kumai": {
+      "name": "PT._Sinar_Alam_Permai_Kumai",
+      "telnet": {
+        "name": "PT._Sinar_Alam_Permai_Kumai",
+        "host": "36.95.179.115",
+        "port": "8049",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Petro_Andalan_Nusantara_Kumai": {
+      "name": "PT._Petro_Andalan_Nusantara_Kumai",
+      "telnet": {
+        "host": "36.95.179.115",
+        "port": "8048",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Bumi_Liputan_Pendingin": {
+      "name": "TUKS_PT._Bumi_Liputan_Pendingin",
+      "telnet": {
+        "host": "103.49.239.58",
+        "port": "8020",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Sulfindo_Adiusaha": {
+      "name": "TUKS_PT._Sulfindo_Adiusaha",
+      "telnet": {
+        "host": "206.84.114.75",
+        "port": "5555",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PLTGU_Pemaron": {
+      "name": "TUKS_PLTGU_Pemaron",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "55102",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Sungai_Berlian_Jaya": {
+      "name": "PT._Sungai_Berlian_Jaya",
+      "telnet": {
+        "host": "103.187.146.146",
+        "port": "6040",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT_PLN_Indonesia_Power_": {
+      "name": "TUKS_PT_PLN_Indonesia_Power_",
+      "telnet": {
+        "host": "185.111.159.233",
+        "port": "20088",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Globalindo_Agung_Lestari": {
+      "name": "TUKS_PT._Globalindo_Agung_Lestari",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "56214",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Tambang_Mineral_maju": {
+      "name": "TERSUS_PT._Tambang_Mineral_maju",
+      "telnet": {
+        "host": "202.65.228.69",
+        "port": "8069",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_Globalindo_Agung_Lestari_site_1": {
+      "name": "TERSUS_Globalindo_Agung_Lestari_site_1",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "56220",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Inti_Benua_Perkasatama": {
+      "name": "TUKS_PT._Inti_Benua_Perkasatama",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "51411",
+        "parser": "ABVDM"
+      }
+    },
+    "testingDDNS": {
+      "name": "testingDDNS",
+      "telnet": {
+        "name": "testingDDNS",
+        "host": "103.189.234.61",
+        "port": "6040",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Sinar_Laut_Internusa": {
+      "name": "TUKS_PT._Sinar_Laut_Internusa",
+      "telnet": {
+        "name": "TUKS_PT._Sinar_Laut_Internusa",
+        "host": "103.187.147.46",
+        "port": "6040",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._SAWIT_KALTIM_LESTARI": {
+      "name": "TERSUS_PT._SAWIT_KALTIM_LESTARI",
+      "telnet": {
+        "host": "103.181.143.182",
+        "port": "15022",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._NILAI_SINARMAS_MINING_": {
+      "name": "PT._NILAI_SINARMAS_MINING_",
+      "telnet": {
+        "host": "103.122.32.68",
+        "port": "443",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._NOGOPATMOLO_1": {
+      "name": "TUKS_PT._NOGOPATMOLO_1",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "56317",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Nogopatmolo_2": {
+      "name": "TUKS_PT._Nogopatmolo_2",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "56322",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Oleokimia_Sejahtera_Mas": {
+      "name": "TUKS_PT._Oleokimia_Sejahtera_Mas",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2127",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Ivo_Mas_Tunggal": {
+      "name": "TUKS_PT._Ivo_Mas_Tunggal",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2128",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._AGRO_ANDALAN_(Bulking_Station)": {
+      "name": "PT._AGRO_ANDALAN_(Bulking_Station)",
+      "telnet": {
+        "name": "PT._AGRO_ANDALAN_(Bulking_Station)",
+        "host": "103.192.81.98",
+        "port": "8060",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._SAUNG_BERDIKARI_SENTOSA": {
+      "name": "TUKS_PT._SAUNG_BERDIKARI_SENTOSA",
+      "telnet": {
+        "host": "103.181.143.182",
+        "port": "15112",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._SINARMAS_MINING_SITE_NILAU": {
+      "name": "TUKS_PT._SINARMAS_MINING_SITE_NILAU",
+      "telnet": {
+        "name": "TUKS_PT._SINARMAS_MINING_SITE_NILAU",
+        "host": "videns-jambi.neurogs.tech",
+        "port": 443,
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Rea_Kaltim_Plantations": {
+      "name": "TUKS_PT._Rea_Kaltim_Plantations",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "56449",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Petrokimia_Gresik": {
+      "name": "TUKS_PT._Petrokimia_Gresik",
+      "telnet": {
+        "host": "5.181.178.41",
+        "port": "15168",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Chandra_Asri_Pasific.TBK": {
+      "name": "TUKS_PT._Chandra_Asri_Pasific.TBK",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "53602",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PLTG_Gilimanuk": {
+      "name": "TUKS_PLTG_Gilimanuk",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "55108",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Elnusa_Petrofin_Tembilahan": {
+      "name": "TUKS_PT._Elnusa_Petrofin_Tembilahan",
+      "telnet": {
+        "name": "TUKS_PT._Elnusa_Petrofin_Tembilahan",
+        "host": "31.57.178.167",
+        "port": "8040",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Borneo_Emas_Hitam": {
+      "name": "TUKS_PT._Borneo_Emas_Hitam",
+      "telnet": {
+        "host": "103.187.147.59",
+        "port": "6040",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Mirasindo_Perdana": {
+      "name": "TUKS_PT._Mirasindo_Perdana",
+      "telnet": {
+        "name": "TUKS_PT._Mirasindo_Perdana",
+        "host": "203.145.34.15",
+        "port": "8010",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._ARKAN_MANDIRI_PALU": {
+      "name": "TUKS_PT._ARKAN_MANDIRI_PALU",
+      "telnet": {
+        "host": "103.115.164.127",
+        "port": "10622",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT_Nusantara_Kalimantan_Lestari": {
+      "name": "Tersus_PT_Nusantara_Kalimantan_Lestari",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2129",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT_Dwi_Warna_Karya": {
+      "name": "TUKS_PT_Dwi_Warna_Karya",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "56208",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT_GELORA_CITRA_KIMIA_ABADI": {
+      "name": "TERSUS_PT_GELORA_CITRA_KIMIA_ABADI",
+      "telnet": {
+        "host": "185.111.159.233",
+        "port": "20091",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Gandasari_Musi_Perkasa": {
+      "name": "Tersus_PT._Gandasari_Musi_Perkasa",
+      "telnet": {
+        "host": "18.136.20.255",
+        "port": "9030",
+        "parser": "ABVDM"
+      }
+    },
+    "Pandu_Tunda_PT._Datoan_Elang_Samudera": {
+      "name": "Pandu_Tunda_PT._Datoan_Elang_Samudera",
+      "telnet": {
+        "host": "185.111.159.233",
+        "port": "20090",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Mirah_Ganal_Energy": {
+      "name": "Tersus_PT._Mirah_Ganal_Energy",
+      "telnet": {
+        "host": "103.115.164.127",
+        "port": "10623",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._NANTOY_BARA_LESTARI": {
+      "name": "TUKS_PT._NANTOY_BARA_LESTARI",
+      "telnet": {
+        "host": "103.181.143.182",
+        "port": "15114",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Indoberkah_Jaya_Mandiri": {
+      "name": "Tersus_PT._Indoberkah_Jaya_Mandiri",
+      "telnet": {
+        "host": "202.65.228.40",
+        "port": "8069",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Dwi_Sarana_Samudra": {
+      "name": "TERSUS_PT._Dwi_Sarana_Samudra",
+      "telnet": {
+        "name": "TERSUS_PT._Dwi_Sarana_Samudra",
+        "host": "5.181.178.73",
+        "port": "8090",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Sari_Dumai_Sejati": {
+      "name": "TUKS_PT._Sari_Dumai_Sejati",
+      "telnet": {
+        "host": "36.66.52.146",
+        "port": "5232",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._DAYA_ANUGERAH_UTAMA": {
+      "name": "PT._DAYA_ANUGERAH_UTAMA",
+      "telnet": {
+        "name": "PT._DAYA_ANUGERAH_UTAMA",
+        "host": "5.181.178.57",
+        "port": "1001",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Bayan_Resources_TBK_Site_LTCT": {
+      "name": "TUKS_PT._Bayan_Resources_TBK_Site_LTCT",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "56427",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._PUTRA_MEKONGGA_SEJAHTERA": {
+      "name": "TUKS_PT._PUTRA_MEKONGGA_SEJAHTERA",
+      "telnet": {
+        "name": "TUKS_PT._PUTRA_MEKONGGA_SEJAHTERA",
+        "host": "202.10.36.133",
+        "port": "2131",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Bumi_Barito_Utama_Cilegon": {
+      "name": "TERSUS_PT._Bumi_Barito_Utama_Cilegon",
+      "telnet": {
+        "name": "TERSUS_PT._Bumi_Barito_Utama_Cilegon",
+        "host": "141.11.241.211",
+        "port": "8085",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._ANEKA_TAMBANG_TBK_UBPB": {
+      "name": "TERSUS_PT._ANEKA_TAMBANG_TBK_UBPB",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2132",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Prima_Bundiarta_Nusa": {
+      "name": "TUKS_PT._Prima_Bundiarta_Nusa",
+      "telnet": {
+        "name": "TUKS_PT._Prima_Bundiarta_Nusa",
+        "host": "18.136.20.255",
+        "port": "9031",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Sumber_Mandiri_Shipyard": {
+      "name": "TUKS_PT._Sumber_Mandiri_Shipyard",
+      "telnet": {
+        "name": "TUKS_PT._Sumber_Mandiri_Shipyard",
+        "host": "103.118.175.184",
+        "port": "8300",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Sumber_Anugerah_Shipyard": {
+      "name": "TUKS_PT._Sumber_Anugerah_Shipyard",
+      "telnet": {
+        "host": "103.118.175.145",
+        "port": "8300",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Parna_gromas": {
+      "name": "TERSUS_PT._Parna_gromas",
+      "telnet": {
+        "name": "TERSUS_PT._Parna_gromas",
+        "host": "103.119.119.109",
+        "port": "8050",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT_PLN_(Persero)__PLTU_Malinau": {
+      "name": "TUKS_PT_PLN_(Persero)__PLTU_Malinau",
+      "telnet": {
+        "host": "185.111.159.233",
+        "port": "20095",
+        "parser": "ABVDM"
+      }
+    },
+    "Pandu-Tunda_PT_Pelabuhan_Cilegon_Mandiri_(Gerem)": {
+      "name": "Pandu-Tunda_PT_Pelabuhan_Cilegon_Mandiri_(Gerem)",
+      "telnet": {
+        "host": "185.111.159.233",
+        "port": "20093",
+        "parser": "ABVDM"
+      }
+    },
+    "Pandu-Tunda_PT_Pelabuhan_Cilegon_Mandiri_(Bojonegara)": {
+      "name": "Pandu-Tunda_PT_Pelabuhan_Cilegon_Mandiri_(Bojonegara)",
+      "telnet": {
+        "host": "185.111.159.233",
+        "port": "20094",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PLTU_Banten_3_Lontar": {
+      "name": "Tersus_PLTU_Banten_3_Lontar",
+      "telnet": {
+        "host": "185.111.159.233",
+        "port": "20092",
+        "parser": "ABVDM"
+      }
+    },
+    "PT_Rahardja_Wirasakti_Jaya_Mandiri": {
+      "name": "PT_Rahardja_Wirasakti_Jaya_Mandiri",
+      "telnet": {
+        "host": "103.118.175.207",
+        "port": "8300",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_CV._Sumber_Alam_Gemilang": {
+      "name": "TUKS_CV._Sumber_Alam_Gemilang",
+      "telnet": {
+        "host": "103.195.65.223",
+        "port": "5500",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS__PT._Energi_Unggul_Persada": {
+      "name": "TERSUS__PT._Energi_Unggul_Persada",
+      "telnet": {
+        "host": "157.66.34.88",
+        "port": "1012",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_CV._TEPI_LAUT_SEJAHTERA": {
+      "name": "TUKS_CV._TEPI_LAUT_SEJAHTERA",
+      "telnet": {
+        "host": "202.10.40.120",
+        "port": "9003",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Farhan_Batu_Palu": {
+      "name": "TUKS_PT._Farhan_Batu_Palu",
+      "telnet": {
+        "name": "TUKS_PT._Farhan_Batu_Palu",
+        "host": "31.56.78.239",
+        "port": "5000",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Tanjung_Belit_Bara_Utama": {
+      "name": "TUKS_PT._Tanjung_Belit_Bara_Utama",
+      "telnet": {
+        "host": "103.122.32.68",
+        "port": "443",
+        "parser": "ABVDM"
+      }
+    },
+    "Pandu-Tunda_PT._Samudra_Sriwijaya_Sentosa": {
+      "name": "Pandu-Tunda_PT._Samudra_Sriwijaya_Sentosa",
+      "telnet": {
+        "host": "185.111.159.233",
+        "port": "20089",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._ARGASARI_PRATAMA": {
+      "name": "TUKS_PT._ARGASARI_PRATAMA",
+      "telnet": {
+        "host": "151.242.116.234",
+        "port": "5000",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Sungai_Rangit": {
+      "name": "TUKS_PT._Sungai_Rangit",
+      "telnet": {
+        "host": "18.136.20.255",
+        "port": "9014",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._LAUTAN_HUTAN_LESTARI": {
+      "name": "TERSUS_PT._LAUTAN_HUTAN_LESTARI",
+      "telnet": {
+        "host": "103.181.143.182",
+        "port": "15077",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._INDRABAKTI_MUSTIKA": {
+      "name": "TUKS_PT._INDRABAKTI_MUSTIKA",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2135",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._GENTRACO_DOCKING_MANDIRI": {
+      "name": "TUKS_PT._GENTRACO_DOCKING_MANDIRI",
+      "telnet": {
+        "host": "202.10.40.120",
+        "port": "9004",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT.__Kharisma_Inti_Usaha_(KIU)": {
+      "name": "Tersus_PT.__Kharisma_Inti_Usaha_(KIU)",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "56328",
+        "parser": "ABVDM"
+      }
+    },
+    "Srop_Atapupu": {
+      "name": "Srop_Atapupu",
+      "telnet": {
+        "name": "Srop_Atapupu",
+        "host": "41.216.186.208",
+        "port": "4712",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._SAMBAS_MINERAL_MINING": {
+      "name": "TUKS_PT._SAMBAS_MINERAL_MINING",
+      "telnet": {
+        "name": "TUKS_PT._SAMBAS_MINERAL_MINING",
+        "host": "202.10.36.133",
+        "port": "2134",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Baramulti_Terminal_Servis": {
+      "name": "TUKS_PT._Baramulti_Terminal_Servis",
+      "telnet": {
+        "host": "185.111.159.233",
+        "port": "20096",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PLTD_SIANTAN": {
+      "name": "TUKS_PLTD_SIANTAN",
+      "telnet": {
+        "host": "103.56.206.90",
+        "port": "5232",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PLTD_SRI_RAYA": {
+      "name": "TUKS_PLTD_SRI_RAYA",
+      "telnet": {
+        "host": "103.56.206.85",
+        "port": "5232",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PLTD_Sukaharja": {
+      "name": "TUKS_PLTD_Sukaharja",
+      "telnet": {
+        "name": "TUKS_PLTD_Sukaharja",
+        "host": "103.56.206.91",
+        "port": "5232",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._INDOCEMENT": {
+      "name": "TUKS_PT._INDOCEMENT",
+      "telnet": {
+        "name": "TUKS_PT._INDOCEMENT",
+        "host": "103.56.93.205",
+        "port": "5232",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._TEKU_SIRTU_UTAMA": {
+      "name": "TERSUS_PT._TEKU_SIRTU_UTAMA",
+      "telnet": {
+        "host": "151.242.116.220",
+        "port": "5000",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._BALANTAK_SIRTU_UTAMA": {
+      "name": "TERSUS_PT._BALANTAK_SIRTU_UTAMA",
+      "telnet": {
+        "host": "31.56.78.233",
+        "port": "5000",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT_HOFFMEN_INTERNATIONAL": {
+      "name": "TERSUS_PT_HOFFMEN_INTERNATIONAL",
+      "telnet": {
+        "name": "TERSUS_PT_HOFFMEN_INTERNATIONAL",
+        "host": "202.65.228.90",
+        "port": "8069",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT_PLN_INDONESIA_POWER_SINTANG_": {
+      "name": "TUKS_PT_PLN_INDONESIA_POWER_SINTANG_",
+      "telnet": {
+        "name": "TUKS_PT_PLN_INDONESIA_POWER_SINTANG_",
+        "host": "31.58.158.183",
+        "port": "62153",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._BUMI_PERSADA_SURYA_PRATAMA": {
+      "name": "TERSUS_PT._BUMI_PERSADA_SURYA_PRATAMA",
+      "telnet": {
+        "host": "151.242.116.227",
+        "port": "5000",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Elisabeth_Berkat_Energi": {
+      "name": "TERSUS_PT._Elisabeth_Berkat_Energi",
+      "telnet": {
+        "host": "185.111.159.233",
+        "port": "20098",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Krakatau_Bandar_Samudera": {
+      "name": "TUKS_PT._Krakatau_Bandar_Samudera",
+      "telnet": {
+        "host": "45.127.133.147",
+        "port": "2025",
+        "parser": "ABVDM"
+      }
+    },
+    "SROP_KALABAHI": {
+      "name": "SROP_KALABAHI",
+      "telnet": {
+        "name": "SROP_KALABAHI",
+        "host": "41.216.186.110",
+        "port": "4712",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._SARANA_ESA_CITA": {
+      "name": "TERSUS_PT._SARANA_ESA_CITA",
+      "telnet": {
+        "host": "103.115.164.127",
+        "port": "10624",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PLN_IP_SINGKAWANG_": {
+      "name": "TUKS_PLN_IP_SINGKAWANG_",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2136",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._LESTARI_ABADI_PERKASA": {
+      "name": "TERSUS_PT._LESTARI_ABADI_PERKASA",
+      "telnet": {
+        "host": "103.115.164.127",
+        "port": "10625",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._AGRINA_SAWIT_PERDANA": {
+      "name": "TERSUS_PT._AGRINA_SAWIT_PERDANA",
+      "telnet": {
+        "host": "103.115.164.127",
+        "port": "10626",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT.GUNTUR_ARTHA_WIGUNA": {
+      "name": "TUKS_PT.GUNTUR_ARTHA_WIGUNA",
+      "telnet": {
+        "host": "151.242.116.207",
+        "port": "5000",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._KARYANUSA_EKA_DAYA": {
+      "name": "TUKS_PT._KARYANUSA_EKA_DAYA",
+      "telnet": {
+        "name": "TUKS_PT._KARYANUSA_EKA_DAYA",
+        "host": "103.187.146.250",
+        "port": "6040",
+        "parser": "ABVDM"
+      }
+    },
+    "Srop_Manokwari": {
+      "name": "Srop_Manokwari",
+      "telnet": {
+        "host": "103.56.93.222",
+        "port": "5232",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Maju_Kalimantan_Hadapan": {
+      "name": "TUKS_PT._Maju_Kalimantan_Hadapan",
+      "telnet": {
+        "host": "103.189.234.36",
+        "port": "6040",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Kartika_Selabumi_Mining": {
+      "name": "Tersus_PT._Kartika_Selabumi_Mining",
+      "telnet": {
+        "host": "103.187.146.21",
+        "port": "4321",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus__PT._Bina_Dutalaksana": {
+      "name": "Tersus__PT._Bina_Dutalaksana",
+      "telnet": {
+        "host": "34.128.68.141",
+        "port": "9084",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Riau_Indo_Agropalma": {
+      "name": "TUKS_PT._Riau_Indo_Agropalma",
+      "telnet": {
+        "host": "34.128.68.141",
+        "port": "9078",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Ruas_Utama_Jaya": {
+      "name": "TUKS_PT._Ruas_Utama_Jaya",
+      "telnet": {
+        "host": "34.128.68.141",
+        "port": "9128",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Indah_Kiat_Pulp_and_Paper": {
+      "name": "TUKS_PT._Indah_Kiat_Pulp_and_Paper",
+      "telnet": {
+        "host": "34.128.68.141",
+        "port": "9150",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Indah_Kiat_PP_Rasau_Kuning": {
+      "name": "TUKS_PT._Indah_Kiat_PP_Rasau_Kuning",
+      "telnet": {
+        "host": "34.128.68.141",
+        "port": "9136",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Satria_Perkasa_Agung": {
+      "name": "Tersus_PT._Satria_Perkasa_Agung",
+      "telnet": {
+        "host": "34.128.68.141",
+        "port": "9110",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Sekato_Pratama_Makmur": {
+      "name": "TUKS_PT._Sekato_Pratama_Makmur",
+      "telnet": {
+        "host": "34.128.68.141",
+        "port": "9124",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Arara_Abadi_Berbari": {
+      "name": "TUKS_PT._Arara_Abadi_Berbari",
+      "telnet": {
+        "host": "34.128.68.141",
+        "port": "9132",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Radios_Apirja_Sorong": {
+      "name": "TUKS_PT._Radios_Apirja_Sorong",
+      "telnet": {
+        "host": "103.195.65.156",
+        "port": "7100",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Dokindo_Aimas_Papua": {
+      "name": "TUKS_PT._Dokindo_Aimas_Papua",
+      "telnet": {
+        "host": "103.195.65.244",
+        "port": "7200",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._WAJA_INTI_LESTARI": {
+      "name": "TUKS_PT._WAJA_INTI_LESTARI",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2137",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT_Prima_Dharma_Karsa": {
+      "name": "Tersus_PT_Prima_Dharma_Karsa",
+      "telnet": {
+        "host": "151.242.116.73",
+        "port": "8300",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Penta_Dharma_Karsa": {
+      "name": "Tersus_PT._Penta_Dharma_Karsa",
+      "telnet": {
+        "host": "151.242.116.86",
+        "port": "8300",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Remco_Rubber_Indonesia": {
+      "name": "TUKS_PT._Remco_Rubber_Indonesia",
+      "telnet": {
+        "host": "194.233.93.64",
+        "port": "4001",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Sunan_Rubber": {
+      "name": "TUKS_PT._Sunan_Rubber",
+      "telnet": {
+        "host": "194.233.93.64",
+        "port": "4002",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._LOKA_INDAH_LESTARI": {
+      "name": "TERSUS_PT._LOKA_INDAH_LESTARI",
+      "telnet": {
+        "host": "103.187.147.242",
+        "port": "15172",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Hevea_MK": {
+      "name": "TUKS_PT._Hevea_MK",
+      "telnet": {
+        "host": "194.233.93.64",
+        "port": "4003",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Arara_Abadi_Pulau_Muda": {
+      "name": "TUKS_PT._Arara_Abadi_Pulau_Muda",
+      "telnet": {
+        "name": "TUKS_PT._Arara_Abadi_Pulau_Muda",
+        "host": "34.128.68.141",
+        "port": "9096",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Sepanjang_Inti_Surya_Mulia": {
+      "name": "PT._Sepanjang_Inti_Surya_Mulia",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "56114",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PLTU_JERANJANG_LOMBOK": {
+      "name": "TUKS_PLTU_JERANJANG_LOMBOK",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "55208",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Semen_Baturaja": {
+      "name": "TUKS_PT._Semen_Baturaja",
+      "telnet": {
+        "name": "TUKS_PT._Semen_Baturaja",
+        "host": "194.233.93.64",
+        "port": "4006",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PLTU_BANTEN_2_LABUAN": {
+      "name": "TERSUS_PLTU_BANTEN_2_LABUAN",
+      "telnet": {
+        "name": "TERSUS_PLTU_BANTEN_2_LABUAN",
+        "host": "185.111.159.233",
+        "port": "20099",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._GUNTUNG_IDAMAN_NUSA": {
+      "name": "TUKS_PT._GUNTUNG_IDAMAN_NUSA",
+      "telnet": {
+        "host": "103.115.164.127",
+        "port": "10627",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._ALAM_BAHTERA_BARITO_RAYA": {
+      "name": "TUKS_PT._ALAM_BAHTERA_BARITO_RAYA",
+      "telnet": {
+        "host": "103.181.143.182",
+        "port": "15137",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Raja_Kutai_Baru": {
+      "name": "TUKS_PT._Raja_Kutai_Baru",
+      "telnet": {
+        "host": "103.189.234.45",
+        "port": "1214",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT.TRINUSA_DHARMA_UTAMA": {
+      "name": "TERSUS_PT.TRINUSA_DHARMA_UTAMA",
+      "telnet": {
+        "host": "31.56.78.41",
+        "port": "5000",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._MITRA_LIGA_MANDIRI_SUKSES": {
+      "name": "TUKS_PT._MITRA_LIGA_MANDIRI_SUKSES",
+      "telnet": {
+        "host": "202.10.40.120",
+        "port": "9006",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._SUMBER_DAYA_ENERGI": {
+      "name": "TERSUS_PT._SUMBER_DAYA_ENERGI",
+      "telnet": {
+        "host": "185.111.159.233",
+        "port": "20097",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Sepanjang_Inti_Surya_Mulia_(MOM)": {
+      "name": "PT._Sepanjang_Inti_Surya_Mulia_(MOM)",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "56120",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._KUNANGAN_BAHARI_DEPOT": {
+      "name": "TUKS_PT._KUNANGAN_BAHARI_DEPOT",
+      "telnet": {
+        "host": "202.10.40.120",
+        "port": "9007",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._TERMINAL_ENERGY_ALAM_PERSADA": {
+      "name": "TUKS_PT._TERMINAL_ENERGY_ALAM_PERSADA",
+      "telnet": {
+        "host": "202.10.40.120",
+        "port": "9005",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._BHUMI_KARYA_UTAMA": {
+      "name": "TERSUS_PT._BHUMI_KARYA_UTAMA",
+      "telnet": {
+        "host": "41.216.190.86",
+        "port": "5000",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PLTU_PLN_Tanjung_Selor": {
+      "name": "Tersus_PLTU_PLN_Tanjung_Selor",
+      "telnet": {
+        "host": "151.242.116.72",
+        "port": "8300",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Borneo_Indah_Marjaya": {
+      "name": "Tersus_PT._Borneo_Indah_Marjaya",
+      "telnet": {
+        "host": "103.232.242.242",
+        "port": "8040",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Arsa_Mega_Pratama": {
+      "name": "TERSUS_PT._Arsa_Mega_Pratama",
+      "telnet": {
+        "host": "82.41.42.216",
+        "port": "8989",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Hok_Tong_Pontianak": {
+      "name": "PT._Hok_Tong_Pontianak",
+      "telnet": {
+        "host": "194.233.93.64",
+        "port": "4007",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Sumber_Alam": {
+      "name": "PT._Sumber_Alam",
+      "telnet": {
+        "host": "194.233.93.64",
+        "port": "4008",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Energi_Unggul_Persada_Bontang": {
+      "name": "PT._Energi_Unggul_Persada_Bontang",
+      "telnet": {
+        "host": "103.144.166.14",
+        "port": "50147",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Bhimasena_Power_Indonesia": {
+      "name": "Tersus_PT._Bhimasena_Power_Indonesia",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "53308",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._GASING_SULAWESI": {
+      "name": "TERSUS_PT._GASING_SULAWESI",
+      "telnet": {
+        "host": "31.56.78.232",
+        "port": "5000",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._BOSOSI_PRATAMA_": {
+      "name": "TERSUS_PT._BOSOSI_PRATAMA_",
+      "telnet": {
+        "host": "31.56.78.34",
+        "port": "5000",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._MARGO_KARYA_MANDIRI": {
+      "name": "TUKS_PT._MARGO_KARYA_MANDIRI",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2139",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._SUMBER_DAYA_ARINDO": {
+      "name": "TERSUS_PT._SUMBER_DAYA_ARINDO",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2133",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._TIGADAYA_MINERGY_SRI_GUNUNG": {
+      "name": "TERSUS_PT._TIGADAYA_MINERGY_SRI_GUNUNG",
+      "telnet": {
+        "host": "185.111.159.233",
+        "port": "20100",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT_TIGADAYA_MINERGY_MUARA_TUNGKAL": {
+      "name": "TERSUS_PT_TIGADAYA_MINERGY_MUARA_TUNGKAL",
+      "telnet": {
+        "host": "185.111.159.233",
+        "port": "20101",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Meitech_Eka_Bintan": {
+      "name": "TUKS_PT._Meitech_Eka_Bintan",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "52101",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Sima_Agung_Prima_Sawit": {
+      "name": "PT._Sima_Agung_Prima_Sawit",
+      "telnet": {
+        "host": "18.136.20.255",
+        "port": "9016",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Waru_Kaltim_Plantation": {
+      "name": "Tersus_PT._Waru_Kaltim_Plantation",
+      "telnet": {
+        "host": "103.187.146.37",
+        "port": "1214",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Sima_Agung_Prima_Sawit": {
+      "name": "TUKS_PT._Sima_Agung_Prima_Sawit",
+      "telnet": {
+        "host": "194.233.93.64",
+        "port": "4011",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Kalimantan_Subur_Permai": {
+      "name": "Tersus_PT._Kalimantan_Subur_Permai",
+      "telnet": {
+        "host": "34.128.68.141",
+        "port": "9167",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Jatim_Propertindo_Jaya_(Pontianak)": {
+      "name": "PT._Jatim_Propertindo_Jaya_(Pontianak)",
+      "telnet": {
+        "name": "PT._Jatim_Propertindo_Jaya_(Pontianak)",
+        "host": "194.233.93.64",
+        "port": "4013",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_ITMS_SIAK": {
+      "name": "TUKS_ITMS_SIAK",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "51412",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Jatim_PJ_Pontianak": {
+      "name": "PT._Jatim_PJ_Pontianak",
+      "telnet": {
+        "host": "194.233.93.64",
+        "port": "4013",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Stargate_Pasific_Resources": {
+      "name": "TUKS_PT._Stargate_Pasific_Resources",
+      "telnet": {
+        "host": "194.233.93.64",
+        "port": "4009",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_CV._Perintis_Lintas_Talang_Duku": {
+      "name": "TUKS_CV._Perintis_Lintas_Talang_Duku",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "51502",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._KEMBAR_MAS_BERJAYA": {
+      "name": "TUKS_PT._KEMBAR_MAS_BERJAYA",
+      "telnet": {
+        "host": "202.10.40.120",
+        "port": "9009",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._VANESSA_MANDIRI_SEJAHTERA": {
+      "name": "TUKS_PT._VANESSA_MANDIRI_SEJAHTERA",
+      "telnet": {
+        "host": "202.10.40.120",
+        "port": "9008",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._USAHA_GAS_ELPINDO": {
+      "name": "TUKS_PT._USAHA_GAS_ELPINDO",
+      "telnet": {
+        "host": "31.56.78.247",
+        "port": "5000",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Yudistira_Tanjung_Karang": {
+      "name": "TERSUS_PT._Yudistira_Tanjung_Karang",
+      "telnet": {
+        "host": "103.118.175.176",
+        "port": "13710",
+        "parser": "ABVDM"
+      }
+    },
+    "Srop_Maumere": {
+      "name": "Srop_Maumere",
+      "telnet": {
+        "host": "103.118.175.18",
+        "port": "4712",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Prakarsa_Tani_Sejati": {
+      "name": "PT._Prakarsa_Tani_Sejati",
+      "telnet": {
+        "host": "45.158.10.151",
+        "port": "8060",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Karyatama": {
+      "name": "TERSUS_PT._Karyatama",
+      "telnet": {
+        "host": "116.50.24.77",
+        "port": "9393",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT_Samudera_Rejeki_Perkasa": {
+      "name": "TERSUS_PT_Samudera_Rejeki_Perkasa",
+      "telnet": {
+        "host": "103.118.175.255",
+        "port": "10200",
+        "parser": "ABVDM"
+      }
+    },
+    "Tuks_PT._Idec_Abadi_Wood_Indonesia_": {
+      "name": "Tuks_PT._Idec_Abadi_Wood_Indonesia_",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "56542",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Calang_Sejati_Indah": {
+      "name": "TUKS_PT._Calang_Sejati_Indah",
+      "telnet": {
+        "host": "36.95.170.26",
+        "port": "5233",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT.__Sari_Dumai_Oleo": {
+      "name": "TUKS_PT.__Sari_Dumai_Oleo",
+      "telnet": {
+        "host": "36.95.170.26",
+        "port": "5232",
+        "parser": "ABVDM"
+      }
+    },
+    "SROP_Waingapu": {
+      "name": "SROP_Waingapu",
+      "telnet": {
+        "host": "45.149.93.155",
+        "port": "4712",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Kartanegara_Perkasa": {
+      "name": "TUKS_PT._Kartanegara_Perkasa",
+      "telnet": {
+        "host": "103.13.207.237",
+        "port": "4321",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Daya_Tani_Kalbar": {
+      "name": "PT._Daya_Tani_Kalbar",
+      "telnet": {
+        "host": "34.128.68.141",
+        "port": "9177",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Daya_Tani_Kalbar_Labai_Hilir": {
+      "name": "PT._Daya_Tani_Kalbar_Labai_Hilir",
+      "telnet": {
+        "host": "34.128.68.141",
+        "port": "9185",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Conch_International_Trade_Indonesia": {
+      "name": "TUKS_PT._Conch_International_Trade_Indonesia",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "51627",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._LAYAR_PERKASA_MANDIRI": {
+      "name": "PT._LAYAR_PERKASA_MANDIRI",
+      "telnet": {
+        "host": "185.111.159.233",
+        "port": "20106",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._BANGUN_KOSAMBI_SUKSES-PIKI": {
+      "name": "PT._BANGUN_KOSAMBI_SUKSES-PIKI",
+      "telnet": {
+        "host": "103.56.205.90",
+        "port": "5232",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Sumatera_Jaya_Agro_Lestari": {
+      "name": "Tersus_PT._Sumatera_Jaya_Agro_Lestari",
+      "telnet": {
+        "host": "123.123.123.123",
+        "port": "1234",
+        "parser": "AVDM"
+      }
+    },
+    "PT._Sumatera_Jaya_Agro_Lestari_": {
+      "name": "PT._Sumatera_Jaya_Agro_Lestari_",
+      "telnet": {
+        "host": "103.192.81.178",
+        "port": "8060",
+        "parser": "ABVDM"
+      }
+    },
+    "Srop_Kupang_": {
+      "name": "Srop_Kupang_",
+      "telnet": {
+        "host": "191.101.190.137",
+        "port": "4712",
+        "parser": "ABVDM"
+      }
+    },
+    "VTS_Pontianak": {
+      "name": "VTS_Pontianak",
+      "telnet": {
+        "name": "VTS_Pontianak",
+        "host": "119.82.246.75",
+        "port": "10151",
+        "parser": "ABVDM"
+      }
+    },
+    "VTS_Tanjung_Priok": {
+      "name": "VTS_Tanjung_Priok",
+      "telnet": {
+        "name": "VTS_Tanjung_Priok",
+        "host": "103.177.176.138",
+        "port": "7780",
+        "parser": "ABVDM"
+      }
+    },
+    "Sensor_Site_Pulau_Payung": {
+      "name": "Sensor_Site_Pulau_Payung",
+      "telnet": {
+        "host": "103.177.176.139",
+        "port": "7780",
+        "parser": "ABVDM"
+      }
+    },
+    "Sensor_Site_Pulau_Sebira": {
+      "name": "Sensor_Site_Pulau_Sebira",
+      "telnet": {
+        "host": "103.177.176.140",
+        "port": "7780",
+        "parser": "ABVDM"
+      }
+    },
+    "Sensor_Site_Bojonegoro": {
+      "name": "Sensor_Site_Bojonegoro",
+      "telnet": {
+        "name": "Sensor_Site_Bojonegoro",
+        "host": "103.140.130.125",
+        "port": "7780",
+        "parser": "ABVDM"
+      }
+    },
+    "VTS_Panjang": {
+      "name": "VTS_Panjang",
+      "telnet": {
+        "name": "VTS_Panjang",
+        "host": "121.50.34.34",
+        "port": "7780",
+        "parser": "ABVDM"
+      }
+    },
+    "Sensor_Site_Kota_Agung": {
+      "name": "Sensor_Site_Kota_Agung",
+      "telnet": {
+        "host": "121.50.34.35",
+        "port": "7780",
+        "parser": "ABVDM"
+      }
+    },
+    "VTS_Cirebon": {
+      "name": "VTS_Cirebon",
+      "telnet": {
+        "host": "103.154.122.156",
+        "port": "7780",
+        "parser": "ABVDM"
+      }
+    },
+    "Sensor_Site_Indramayu": {
+      "name": "Sensor_Site_Indramayu",
+      "telnet": {
+        "host": "103.154.122.157",
+        "port": "7780",
+        "parser": "ABVDM"
+      }
+    },
+    "Sensor_Site_Patimban": {
+      "name": "Sensor_Site_Patimban",
+      "telnet": {
+        "host": "103.154.122.155",
+        "port": "7780",
+        "parser": "ABVDM"
+      }
+    },
+    "SROP_Seba": {
+      "name": "SROP_Seba",
+      "telnet": {
+        "host": "191.101.190.202",
+        "port": "4712",
+        "parser": "ABVDM"
+      }
+    },
+    "VTS_MERAK": {
+      "name": "VTS_MERAK",
+      "telnet": {
+        "name": "VTS_MERAK",
+        "host": "103.140.130.124",
+        "port": "7780",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Kharisma_Kaisar_Batulicin": {
+      "name": "PT._Kharisma_Kaisar_Batulicin",
+      "telnet": {
+        "host": "103.154.81.54",
+        "port": "8041",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Pribumi_Citra_Megah_Utama": {
+      "name": "TUKS_PT._Pribumi_Citra_Megah_Utama",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "56317",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Palm_Segar_Lestari_": {
+      "name": "TUKS_PT._Palm_Segar_Lestari_",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "56552",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._PAM_MINERAL.TBK": {
+      "name": "TERSUS_PT._PAM_MINERAL.TBK",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2144",
+        "parser": "ABVDM"
+      }
+    },
+    "PT_Merak_Chemicals_Indonesia": {
+      "name": "PT_Merak_Chemicals_Indonesia",
+      "telnet": {
+        "host": "182.0.21.146",
+        "port": "587",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._DUTABAHARI_MENARA_LINE_DOCKYARD": {
+      "name": "PT._DUTABAHARI_MENARA_LINE_DOCKYARD",
+      "telnet": {
+        "name": "PT._DUTABAHARI_MENARA_LINE_DOCKYARD",
+        "host": "185.111.159.233",
+        "port": "20102",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Layar_Perkasa_Nusantara": {
+      "name": "PT._Layar_Perkasa_Nusantara",
+      "telnet": {
+        "host": "185.111.159.233",
+        "port": "20106",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._BATUBARA_MANDIRI": {
+      "name": "PT._BATUBARA_MANDIRI",
+      "telnet": {
+        "host": "185.111.159.233",
+        "port": "20104",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._MULTI_JAYA_PERKASA": {
+      "name": "PT._MULTI_JAYA_PERKASA",
+      "telnet": {
+        "host": "157.20.252.165",
+        "port": "8060",
+        "parser": "ABVDM"
+      }
+    },
+    "UPP_Nusa_Penida": {
+      "name": "UPP_Nusa_Penida",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2146",
+        "parser": "ABVDM"
+      }
+    },
+    "PT_.Wijaya_Karya_Beton.Tbk": {
+      "name": "PT_.Wijaya_Karya_Beton.Tbk",
+      "telnet": {
+        "host": "31.57.178.134",
+        "port": "2027",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Asahimas_Chemical_": {
+      "name": "PT._Asahimas_Chemical_",
+      "telnet": {
+        "host": "182.0.21.253",
+        "port": "587",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Putra_Muba_Coal": {
+      "name": "PT._Putra_Muba_Coal",
+      "telnet": {
+        "host": "194.233.93.64",
+        "port": "4004",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Nuansacipta_Coal_Investment": {
+      "name": "PT._Nuansacipta_Coal_Investment",
+      "telnet": {
+        "host": "194.233.93.64",
+        "port": "4005",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._LABUAN_LELEA_RATAN": {
+      "name": "Tersus_PT._LABUAN_LELEA_RATAN",
+      "telnet": {
+        "host": "31.56.78.49",
+        "port": "5000",
+        "parser": "ABVDM"
+      }
+    },
+    "Exxon_mobile_cepu_Limited": {
+      "name": "Exxon_mobile_cepu_Limited",
+      "telnet": {
+        "host": "114.9.14.170",
+        "port": "8040",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Kaltim_Methanol_Industri": {
+      "name": "TUKS_PT._Kaltim_Methanol_Industri",
+      "telnet": {
+        "host": "194.233.93.64",
+        "port": "4016",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Antang_Gunung_Meratus": {
+      "name": "TUKS_PT._Antang_Gunung_Meratus",
+      "telnet": {
+        "host": "103.67.78.247",
+        "port": "7110",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Cipta_Piramida_Mandiri": {
+      "name": "TUKS_PT._Cipta_Piramida_Mandiri",
+      "telnet": {
+        "host": "31.57.178.185",
+        "port": "2026",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Pertamina_Patra_Niaga_IT": {
+      "name": "TUKS_PT._Pertamina_Patra_Niaga_IT",
+      "telnet": {
+        "host": "191.101.190.195",
+        "port": "2030",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Agro_sukses_lestari___": {
+      "name": "Tersus_PT._Agro_sukses_lestari___",
+      "telnet": {
+        "host": "103.192.81.130",
+        "port": "8060",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Rimba_Mandau_Lestari": {
+      "name": "PT._Rimba_Mandau_Lestari",
+      "telnet": {
+        "host": "34.128.68.141",
+        "port": "9164",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Natural_Indococonut_Organik": {
+      "name": "PT._Natural_Indococonut_Organik",
+      "telnet": {
+        "name": "PT._Natural_Indococonut_Organik",
+        "host": "36.93.174.183",
+        "port": "3355",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Kencana_Graha_Permai": {
+      "name": "PT._Kencana_Graha_Permai",
+      "telnet": {
+        "host": "103.118.175.178",
+        "port": "8004",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Stargate_Pasific_Resources_Molore": {
+      "name": "TUKS_PT._Stargate_Pasific_Resources_Molore",
+      "telnet": {
+        "host": "194.233.93.64",
+        "port": "4012",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT_Pertamina_Arun_Gas_(1)": {
+      "name": "TUKS_PT_Pertamina_Arun_Gas_(1)",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "51103",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Xerxes_Samudera_Bahari": {
+      "name": "PT._Xerxes_Samudera_Bahari",
+      "telnet": {
+        "host": "31.56.78.235",
+        "port": "47",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Perta_Arun_Gaas": {
+      "name": "TUKS_PT._Perta_Arun_Gaas",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "51103",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_Labbaika_PT._Telen": {
+      "name": "TUKS_Labbaika_PT._Telen",
+      "telnet": {
+        "name": "TUKS_Labbaika_PT._Telen",
+        "host": "194.233.93.64",
+        "port": "4010",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._London_Sumatra_Indonesia": {
+      "name": "TERSUS_PT._London_Sumatra_Indonesia",
+      "telnet": {
+        "host": "103.78.141.62",
+        "port": "1010",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Indominco_Mandiri": {
+      "name": "Tersus_PT._Indominco_Mandiri",
+      "telnet": {
+        "host": "36.95.63.131",
+        "port": "10110",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Ichiko_Agro_Lestari": {
+      "name": "Tersus_PT._Ichiko_Agro_Lestari",
+      "telnet": {
+        "host": "103.167.222.46",
+        "port": "8040",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._RISGUN_PERKASA_ABADI_": {
+      "name": "PT._RISGUN_PERKASA_ABADI_",
+      "telnet": {
+        "host": "103.195.65.123",
+        "port": "5000",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT_MARGA_BARA_JAYA": {
+      "name": "Tersus_PT_MARGA_BARA_JAYA",
+      "telnet": {
+        "host": "185.111.159.233",
+        "port": "20107",
+        "parser": "ABVDM"
+      }
+    },
+    "SROP_Gunung_Sitoli": {
+      "name": "SROP_Gunung_Sitoli",
+      "telnet": {
+        "host": "103.118.175.202",
+        "port": "4712",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Makmur_Lestari_Primatama": {
+      "name": "PT._Makmur_Lestari_Primatama",
+      "telnet": {
+        "host": "202.152.24.153",
+        "port": "6600",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Bayan_Resources_TBK_(Senyiur)": {
+      "name": "PT._Bayan_Resources_TBK_(Senyiur)",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "56439",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Finnantara_Intiga_Dermaga_Belitang": {
+      "name": "TERSUS_PT._Finnantara_Intiga_Dermaga_Belitang",
+      "telnet": {
+        "host": "34.128.68.141",
+        "port": "9181",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Finnantara_Intiga_Dermaga_Mengkiang": {
+      "name": "TERSUS_PT._Finnantara_Intiga_Dermaga_Mengkiang",
+      "telnet": {
+        "host": "34.128.68.141",
+        "port": "9172",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Finnantara_Intiga_Dermaga_Sungai_Batu": {
+      "name": "TERSUS_PT._Finnantara_Intiga_Dermaga_Sungai_Batu",
+      "telnet": {
+        "host": "34.128.68.141",
+        "port": "9189",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Pertamina_Patra_Niaga_IT_Panjang": {
+      "name": "PT._Pertamina_Patra_Niaga_IT_Panjang",
+      "telnet": {
+        "name": "PT._Pertamina_Patra_Niaga_IT_Panjang",
+        "host": "82.41.42.172",
+        "port": "2016",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Pelayaran_Sumber_Rejeki_Bahari_Permai": {
+      "name": "PT._Pelayaran_Sumber_Rejeki_Bahari_Permai",
+      "telnet": {
+        "host": "185.111.159.233",
+        "port": "20108",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Energi_Unggul_Persada": {
+      "name": "Tersus_PT._Energi_Unggul_Persada",
+      "telnet": {
+        "host": "103.144.166.14",
+        "port": "50147",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Bina_Benua_Samudera": {
+      "name": "TUKS_PT._Bina_Benua_Samudera",
+      "telnet": {
+        "host": "103.181.143.182",
+        "port": "15147",
+        "parser": "ABVDM"
+      }
+    },
+    "PT.GLOBAL_MAHAKARYA_PROPERTINDO_SUNGAI_LILIN": {
+      "name": "PT.GLOBAL_MAHAKARYA_PROPERTINDO_SUNGAI_LILIN",
+      "telnet": {
+        "host": "185.111.159.233",
+        "port": "20109",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._NAGA_CIPTA_CENTRAL": {
+      "name": "TUKS_PT._NAGA_CIPTA_CENTRAL",
+      "telnet": {
+        "host": "202.10.40.120",
+        "port": "9010",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._MITRA_USAHA_BATANGHARI": {
+      "name": "TUKS_PT._MITRA_USAHA_BATANGHARI",
+      "telnet": {
+        "host": "202.10.40.120",
+        "port": "9011",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Sandai_Persada_Tambang": {
+      "name": "Tersus_PT._Sandai_Persada_Tambang",
+      "telnet": {
+        "host": "103.31.205.112",
+        "port": "53213",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Steelindo_Wahana_Perkasa_": {
+      "name": "TUKS_PT._Steelindo_Wahana_Perkasa_",
+      "telnet": {
+        "host": "151.242.116.175",
+        "port": "8300",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Borneo_Alumindo_Prima": {
+      "name": "PT._Borneo_Alumindo_Prima",
+      "telnet": {
+        "name": "PT._Borneo_Alumindo_Prima",
+        "host": "103.15.14.101",
+        "port": "4040",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Jembayan_Muara_Bara": {
+      "name": "TUKS_PT._Jembayan_Muara_Bara",
+      "telnet": {
+        "host": "103.189.235.56",
+        "port": "1214",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Sinar_Khatulistiwa_Bahtera": {
+      "name": "PT._Sinar_Khatulistiwa_Bahtera",
+      "telnet": {
+        "name": "PT._Sinar_Khatulistiwa_Bahtera",
+        "host": "103.15.14.105",
+        "port": "4040",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Bukit_Palem": {
+      "name": "TUKS_PT._Bukit_Palem",
+      "telnet": {
+        "host": "103.15.14.49",
+        "port": "4030",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Cargil_Indonesia_(Amurang)": {
+      "name": "PT._Cargil_Indonesia_(Amurang)",
+      "telnet": {
+        "host": "157.20.124.104",
+        "port": "10110",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Mariana_Bahagia_": {
+      "name": "Tersus_PT._Mariana_Bahagia_",
+      "telnet": {
+        "name": "Tersus_PT._Mariana_Bahagia_",
+        "host": "151.242.116.121",
+        "port": "2033",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Teknik_Utama_Mandiri": {
+      "name": "TUKS_PT._Teknik_Utama_Mandiri",
+      "telnet": {
+        "host": "103.56.205.86",
+        "port": "5232",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Adidaya_Tangguh": {
+      "name": "TERSUS_PT._Adidaya_Tangguh",
+      "telnet": {
+        "host": "103.244.39.114",
+        "port": "8040",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._BUDI_NABATI_PERKASA": {
+      "name": "TUKS_PT._BUDI_NABATI_PERKASA",
+      "telnet": {
+        "name": "TUKS_PT._BUDI_NABATI_PERKASA",
+        "host": "202.10.40.120",
+        "port": "9012",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Imbang_Tata_Alam": {
+      "name": "TERSUS_PT._Imbang_Tata_Alam",
+      "telnet": {
+        "host": "151.242.116.120",
+        "port": "2031",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Bumi_Permai_Lestari": {
+      "name": "PT._Bumi_Permai_Lestari",
+      "telnet": {
+        "name": "PT._Bumi_Permai_Lestari",
+        "host": "151.242.116.143",
+        "port": "8300",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Korindo_Abadi": {
+      "name": "Tersus_PT._Korindo_Abadi",
+      "telnet": {
+        "name": "Tersus_PT._Korindo_Abadi",
+        "host": "36.95.227.195",
+        "port": "17729",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Antam_UBPN_Konawe_Utara": {
+      "name": "Tersus_PT._Antam_UBPN_Konawe_Utara",
+      "telnet": {
+        "name": "Tersus_PT._Antam_UBPN_Konawe_Utara",
+        "host": "202.10.36.133",
+        "port": "2147",
+        "parser": "ABVDM"
+      }
+    },
+    "VTS_Teluk_Bayur": {
+      "name": "VTS_Teluk_Bayur",
+      "telnet": {
+        "name": "VTS_Teluk_Bayur",
+        "host": "36.92.176.74",
+        "port": "5001",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Bumi_Permai_Lestari": {
+      "name": "TUKS_PT._Bumi_Permai_Lestari",
+      "telnet": {
+        "host": "151.242.116.143",
+        "port": "8300",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._WANA_SAWIT_SUBUR_LESATARI": {
+      "name": "TUKS_PT._WANA_SAWIT_SUBUR_LESATARI",
+      "telnet": {
+        "host": "151.242.116.227",
+        "port": "5002",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Inocin_Abadi": {
+      "name": "Tersus_PT._Inocin_Abadi",
+      "telnet": {
+        "name": "Tersus_PT._Inocin_Abadi",
+        "host": "36.95.227.195",
+        "port": "17731",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Zhong_Hai_Rare_Metal_Mining_Indonesia": {
+      "name": "PT._Zhong_Hai_Rare_Metal_Mining_Indonesia",
+      "telnet": {
+        "name": "PT._Zhong_Hai_Rare_Metal_Mining_Indonesia",
+        "host": "191.101.190.189",
+        "port": "8040",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Tunas_Sawa_Erma_Pop_B": {
+      "name": "Tersus_PT._Tunas_Sawa_Erma_Pop_B",
+      "telnet": {
+        "host": "103.24.75.13",
+        "port": "17108",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Tunas_Sawa_Erma_Pop_A": {
+      "name": "Tersus_PT._Tunas_Sawa_Erma_Pop_A",
+      "telnet": {
+        "name": "Tersus_PT._Tunas_Sawa_Erma_Pop_A",
+        "host": "36.95.227.195",
+        "port": "17713",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Dongin_Prabhawa": {
+      "name": "Tersus_PT._Dongin_Prabhawa",
+      "telnet": {
+        "name": "Tersus_PT._Dongin_Prabhawa",
+        "host": "103.24.75.7",
+        "port": "23215",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._ENERGATE_PRIMA_INDONESIA": {
+      "name": "TERSUS_PT._ENERGATE_PRIMA_INDONESIA",
+      "telnet": {
+        "name": "TERSUS_PT._ENERGATE_PRIMA_INDONESIA",
+        "host": "194.233.89.188",
+        "port": "2123",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._CERIA_NUGRAHA_INDOTAMA": {
+      "name": "TERSUS_PT._CERIA_NUGRAHA_INDOTAMA",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2145",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Uni_Raya_Timber_": {
+      "name": "Tersus_PT._Uni_Raya_Timber_",
+      "telnet": {
+        "host": "103.118.175.185",
+        "port": "8899",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._C_GONG_PERKASA": {
+      "name": "TERSUS_PT._C_GONG_PERKASA",
+      "telnet": {
+        "host": "45.149.93.114",
+        "port": "5002",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._GAG_Nikel_(Gambir)": {
+      "name": "Tersus_PT._GAG_Nikel_(Gambir)",
+      "telnet": {
+        "host": "49.128.186.190",
+        "port": "8242",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Gag_Nikel_(Imkamsu)": {
+      "name": "Tersus_PT._Gag_Nikel_(Imkamsu)",
+      "telnet": {
+        "host": "49.128.186.190",
+        "port": "8247",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._GHANESA_WANA_UTAMA": {
+      "name": "TERSUS_PT._GHANESA_WANA_UTAMA",
+      "telnet": {
+        "host": "103.195.65.74",
+        "port": "5000",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._GMG_Sentosa": {
+      "name": "Tersus_PT._GMG_Sentosa",
+      "telnet": {
+        "name": "Tersus_PT._GMG_Sentosa",
+        "host": "194.233.93.64",
+        "port": "4020",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._BUMI_BUTON_DELTA_MEGAH": {
+      "name": "TERSUS_PT._BUMI_BUTON_DELTA_MEGAH",
+      "telnet": {
+        "name": "TERSUS_PT._BUMI_BUTON_DELTA_MEGAH",
+        "host": "202.10.36.133",
+        "port": "2142",
+        "parser": "ABVDM"
+      }
+    },
+    "PT._Kukar_Mandiri_Shipyard_(Jembayan)": {
+      "name": "PT._Kukar_Mandiri_Shipyard_(Jembayan)",
+      "telnet": {
+        "name": "PT._Kukar_Mandiri_Shipyard_(Jembayan)",
+        "host": "103.118.175.179",
+        "port": "8040",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._JUATA_KARYA_SENTOSA": {
+      "name": "TUKS_PT._JUATA_KARYA_SENTOSA",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "56562",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PLTU_LABUHAN_ANGIN": {
+      "name": "TUKS_PLTU_LABUHAN_ANGIN",
+      "telnet": {
+        "host": "31.56.78.239",
+        "port": "5002",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Anugerah_Bara_Kaltim": {
+      "name": "TUKS_PT._Anugerah_Bara_Kaltim",
+      "telnet": {
+        "name": "TUKS_PT._Anugerah_Bara_Kaltim",
+        "host": "103.250.10.128",
+        "port": "1214",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Meskom_Agro_Sarimas": {
+      "name": "Tersus_PT._Meskom_Agro_Sarimas",
+      "telnet": {
+        "host": "45.149.93.206",
+        "port": "2027",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Harum_Sukses_Minning": {
+      "name": "Tersus_PT._Harum_Sukses_Minning",
+      "telnet": {
+        "host": "143.20.10.120",
+        "port": "8040",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._PASIFIK_DOK_MALUKU": {
+      "name": "TUKS_PT._PASIFIK_DOK_MALUKU",
+      "telnet": {
+        "host": "151.242.116.220",
+        "port": "5002",
+        "parser": "ABVDM"
+      }
+    },
+    "VTS_Palembang": {
+      "name": "VTS_Palembang",
+      "telnet": {
+        "name": "VTS_Palembang",
+        "host": "103.153.150.69",
+        "port": "8030",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Bumi_Konawe_Abadi": {
+      "name": "TUKS_PT._Bumi_Konawe_Abadi",
+      "telnet": {
+        "name": "TUKS_PT._Bumi_Konawe_Abadi",
+        "host": "31.56.78.235",
+        "port": "51",
+        "parser": "ABVDM"
+      }
+    },
+    "Sensor_Site_Tanjung_Buyut_Palembang": {
+      "name": "Sensor_Site_Tanjung_Buyut_Palembang",
+      "telnet": {
+        "host": "103.153.150.69",
+        "port": "8018",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Cemerlang_Asa_Mandiri": {
+      "name": "Tersus_PT._Cemerlang_Asa_Mandiri",
+      "telnet": {
+        "name": "Tersus_PT._Cemerlang_Asa_Mandiri",
+        "host": "31.57.178.108",
+        "port": "8285",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Kruing_Lestari_Jaya": {
+      "name": "TERSUS_PT._Kruing_Lestari_Jaya",
+      "telnet": {
+        "name": "TERSUS_PT._Kruing_Lestari_Jaya",
+        "host": "157.66.34.88",
+        "port": "8411",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Amanah_Anugerah_Adi_Mulia": {
+      "name": "TERSUS_PT._Amanah_Anugerah_Adi_Mulia",
+      "telnet": {
+        "host": "202.150.138.42",
+        "port": "56328",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Tapian_Nadenggan": {
+      "name": "TERSUS_PT._Tapian_Nadenggan",
+      "telnet": {
+        "host": "157.66.34.88",
+        "port": "7412",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Sriwijaya_Indo_Utama": {
+      "name": "Tersus_PT._Sriwijaya_Indo_Utama",
+      "telnet": {
+        "host": "202.155.143.184",
+        "port": "15150",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Bumi_Karunia_Pertiwi": {
+      "name": "Tersus_PT._Bumi_Karunia_Pertiwi",
+      "telnet": {
+        "host": "45.149.93.164",
+        "port": "8899",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._DOK_Perkapalan_Waiame": {
+      "name": "TUKS_PT._DOK_Perkapalan_Waiame",
+      "telnet": {
+        "host": "103.118.175.162",
+        "port": "8300",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Triomas_FDI": {
+      "name": "Tersus_PT._Triomas_FDI",
+      "telnet": {
+        "host": "5.181.178.43",
+        "port": "8118",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Daya_Yakin_Engkau_Suka": {
+      "name": "TUKS_PT._Daya_Yakin_Engkau_Suka",
+      "telnet": {
+        "host": "151.242.116.104",
+        "port": "3030",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Pertamina_Marine_Engineering": {
+      "name": "TERSUS_PT._Pertamina_Marine_Engineering",
+      "telnet": {
+        "host": "103.118.175.151",
+        "port": "2034",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Meskom_Agro_Sarimas_(Bengkalis)": {
+      "name": "TUKS_PT._Meskom_Agro_Sarimas_(Bengkalis)",
+      "telnet": {
+        "host": "103.118.175.158",
+        "port": "2032",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Balikpapan_Ready_Mix": {
+      "name": "TUKS_PT._Balikpapan_Ready_Mix",
+      "telnet": {
+        "host": "151.242.116.234",
+        "port": "5002",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._SURYA_SATRIA_TIMUR_Corp": {
+      "name": "TUKS_PT._SURYA_SATRIA_TIMUR_Corp",
+      "telnet": {
+        "host": "103.181.143.182",
+        "port": "15132",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Pertamina_Hulu_Energi_Jetty_Pulai_Gading": {
+      "name": "TUKS_PT._Pertamina_Hulu_Energi_Jetty_Pulai_Gading",
+      "telnet": {
+        "host": "185.111.159.233",
+        "port": "20111",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Pertamina_Hulu_Energi_Jetty_Lalan": {
+      "name": "TUKS_PT._Pertamina_Hulu_Energi_Jetty_Lalan",
+      "telnet": {
+        "host": "185.111.159.233",
+        "port": "20110",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS__PT._Acacia_Andalan_Utama": {
+      "name": "TERSUS__PT._Acacia_Andalan_Utama",
+      "telnet": {
+        "name": "TERSUS__PT._Acacia_Andalan_Utama",
+        "host": "34.128.68.141",
+        "port": "9221",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Sarana_Bina_Semesta": {
+      "name": "TERSUS_PT._Sarana_Bina_Semesta",
+      "telnet": {
+        "host": "34.128.68.141",
+        "port": "9229",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Kelawit_Wanalestari": {
+      "name": "TERSUS_PT._Kelawit_Wanalestari",
+      "telnet": {
+        "host": "34.128.68.141",
+        "port": "9225",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._PANCA_AMARA_UTAMA": {
+      "name": "TERSUS_PT._PANCA_AMARA_UTAMA",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2150",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Pertamina_Patra_Niaga_": {
+      "name": "TUKS_PT._Pertamina_Patra_Niaga_",
+      "telnet": {
+        "host": "191.101.190.134",
+        "port": "3000",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._PANCA_PERMATAKU": {
+      "name": "TUKS_PT._PANCA_PERMATAKU",
+      "telnet": {
+        "name": "TUKS_PT._PANCA_PERMATAKU",
+        "host": "151.242.116.141",
+        "port": "8300",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Mahakam_Sumber_Jaya": {
+      "name": "Tersus_PT._Mahakam_Sumber_Jaya",
+      "telnet": {
+        "host": "36.67.114.66",
+        "port": "8234",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Batubara_Duaribu_Abadi": {
+      "name": "Tersus_PT._Batubara_Duaribu_Abadi",
+      "telnet": {
+        "name": "Tersus_PT._Batubara_Duaribu_Abadi",
+        "host": "45.149.93.164",
+        "port": "8889",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Tambang_Damai": {
+      "name": "Tersus_PT._Tambang_Damai",
+      "telnet": {
+        "host": "36.92.113.58",
+        "port": "1010",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Bumi_Konawe_Minerina": {
+      "name": "TERSUS_PT._Bumi_Konawe_Minerina",
+      "telnet": {
+        "host": "41.216.191.68",
+        "port": "8040",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Eka_Dura_Indonesia": {
+      "name": "TUKS_PT._Eka_Dura_Indonesia",
+      "telnet": {
+        "host": "157.66.34.88",
+        "port": "2050",
+        "parser": "ABVDM"
+      }
+    },
+    "VTS_Batam": {
+      "name": "VTS_Batam",
+      "telnet": {
+        "name": "VTS_Batam",
+        "host": "103.161.146.162",
+        "port": "9800",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT_Balikpapan_Ready_Mix_(Penajam)": {
+      "name": "Tersus_PT_Balikpapan_Ready_Mix_(Penajam)",
+      "telnet": {
+        "host": "45.149.93.170",
+        "port": "8899",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Energi_Unggul_Persada_(Sintang)": {
+      "name": "Tersus_PT._Energi_Unggul_Persada_(Sintang)",
+      "telnet": {
+        "name": "Tersus_PT._Energi_Unggul_Persada_(Sintang)",
+        "host": "36.95.141.42",
+        "port": "8060",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Intraca_Wood_Manufacturing": {
+      "name": "TUKS_PT._Intraca_Wood_Manufacturing",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "56572",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Mahakam_Multi_Lestari": {
+      "name": "TUKS_PT._Mahakam_Multi_Lestari",
+      "telnet": {
+        "host": "157.10.161.134",
+        "port": "2026",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Dua_Samudera_Perkasa": {
+      "name": "Tersus_PT._Dua_Samudera_Perkasa",
+      "telnet": {
+        "host": "45.115.138.55",
+        "port": "20013",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._ALHASANIE": {
+      "name": "TUKS_PT._ALHASANIE",
+      "telnet": {
+        "host": "103.181.143.233",
+        "port": "5010",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Gunajaya_Karya_Gemilang_": {
+      "name": "TERSUS_PT._Gunajaya_Karya_Gemilang_",
+      "telnet": {
+        "name": "TERSUS_PT._Gunajaya_Karya_Gemilang_",
+        "host": "191.101.190.52",
+        "port": "5433",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS__PT._ALASKA_DWIPA_PERDANA": {
+      "name": "TERSUS__PT._ALASKA_DWIPA_PERDANA",
+      "telnet": {
+        "name": "TERSUS__PT._ALASKA_DWIPA_PERDANA",
+        "host": "103.195.65.76",
+        "port": "5000",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._PAL_Indonesia_Lamongan": {
+      "name": "Tersus_PT._PAL_Indonesia_Lamongan",
+      "telnet": {
+        "name": "Tersus_PT._PAL_Indonesia_Lamongan",
+        "host": "185.111.159.233",
+        "port": "20113",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Batubara_Duaribu__Abadi": {
+      "name": "Tersus_PT._Batubara_Duaribu__Abadi",
+      "telnet": {
+        "host": "45.149.93.164",
+        "port": "8889",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Global_Arta_Borneo": {
+      "name": "TUKS_PT._Global_Arta_Borneo",
+      "telnet": {
+        "host": "103.181.143.233",
+        "port": "5005",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Kayan_Marine_Shipyard": {
+      "name": "TUKS_PT._Kayan_Marine_Shipyard",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "56582",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Dewa_Ruci_Agung": {
+      "name": "TUKS_PT._Dewa_Ruci_Agung",
+      "telnet": {
+        "host": "151.242.116.151",
+        "port": "2035",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Baturona_Adimulya": {
+      "name": "Tersus_PT._Baturona_Adimulya",
+      "telnet": {
+        "host": "103.189.206.84",
+        "port": "5232",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._WANA_KENCANA_MINERAL": {
+      "name": "TERSUS_PT._WANA_KENCANA_MINERAL",
+      "telnet": {
+        "host": "202.10.36.133",
+        "port": "2143",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Petromine_Energy_Trading": {
+      "name": "Tersus_PT._Petromine_Energy_Trading",
+      "telnet": {
+        "host": "103.119.117.75",
+        "port": "3333",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Benua_Laut_Lepas": {
+      "name": "TUKS_PT._Benua_Laut_Lepas",
+      "telnet": {
+        "host": "185.111.159.233",
+        "port": "20114",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Borneo_Emas_Hitam_(kutai)": {
+      "name": "TUKS_PT._Borneo_Emas_Hitam_(kutai)",
+      "telnet": {
+        "host": "10.187.147.59",
+        "port": "6040",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._KUMALA_BAHARI_TERMINAL": {
+      "name": "TUKS_PT._KUMALA_BAHARI_TERMINAL",
+      "telnet": {
+        "host": "45.149.93.151",
+        "port": "8300",
+        "parser": "ABVDM"
+      }
+    },
+    "srop_Probolinggo": {
+      "name": "srop_Probolinggo",
+      "telnet": {
+        "host": "103.56.92.239",
+        "port": "5232",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Tirta_Dan_Mitra_Pertiwi": {
+      "name": "Tersus_PT._Tirta_Dan_Mitra_Pertiwi",
+      "telnet": {
+        "host": "41.216.191.97",
+        "port": "2037",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Haji_Maming_Pelabuhan_": {
+      "name": "TUKS_PT._Haji_Maming_Pelabuhan_",
+      "telnet": {
+        "host": "36.83.27.187",
+        "port": "8069",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Tanjung_Selatan_Makmur_Jaya": {
+      "name": "TUKS_PT._Tanjung_Selatan_Makmur_Jaya",
+      "telnet": {
+        "host": "103.181.143.233",
+        "port": "5109",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Sawit_Sukses_Sejahtera": {
+      "name": "Tersus_PT._Sawit_Sukses_Sejahtera",
+      "telnet": {
+        "host": "194.233.93.64",
+        "port": "4019",
+        "parser": "ABVDM"
+      }
+    },
+    "TUKS_PT._Kayan_Central_Pratama": {
+      "name": "TUKS_PT._Kayan_Central_Pratama",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "56592",
+        "parser": "ABVDM"
+      }
+    },
+    "Tersus_PT._Kapuas_Armada_Sarana": {
+      "name": "Tersus_PT._Kapuas_Armada_Sarana",
+      "telnet": {
+        "host": "103.154.81.54",
+        "port": "8047",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._Kayan_LNG_Nusantara": {
+      "name": "TERSUS_PT._Kayan_LNG_Nusantara",
+      "telnet": {
+        "host": "202.150.138.45",
+        "port": "56602",
+        "parser": "ABVDM"
+      }
+    },
+    "TERSUS_PT._BANGUN_MELAWI_PERSADA": {
+      "name": "TERSUS_PT._BANGUN_MELAWI_PERSADA",
+      "telnet": {
+        "host": "31.56.78.233",
+        "port": "5002",
+        "parser": "ABVDM"
+      }
+    }
+  }
+}
