@@ -1,20 +1,26 @@
 import { NestFactory } from '@nestjs/core';
+
 import { AppModule } from './app.module';
 
 async function bootstrap() {
-  console.log('🚀 Starting AIS Backend...');
+  console.log('========================================');
+  console.log('🚢 AIS BACKEND STARTING');
+  console.log('========================================');
 
   try {
-    console.log('📦 Creating Nest application...');
+    console.log('📦 Creating NestJS application...');
 
     const app = await NestFactory.create(AppModule);
 
-    console.log('✅ Nest application created');
+    console.log('✅ NestJS application created');
 
     app.enableCors({
       origin: ['http://localhost:3001', 'http://127.0.0.1:3001'],
+
       methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
+
       allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
+
       credentials: true,
     });
 
@@ -24,10 +30,14 @@ async function bootstrap() {
 
     await app.listen(port);
 
-    console.log(`🚢 AIS Backend running at http://localhost:${port}`);
-    console.log('✅ Server is ready');
+    console.log('========================================');
+    console.log(`🚀 AIS Backend running on port ${port}`);
+    console.log(`🌍 http://localhost:${port}`);
+    console.log('========================================');
   } catch (error) {
-    console.error('❌ Failed to start AIS Backend');
+    console.error('========================================');
+    console.error('❌ FAILED TO START AIS BACKEND');
+    console.error('========================================');
 
     if (error instanceof Error) {
       console.error('Message:', error.message);
