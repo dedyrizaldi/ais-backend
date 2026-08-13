@@ -15,6 +15,8 @@ import { TcpModule } from './tcp/tcp.module';
 
 import { GatewayModule } from './gateway/gateway.module';
 
+import { DatabaseModule } from './database/database.module';
+
 @Module({
   imports: [
     LoggerModule,
@@ -28,6 +30,8 @@ import { GatewayModule } from './gateway/gateway.module';
     TcpModule,
 
     GatewayModule,
+
+    DatabaseModule,
 
     /**
      * ReceiverModule SEMENTARA DIMATIKAN

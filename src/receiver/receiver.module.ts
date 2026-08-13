@@ -5,7 +5,9 @@ import { ReceiverService } from './receiver.service';
 
 @Module({
   controllers: [ReceiverController],
+
   providers: [ReceiverService],
-  exports: [ReceiverService], // WAJIB
+
+  exports: [ReceiverService],
 })
 export class ReceiverModule {}

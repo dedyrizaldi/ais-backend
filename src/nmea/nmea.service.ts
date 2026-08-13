@@ -14,17 +14,8 @@ export class NmeaService {
 
   /**
    * ============================================================
-   * HANDLE ALL NMEA MESSAGES
+   * HANDLE NMEA MESSAGES
    * ============================================================
-   *
-   * NMEA Service hanya bertugas melakukan routing.
-   *
-   * AIS  -> AisService
-   * GPS  -> GPS handler
-   * VENDOR -> Vendor handler
-   * UNKNOWN -> Unknown handler
-   *
-   * Tidak ada logging setiap packet di sini.
    */
   handle(messages: NmeaMessage[]): void {
     for (const message of messages) {
@@ -71,23 +62,10 @@ export class NmeaService {
 
   /**
    * ============================================================
-   * AIS SENTENCE
+   * HANDLE AIS
    * ============================================================
    */
   private handleAis(message: NmeaMessage): void {
-    /**
-     * ========================================================
-     * SEND TO AIS SERVICE
-     * ========================================================
-     *
-     * AisService yang akan:
-     *
-     * 1. Parse AIS
-     * 2. Assemble multipart
-     * 3. Decode Type 5 / dynamic message
-     * 4. Update VesselCache
-     * 5. Broadcast WebSocket
-     */
     this.aisService.handle(
       message.receiverId,
       message.receiverName,
@@ -97,33 +75,46 @@ export class NmeaService {
 
   /**
    * ============================================================
-   * GPS SENTENCE
+   * HANDLE GPS
    * ============================================================
-   *
-   * Untuk sekarang GPS belum diproses.
-   *
-   * Jangan melakukan logging setiap packet karena
-   * receiver dapat mengirim data dengan frekuensi tinggi.
    */
   private handleGps(_message: NmeaMessage): void {
-    return;
+    /**
+     * GPS belum diproses.
+     */
   }
 
   /**
    * ============================================================
-   * VENDOR SENTENCE
+   * HANDLE VENDOR
    * ============================================================
    */
   private handleVendor(_message: NmeaMessage): void {
-    return;
+    /**
+     * Vendor belum diproses.
+     */
   }
 
   /**
    * ============================================================
-   * UNKNOWN SENTENCE
+   * HANDLE UNKNOWN
    * ============================================================
    */
   private handleUnknown(_message: NmeaMessage): void {
-    return;
+    /**
+     * Unknown belum diproses.
+     */
+  }
+
+  /**
+   * ============================================================
+   * GET AIS STATISTICS
+   * ============================================================
+   *
+   * Statistik AIS berasal langsung dari
+   * AisService.
+   */
+  getAisStats(receiverId: string) {
+    return this.aisService.getStats(receiverId);
   }
 }

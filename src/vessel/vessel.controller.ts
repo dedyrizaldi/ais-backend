@@ -8,7 +8,7 @@ export class VesselController {
 
   /**
    * ============================================================
-   * GET ALL VESSELS
+   * SEMUA VESSEL REALTIME
    * ============================================================
    *
    * GET /vessels
@@ -20,7 +20,41 @@ export class VesselController {
 
   /**
    * ============================================================
-   * GET VESSEL COUNT
+   * VESSEL DATABASE
+   * ============================================================
+   *
+   * Pagination + Search.
+   *
+   * GET /vessels/database
+   *
+   * GET /vessels/database?page=1&limit=20
+   *
+   * GET /vessels/database?search=BUANA
+   *
+   * GET /vessels/database?search=525200997
+   *
+   * GET /vessels/database?search=YBDSPVT
+   *
+   * GET /vessels/database?search=BUANA&page=2&limit=20
+   */
+  @Get('database')
+  findAllFromDatabase(
+    @Query('page') page?: string,
+    @Query('limit') limit?: string,
+    @Query('search') search?: string,
+  ) {
+    return this.vesselService.findAllFromDatabase(
+      page ? Number(page) : 1,
+
+      limit ? Number(limit) : 50,
+
+      search,
+    );
+  }
+
+  /**
+   * ============================================================
+   * TOTAL VESSEL REALTIME
    * ============================================================
    *
    * GET /vessels/count
@@ -34,7 +68,7 @@ export class VesselController {
 
   /**
    * ============================================================
-   * GET VESSELS BY MAP BOUNDS
+   * VESSEL DALAM AREA PETA
    * ============================================================
    *
    * GET /vessels/map
@@ -54,83 +88,105 @@ export class VesselController {
     @Query('east') east: string,
     @Query('west') west: string,
   ) {
-    const northValue = Number(north);
-
-    const southValue = Number(south);
-
-    const eastValue = Number(east);
-
-    const westValue = Number(west);
-
-    /**
-     * Pastikan semua parameter
-     * merupakan angka valid.
-     */
-    if (
-      !Number.isFinite(northValue) ||
-      !Number.isFinite(southValue) ||
-      !Number.isFinite(eastValue) ||
-      !Number.isFinite(westValue)
-    ) {
-      return [];
-    }
-
     return this.vesselService.findByBounds(
-      northValue,
-      southValue,
-      eastValue,
-      westValue,
+      Number(north),
+      Number(south),
+      Number(east),
+      Number(west),
     );
   }
 
   /**
    * ============================================================
-   * CLEANUP
+   * CLEANUP CACHE
    * ============================================================
    *
    * GET /vessels/cleanup
    *
    * Contoh:
    *
-   * /vessels/cleanup
-   *
    * /vessels/cleanup?timeout=15
    */
   @Get('cleanup')
   cleanup(@Query('timeout') timeout?: string) {
-    const timeoutValue = timeout !== undefined ? Number(timeout) : 15;
-
-    /**
-     * Kalau timeout tidak valid,
-     * gunakan default 15 menit.
-     */
-    const timeoutMinutes =
-      Number.isFinite(timeoutValue) && timeoutValue > 0 ? timeoutValue : 15;
+    const timeoutMinutes = timeout ? Number(timeout) : 15;
 
     const removed = this.vesselService.cleanup(timeoutMinutes);
 
     return {
       removed,
+
       total: this.vesselService.count(),
     };
   }
 
   /**
    * ============================================================
-   * GET VESSEL DETAIL
+   * POSISI TERAKHIR VESSEL
    * ============================================================
+   *
+   * GET /vessels/:mmsi/position
+   *
+   * Contoh:
+   *
+   * /vessels/525200100/position
+   */
+  @Get(':mmsi/position')
+  async latestPosition(@Param('mmsi') mmsi: string) {
+    return this.vesselService.getLatestPosition(mmsi);
+  }
+
+  /**
+   * ============================================================
+   * HISTORI POSISI VESSEL
+   * ============================================================
+   *
+   * GET /vessels/:mmsi/history
+   *
+   * Contoh:
+   *
+   * /vessels/525200100/history
+   *
+   * /vessels/525200100/history?page=1&limit=20
+   */
+  @Get(':mmsi/history')
+  async positionHistory(
+    @Param('mmsi') mmsi: string,
+    @Query('page') page?: string,
+    @Query('limit') limit?: string,
+  ) {
+    return this.vesselService.getPositionHistory(
+      mmsi,
+
+      page ? Number(page) : 1,
+
+      limit ? Number(limit) : 50,
+    );
+  }
+
+  /**
+   * ============================================================
+   * DETAIL VESSEL
+   * ============================================================
+   *
+   * Prioritas:
+   *
+   * 1. Realtime cache
+   * 2. PostgreSQL
    *
    * GET /vessels/:mmsi
    */
   @Get(':mmsi')
-  findOne(@Param('mmsi') mmsi: string) {
+  async findOne(@Param('mmsi') mmsi: string) {
     return this.vesselService.findOne(mmsi);
   }
 
   /**
    * ============================================================
-   * DELETE VESSEL
+   * HAPUS VESSEL DARI CACHE
    * ============================================================
+   *
+   * Database TIDAK dihapus.
    *
    * DELETE /vessels/:mmsi
    */

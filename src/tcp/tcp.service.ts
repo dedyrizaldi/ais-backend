@@ -14,21 +14,23 @@ import { TcpClient } from './tcp.client';
 export class TcpService implements OnModuleInit {
   /**
    * ============================================================
-   * SELURUH KONEKSI TCP
+   * TCP CLIENTS
    * ============================================================
    */
   private readonly clients = new Map<string, TcpClient>();
 
   /**
    * ============================================================
-   * NMEA STREAM PROCESSOR
+   * NMEA PROCESSOR
    * ============================================================
    */
   private readonly processor = new NmeaProcessor();
 
   constructor(
     private readonly receiverService: ReceiverService,
+
     private readonly nmeaService: NmeaService,
+
     private readonly logger: LoggerService,
   ) {}
 
@@ -43,7 +45,7 @@ export class TcpService implements OnModuleInit {
 
   /**
    * ============================================================
-   * INITIALIZE RECEIVERS
+   * INITIALIZE
    * ============================================================
    */
   private initialize(): void {
@@ -64,6 +66,7 @@ export class TcpService implements OnModuleInit {
   private createConnection(receiver: ReceiverConnection): void {
     const client = new TcpClient(
       receiver,
+
       {
         /**
          * ==================================================
@@ -86,10 +89,9 @@ export class TcpService implements OnModuleInit {
           this.logger.tcp(`Disconnected -> ${receiver.name}`);
 
           /**
-           * Auto reconnect.
-           *
-           * Tunggu 5 detik sebelum mencoba
-           * koneksi kembali.
+           * ==================================================
+           * AUTO RECONNECT
+           * ==================================================
            */
           setTimeout(() => {
             this.logger.tcp(`Reconnect -> ${receiver.name}`);
@@ -102,30 +104,12 @@ export class TcpService implements OnModuleInit {
          * ==================================================
          * DATA
          * ==================================================
-         *
-         * Semua raw TCP data langsung diberikan
-         * kepada NmeaProcessor.
-         *
-         * Tidak ada console.log.
-         *
-         * Tidak ada console.warn.
-         *
-         * Tidak ada dump raw AIS.
          */
         data: (receiver, data) => {
           /**
            * ==================================================
-           * NMEA PROCESSOR
+           * PROCESS NMEA
            * ==================================================
-           *
-           * TCP merupakan stream.
-           *
-           * NmeaProcessor bertugas:
-           *
-           * 1. Menangani buffer
-           * 2. Memisahkan sentence
-           * 3. Normalisasi Tag Block
-           * 4. Mendeteksi tipe NMEA
            */
           const messages = this.processor.process(
             receiver.id,
@@ -135,16 +119,12 @@ export class TcpService implements OnModuleInit {
 
           /**
            * ==================================================
-           * NMEA SERVICE
+           * SEND TO NMEA SERVICE
            * ==================================================
-           *
-           * AIS akan diteruskan ke:
-           *
-           * NmeaService
-           *     ↓
-           * AisService
            */
-          this.nmeaService.handle(messages);
+          if (messages.length > 0) {
+            this.nmeaService.handle(messages);
+          }
         },
 
         /**
@@ -156,6 +136,7 @@ export class TcpService implements OnModuleInit {
           this.logger.error(`[${receiver.name}] ${error.message}`);
         },
       },
+
       this.logger,
     );
 
@@ -176,7 +157,7 @@ export class TcpService implements OnModuleInit {
 
   /**
    * ============================================================
-   * ALL CLIENTS
+   * FIND ALL
    * ============================================================
    */
   findAll(): Map<string, TcpClient> {
@@ -185,7 +166,7 @@ export class TcpService implements OnModuleInit {
 
   /**
    * ============================================================
-   * FIND ONE CLIENT
+   * FIND ONE
    * ============================================================
    */
   findOne(id: string): TcpClient | undefined {
@@ -194,7 +175,7 @@ export class TcpService implements OnModuleInit {
 
   /**
    * ============================================================
-   * CONNECTED RECEIVER COUNT
+   * CONNECTED COUNT
    * ============================================================
    */
   getConnectedCount(): number {
@@ -211,7 +192,7 @@ export class TcpService implements OnModuleInit {
 
   /**
    * ============================================================
-   * TOTAL RECEIVER COUNT
+   * TOTAL COUNT
    * ============================================================
    */
   getTotalCount(): number {
@@ -220,18 +201,99 @@ export class TcpService implements OnModuleInit {
 
   /**
    * ============================================================
-   * RECEIVER STATUS
+   * GET STATUS
    * ============================================================
+   *
+   * Menggabungkan:
+   *
+   * TCP
+   * NMEA
+   * AIS
    */
-  getStatus(): Array<
-    ReceiverConnection & {
-      connected: boolean;
-    }
-  > {
-    return Array.from(this.clients.values()).map((client) => ({
-      ...client.getOptions(),
+  getStatus() {
+    return Array.from(this.clients.values()).map((client) => {
+      /**
+       * ======================================================
+       * RECEIVER
+       * ======================================================
+       */
+      const receiver = client.getOptions();
 
-      connected: client.isConnected(),
-    }));
+      /**
+       * ======================================================
+       * NMEA STATISTICS
+       * ======================================================
+       */
+      const nmea = this.processor.getStats(receiver.id);
+
+      /**
+       * ======================================================
+       * AIS STATISTICS
+       * ======================================================
+       */
+      const ais = this.nmeaService.getAisStats(receiver.id);
+
+      /**
+       * ======================================================
+       * RESPONSE
+       * ======================================================
+       */
+      return {
+        ...receiver,
+
+        /**
+         * ==================================================
+         * TCP
+         * ==================================================
+         */
+        connected: client.isConnected(),
+
+        receiving: client.isReceiving(60_000),
+
+        messageCount: client.getMessageCount(),
+
+        lastMessageAt: client.getLastMessageAt() ?? null,
+
+        lastError: client.getLastError() ?? null,
+
+        /**
+         * ==================================================
+         * NMEA
+         * ==================================================
+         */
+        nmea: {
+          total: nmea.total,
+
+          ais: nmea.ais,
+
+          gps: nmea.gps,
+
+          vendor: nmea.vendor,
+
+          unknown: nmea.unknown,
+        },
+
+        /**
+         * ==================================================
+         * AIS
+         * ==================================================
+         */
+        ais: {
+          received: ais.received,
+
+          parsed: ais.parsed,
+
+          assembled: ais.assembled,
+
+          decoded: ais.decoded,
+
+          failed: ais.failed,
+
+          vesselUpdated: ais.vesselUpdated,
+
+          lastDecodedAt: ais.lastDecodedAt,
+        },
+      };
+    });
   }
 }

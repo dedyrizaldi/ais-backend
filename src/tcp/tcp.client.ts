@@ -24,6 +24,45 @@ export class TcpClient {
 
   /**
    * ============================================================
+   * DATA STATISTICS
+   * ============================================================
+   *
+   * Jumlah event "data" yang diterima
+   * dari TCP socket.
+   *
+   * CATATAN:
+   *
+   * Ini bukan jumlah NMEA sentence.
+   *
+   * TCP merupakan stream sehingga satu event
+   * data dapat berisi:
+   *
+   * - satu sentence
+   * - beberapa sentence
+   * - sebagian sentence
+   */
+  private messageCount = 0;
+
+  /**
+   * ============================================================
+   * LAST DATA AT
+   * ============================================================
+   *
+   * Waktu terakhir menerima data dari socket.
+   */
+  private lastMessageAt?: Date;
+
+  /**
+   * ============================================================
+   * LAST ERROR
+   * ============================================================
+   *
+   * Menyimpan error terakhir dari socket.
+   */
+  private lastError?: string;
+
+  /**
+   * ============================================================
    * CONSTRUCTOR
    * ============================================================
    */
@@ -78,6 +117,11 @@ export class TcpClient {
       () => {
         this.connected = true;
 
+        /**
+         * Reset error setelah berhasil connect.
+         */
+        this.lastError = undefined;
+
         this.logger.tcp(
           `Connected -> ${this.options.name} ` +
             `(${this.options.host}:${this.options.port})`,
@@ -105,11 +149,26 @@ export class TcpClient {
      *
      * Jangan log raw TCP data.
      *
-     * Receiver AIS dapat mengirim data terus-menerus.
+     * Receiver AIS dapat mengirim data
+     * terus-menerus.
      *
-     * Raw data langsung diteruskan ke TcpService.
+     * Raw data tetap diteruskan ke TcpService.
      */
     this.socket.on('data', (data: string) => {
+      /**
+       * ====================================================
+       * UPDATE STATISTICS
+       * ====================================================
+       */
+      this.messageCount += 1;
+
+      this.lastMessageAt = new Date();
+
+      /**
+       * ====================================================
+       * FORWARD DATA
+       * ====================================================
+       */
       this.events.data?.(this.options, data);
     });
 
@@ -133,6 +192,11 @@ export class TcpClient {
      */
     this.socket.on('error', (error: Error) => {
       this.connected = false;
+
+      /**
+       * Simpan error terakhir.
+       */
+      this.lastError = error.message;
 
       this.logger.error(`[TCP][${this.options.name}] ` + `${error.message}`);
 
@@ -209,5 +273,75 @@ export class TcpClient {
    */
   getOptions(): ConnectionOptions {
     return this.options;
+  }
+
+  /**
+   * ============================================================
+   * GET MESSAGE COUNT
+   * ============================================================
+   *
+   * Mengembalikan jumlah event data
+   * yang diterima dari socket.
+   */
+  getMessageCount(): number {
+    return this.messageCount;
+  }
+
+  /**
+   * ============================================================
+   * GET LAST MESSAGE AT
+   * ============================================================
+   *
+   * Mengembalikan waktu terakhir
+   * menerima data.
+   */
+  getLastMessageAt(): Date | undefined {
+    return this.lastMessageAt;
+  }
+
+  /**
+   * ============================================================
+   * GET LAST ERROR
+   * ============================================================
+   */
+  getLastError(): string | undefined {
+    return this.lastError;
+  }
+
+  /**
+   * ============================================================
+   * HAS DATA
+   * ============================================================
+   *
+   * Mengecek apakah receiver pernah
+   * menerima data.
+   */
+  hasReceivedData(): boolean {
+    return this.messageCount > 0;
+  }
+
+  /**
+   * ============================================================
+   * IS RECEIVING
+   * ============================================================
+   *
+   * Mengecek apakah receiver sedang
+   * menerima data berdasarkan timestamp.
+   *
+   * Default:
+   *
+   * 60 detik.
+   */
+  isReceiving(timeoutMs = 60_000): boolean {
+    /**
+     * Belum pernah menerima data.
+     */
+    if (!this.lastMessageAt) {
+      return false;
+    }
+
+    const elapsed = Date.now() - this.lastMessageAt.getTime();
+
+    return elapsed <= timeoutMs;
   }
 }

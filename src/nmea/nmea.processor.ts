@@ -3,6 +3,33 @@ import {
   NmeaSentenceType,
 } from './interfaces/nmea-message.interface';
 
+export interface NmeaProcessStats {
+  /**
+   * Jumlah sentence yang berhasil diproses.
+   */
+  total: number;
+
+  /**
+   * Jumlah AIS sentence.
+   */
+  ais: number;
+
+  /**
+   * Jumlah GPS sentence.
+   */
+  gps: number;
+
+  /**
+   * Jumlah vendor sentence.
+   */
+  vendor: number;
+
+  /**
+   * Jumlah sentence yang tidak dikenali.
+   */
+  unknown: number;
+}
+
 export class NmeaProcessor {
   /**
    * ============================================================
@@ -17,6 +44,13 @@ export class NmeaProcessor {
 
   /**
    * ============================================================
+   * STATISTICS PER RECEIVER
+   * ============================================================
+   */
+  private readonly statistics = new Map<string, NmeaProcessStats>();
+
+  /**
+   * ============================================================
    * PROCESS TCP CHUNK
    * ============================================================
    */
@@ -26,17 +60,23 @@ export class NmeaProcessor {
     chunk: string,
   ): NmeaMessage[] {
     /**
-     * Ambil sisa buffer sebelumnya.
+     * ========================================================
+     * GET PREVIOUS BUFFER
+     * ========================================================
      */
     const previous = this.buffers.get(receiverId) ?? '';
 
     /**
-     * Gabungkan dengan chunk baru.
+     * ========================================================
+     * MERGE BUFFER + CHUNK
+     * ========================================================
      */
     const merged = previous + chunk;
 
     /**
-     * Pecah berdasarkan line ending.
+     * ========================================================
+     * SPLIT LINES
+     * ========================================================
      *
      * Support:
      *
@@ -47,23 +87,21 @@ export class NmeaProcessor {
 
     /**
      * ========================================================
-     * SIMPAN INCOMPLETE LINE
+     * SAVE INCOMPLETE LINE
      * ========================================================
      *
-     * TCP stream dapat memotong sentence:
-     *
-     * Chunk 1:
-     * !AIVDM,1,1,,A,15Muq...
-     *
-     * Chunk 2:
-     * ...,0*77\r\n
-     *
-     * Maka line terakhir harus disimpan
-     * untuk chunk berikutnya.
+     * Line terakhir belum tentu lengkap.
      */
     const incomplete = lines.pop() ?? '';
 
     this.buffers.set(receiverId, incomplete);
+
+    /**
+     * ========================================================
+     * GET STATISTICS
+     * ========================================================
+     */
+    const stats = this.getOrCreateStats(receiverId);
 
     /**
      * ========================================================
@@ -73,6 +111,11 @@ export class NmeaProcessor {
     const messages: NmeaMessage[] = [];
 
     for (const raw of lines) {
+      /**
+       * ======================================================
+       * NORMALIZE
+       * ======================================================
+       */
       const sentence = raw.trim();
 
       /**
@@ -87,9 +130,43 @@ export class NmeaProcessor {
        * NORMALIZE SENTENCE
        * ======================================================
        *
-       * Hilangkan NMEA Tag Block sebelum AIS sentence.
+       * Hilangkan NMEA Tag Block sebelum
+       * AIS sentence.
        */
       const normalized = this.normalizeSentence(sentence);
+
+      /**
+       * ======================================================
+       * DETECT TYPE
+       * ======================================================
+       */
+      const type = this.detectType(normalized);
+
+      /**
+       * ======================================================
+       * UPDATE STATISTICS
+       * ======================================================
+       */
+      stats.total += 1;
+
+      switch (type) {
+        case NmeaSentenceType.AIS:
+          stats.ais += 1;
+          break;
+
+        case NmeaSentenceType.GPS:
+          stats.gps += 1;
+          break;
+
+        case NmeaSentenceType.VENDOR:
+          stats.vendor += 1;
+          break;
+
+        case NmeaSentenceType.UNKNOWN:
+        default:
+          stats.unknown += 1;
+          break;
+      }
 
       /**
        * ======================================================
@@ -103,11 +180,109 @@ export class NmeaProcessor {
 
         raw: normalized,
 
-        type: this.detectType(normalized),
+        type,
       });
     }
 
     return messages;
+  }
+
+  /**
+   * ============================================================
+   * GET OR CREATE STATISTICS
+   * ============================================================
+   */
+  private getOrCreateStats(receiverId: string): NmeaProcessStats {
+    const existing = this.statistics.get(receiverId);
+
+    if (existing) {
+      return existing;
+    }
+
+    const stats: NmeaProcessStats = {
+      total: 0,
+
+      ais: 0,
+
+      gps: 0,
+
+      vendor: 0,
+
+      unknown: 0,
+    };
+
+    this.statistics.set(receiverId, stats);
+
+    return stats;
+  }
+
+  /**
+   * ============================================================
+   * GET STATISTICS
+   * ============================================================
+   *
+   * Mengambil statistik processing
+   * berdasarkan receiver.
+   */
+  getStats(receiverId: string): NmeaProcessStats {
+    const stats = this.statistics.get(receiverId);
+
+    if (!stats) {
+      return {
+        total: 0,
+
+        ais: 0,
+
+        gps: 0,
+
+        vendor: 0,
+
+        unknown: 0,
+      };
+    }
+
+    /**
+     * Return copy agar caller
+     * tidak dapat mengubah state internal.
+     */
+    return {
+      ...stats,
+    };
+  }
+
+  /**
+   * ============================================================
+   * GET ALL STATISTICS
+   * ============================================================
+   */
+  getAllStats(): Map<string, NmeaProcessStats> {
+    return new Map(
+      Array.from(this.statistics.entries()).map(([receiverId, stats]) => [
+        receiverId,
+        {
+          ...stats,
+        },
+      ]),
+    );
+  }
+
+  /**
+   * ============================================================
+   * RESET STATISTICS
+   * ============================================================
+   */
+  resetStats(receiverId: string): void {
+    this.statistics.set(receiverId, {
+      total: 0,
+
+      ais: 0,
+
+      gps: 0,
+
+      vendor: 0,
+
+      unknown: 0,
+    });
   }
 
   /**

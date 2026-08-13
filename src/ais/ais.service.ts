@@ -9,20 +9,94 @@ import { Vessel } from '../vessel/interfaces/vessel.interface';
 
 import { AisGateway } from '../gateway/ais.gateway';
 
+/**
+ * ============================================================
+ * AIS STATISTICS
+ * ============================================================
+ */
+export interface AisServiceStats {
+  /**
+   * Jumlah AIS sentence yang diterima.
+   */
+  received: number;
+
+  /**
+   * Jumlah sentence yang berhasil
+   * diparse menjadi fragment.
+   */
+  parsed: number;
+
+  /**
+   * Jumlah multipart message yang
+   * berhasil menjadi message lengkap.
+   *
+   * Single-part message juga dihitung
+   * sebagai assembled.
+   */
+  assembled: number;
+
+  /**
+   * Jumlah message yang berhasil
+   * didecode oleh AisDecoderService.
+   */
+  decoded: number;
+
+  /**
+   * Jumlah message yang gagal
+   * pada proses decode.
+   */
+  failed: number;
+
+  /**
+   * Jumlah vessel yang berhasil
+   * di-update melalui VesselService.
+   */
+  vesselUpdated: number;
+
+  /**
+   * Waktu terakhir AIS berhasil
+   * didecode.
+   */
+  lastDecodedAt: Date | null;
+}
+
 @Injectable()
 export class AisService {
+  /**
+   * ============================================================
+   * AIS PARSER
+   * ============================================================
+   */
   private readonly parser = new AisParser();
 
+  /**
+   * ============================================================
+   * AIS FRAGMENT ASSEMBLER
+   * ============================================================
+   */
   private readonly assembler = new AisFragmentAssembler();
+
+  /**
+   * ============================================================
+   * STATISTICS
+   * ============================================================
+   *
+   * Statistik disimpan per receiver.
+   */
+  private readonly statistics = new Map<string, AisServiceStats>();
 
   constructor(
     private readonly decoder: AisDecoderService,
+
     private readonly vesselService: VesselService,
+
     private readonly gateway: AisGateway,
   ) {}
 
   /**
-   * Handle satu AIS sentence
+   * ============================================================
+   * HANDLE AIS SENTENCE
+   * ============================================================
    */
   handle(
     receiverId: string,
@@ -30,105 +104,241 @@ export class AisService {
     sentence: string,
   ): Vessel | null {
     /**
-     * Parse sentence menjadi fragment
+     * ========================================================
+     * GET STATISTICS
+     * ========================================================
+     */
+    const stats = this.getOrCreateStats(receiverId);
+
+    /**
+     * ========================================================
+     * RECEIVED
+     * ========================================================
+     *
+     * Sentence AIS sudah sampai
+     * ke AisService.
+     */
+    stats.received += 1;
+
+    /**
+     * ========================================================
+     * PARSE SENTENCE
+     * ========================================================
      */
     const fragment = this.parser.parse(receiverId, receiverName, sentence);
 
+    /**
+     * Parser gagal.
+     */
     if (!fragment) {
+      stats.failed += 1;
+
       return null;
     }
 
     /**
-     * Debug fragment
-     *
-     * Berguna untuk melihat Type 5 multipart.
+     * ========================================================
+     * PARSED
+     * ========================================================
      */
-    // if (fragment.total > 1) {
-    //   console.log('\n========== AIS FRAGMENT ==========');
-
-    //   console.log('Receiver    :', fragment.receiverName);
-    //   console.log('Total       :', fragment.total);
-    //   console.log('Current     :', fragment.current);
-    //   console.log('Sequence ID :', fragment.sequenceId);
-    //   console.log('Channel     :', fragment.channel);
-    //   console.log('Payload     :', fragment.payload);
-    //   console.log('Fill Bits   :', fragment.fillBits);
-
-    //   console.log('==================================\n');
-    // }
+    stats.parsed += 1;
 
     /**
-     * Assemble multipart message
+     * ========================================================
+     * ASSEMBLE MULTIPART MESSAGE
+     * ========================================================
      */
     const completed = this.assembler.assemble(fragment);
 
     /**
-     * Belum lengkap
+     * ========================================================
+     * BELUM LENGKAP
+     * ========================================================
+     *
+     * Ini BUKAN decode failure.
+     *
+     * Contoh:
+     *
+     * !AIVDM,2,1,...
+     *
+     * masih menunggu:
+     *
+     * !AIVDM,2,2,...
      */
     if (!completed) {
       return null;
     }
 
     /**
-     * Debug completed AIS
+     * ========================================================
+     * ASSEMBLED
+     * ========================================================
      */
-    // if (fragment.total > 1) {
-    //   console.log('\n========== AIS COMPLETED ==========');
-
-    //   console.log('Receiver    :', completed.receiverName);
-    //   console.log('Channel     :', completed.channel);
-    //   console.log('Payload     :', completed.payload);
-    //   console.log('Payload Len :', completed.payload.length);
-    //   console.log('Fill Bits   :', completed.fillBits);
-
-    //   console.log('Raw:');
-    //   console.log(completed.raw);
-
-    //   console.log('====================================\n');
-    // }
+    stats.assembled += 1;
 
     /**
-     * Decode AIS
+     * ========================================================
+     * DECODE AIS
+     * ========================================================
      */
     const decoded = this.decoder.decode(completed);
 
+    /**
+     * ========================================================
+     * DECODE FAILED
+     * ========================================================
+     */
     if (!decoded) {
+      stats.failed += 1;
+
       return null;
     }
 
     /**
-     * Debug hasil decoder
+     * ========================================================
+     * DECODED
+     * ========================================================
      */
-    // console.log('\n========== AIS DECODED ==========');
+    stats.decoded += 1;
 
-    // console.log('Receiver    :', decoded.receiverName);
-    // console.log('MessageType :', decoded.messageType);
-    // console.log('MMSI        :', decoded.mmsi);
-    // console.log('Ship Name   :', decoded.shipname);
-    // console.log('Callsign    :', decoded.callsign);
-    // console.log('IMO         :', decoded.imo);
-    // console.log('Destination :', decoded.destination);
-
-    // console.log('Latitude    :', decoded.lat);
-    // console.log('Longitude   :', decoded.lon);
-    // console.log('SOG         :', decoded.sog);
-    // console.log('COG         :', decoded.cog);
-
-    // console.log('=================================\n');
+    stats.lastDecodedAt = new Date();
 
     /**
-     * Update Vessel Cache
+     * ========================================================
+     * UPDATE VESSEL CACHE
+     * ========================================================
      */
     const vessel = this.vesselService.update(decoded);
 
     /**
-     * Broadcast object vessel yang sama
+     * ========================================================
+     * VESSEL UPDATED
+     * ========================================================
+     */
+    stats.vesselUpdated += 1;
+
+    /**
+     * ========================================================
+     * BROADCAST VESSEL
+     * ========================================================
+     *
+     * Gunakan object vessel yang sama
+     * seperti implementasi sebelumnya.
      */
     this.gateway.broadcastVessel(vessel);
 
     /**
-     * Return vessel
+     * ========================================================
+     * RETURN VESSEL
+     * ========================================================
      */
     return vessel;
+  }
+
+  /**
+   * ============================================================
+   * GET OR CREATE STATISTICS
+   * ============================================================
+   */
+  private getOrCreateStats(receiverId: string): AisServiceStats {
+    const existing = this.statistics.get(receiverId);
+
+    if (existing) {
+      return existing;
+    }
+
+    const stats: AisServiceStats = {
+      received: 0,
+
+      parsed: 0,
+
+      assembled: 0,
+
+      decoded: 0,
+
+      failed: 0,
+
+      vesselUpdated: 0,
+
+      lastDecodedAt: null,
+    };
+
+    this.statistics.set(receiverId, stats);
+
+    return stats;
+  }
+
+  /**
+   * ============================================================
+   * GET STATISTICS
+   * ============================================================
+   */
+  getStats(receiverId: string): AisServiceStats {
+    const stats = this.statistics.get(receiverId);
+
+    if (!stats) {
+      return {
+        received: 0,
+
+        parsed: 0,
+
+        assembled: 0,
+
+        decoded: 0,
+
+        failed: 0,
+
+        vesselUpdated: 0,
+
+        lastDecodedAt: null,
+      };
+    }
+
+    /**
+     * Return copy agar state internal
+     * tidak bisa diubah dari luar.
+     */
+    return {
+      ...stats,
+    };
+  }
+
+  /**
+   * ============================================================
+   * GET ALL STATISTICS
+   * ============================================================
+   */
+  getAllStats(): Map<string, AisServiceStats> {
+    return new Map(
+      Array.from(this.statistics.entries()).map(([receiverId, stats]) => [
+        receiverId,
+        {
+          ...stats,
+        },
+      ]),
+    );
+  }
+
+  /**
+   * ============================================================
+   * RESET STATISTICS
+   * ============================================================
+   */
+  resetStats(receiverId: string): void {
+    this.statistics.set(receiverId, {
+      received: 0,
+
+      parsed: 0,
+
+      assembled: 0,
+
+      decoded: 0,
+
+      failed: 0,
+
+      vesselUpdated: 0,
+
+      lastDecodedAt: null,
+    });
   }
 }

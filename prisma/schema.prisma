@@ -1,0 +1,74 @@
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Receiver {
+  id     String  @id
+  name   String
+  host   String
+  port   Int
+  status Boolean @default(true)
+
+  positions VesselPosition[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("receivers")
+}
+
+model Vessel {
+  id   BigInt @id @default(autoincrement())
+  mmsi String @unique
+
+  name     String?
+  callsign String?
+  imo      Int?
+
+  shipType    Int?
+  destination String?
+
+  length Float?
+  width  Float?
+
+  positions VesselPosition[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([name])
+  @@index([imo])
+  @@index([shipType])
+  @@map("vessels")
+}
+
+model VesselPosition {
+  id BigInt @id @default(autoincrement())
+
+  vesselId   BigInt
+  receiverId String
+
+  latitude  Float
+  longitude Float
+
+  sog       Float?
+  cog       Float?
+  heading   Float?
+  navStatus Int?
+
+  recordedAt DateTime @default(now())
+
+  vessel   Vessel   @relation(fields: [vesselId], references: [id], onDelete: Cascade)
+  receiver Receiver @relation(fields: [receiverId], references: [id], onDelete: Cascade)
+
+  @@index([receiverId])
+  @@index([recordedAt])
+  @@index([vesselId, recordedAt])
+  @@map("vessel_positions")
+}
