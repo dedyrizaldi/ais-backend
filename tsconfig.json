@@ -1,22 +1,31 @@
 {
   "compilerOptions": {
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
-    "resolvePackageJsonExports": true,
+    "module": "Node16",
+    "moduleResolution": "Node16",
+
     "esModuleInterop": true,
-    "isolatedModules": true,
-    "declaration": true,
-    "removeComments": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
+
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+
     "target": "ES2023",
+
     "sourceMap": true,
     "outDir": "./dist",
+
+    "declaration": true,
+    "removeComments": true,
+
     "incremental": true,
+
     "skipLibCheck": true,
+
+    "strict": true,
     "strictNullChecks": true,
+
     "forceConsistentCasingInFileNames": true,
+
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false

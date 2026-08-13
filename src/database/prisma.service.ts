@@ -2,8 +2,7 @@ import 'dotenv/config';
 
 import { Injectable, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
 
-import { PrismaPg } from '@prisma/adapter-pg';
-
+import { PrismaMariaDb } from '@prisma/adapter-mariadb';
 import { PrismaClient } from '../generated/prisma/client';
 
 @Injectable()
@@ -12,14 +11,19 @@ export class PrismaService
   implements OnModuleInit, OnModuleDestroy
 {
   constructor() {
-    const connectionString = process.env.DATABASE_URL;
+    const host = process.env.DB_HOST || '127.0.0.1';
+    const port = Number(process.env.DB_PORT || 3306);
+    const user = process.env.DB_USERNAME || 'root';
+    const password = process.env.DB_PASSWORD || '';
+    const database = process.env.DB_DATABASE || 'ais_db';
 
-    if (!connectionString) {
-      throw new Error('DATABASE_URL is not defined');
-    }
-
-    const adapter = new PrismaPg({
-      connectionString,
+    const adapter = new PrismaMariaDb({
+      host,
+      port,
+      user,
+      password,
+      database,
+      connectionLimit: 5,
     });
 
     super({
