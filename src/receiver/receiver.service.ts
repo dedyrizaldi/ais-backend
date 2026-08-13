@@ -43,12 +43,26 @@ export class ReceiverService implements OnModuleInit {
    * LOAD RECEIVERS
    * ============================================================
    *
-   * Membaca konfigurasi receiver dari:
+   * Membaca konfigurasi receiver dari vts.json.
    *
-   * src/receiver/data/vts.json
+   * Development:
+   *   src/receiver/data/vts.json
+   *
+   * Production:
+   *   dist/src/receiver/data/vts.json
+   *
+   * Karena __dirname akan menunjuk ke folder:
+   *
+   *   dist/src/receiver
+   *
+   * pada production, maka kita menggunakan:
+   *
+   *   __dirname/data/vts.json
    */
   private async loadReceivers(): Promise<void> {
-    const filePath = path.join(
+    const productionFilePath = path.join(__dirname, 'data', 'vts.json');
+
+    const developmentFilePath = path.join(
       process.cwd(),
       'src',
       'receiver',
@@ -56,14 +70,38 @@ export class ReceiverService implements OnModuleInit {
       'vts.json',
     );
 
+    let filePath: string;
+
     /**
      * ========================================================
-     * FILE CHECK
+     * FIND CONFIG FILE
      * ========================================================
+     *
+     * Prioritaskan file yang berada di dekat hasil compiled JS.
+     *
+     * Production:
+     *   dist/src/receiver/data/vts.json
+     *
+     * Development:
+     *   src/receiver/data/vts.json
      */
-    if (!fs.existsSync(filePath)) {
-      throw new Error(`Receiver file not found : ${filePath}`);
+    if (fs.existsSync(productionFilePath)) {
+      filePath = productionFilePath;
+    } else if (fs.existsSync(developmentFilePath)) {
+      filePath = developmentFilePath;
+    } else {
+      throw new Error(
+        [
+          'Receiver file not found.',
+          '',
+          'Checked paths:',
+          `1. ${productionFilePath}`,
+          `2. ${developmentFilePath}`,
+        ].join('\n'),
+      );
     }
+
+    this.logger.log(`Loading receiver configuration: ${filePath}`);
 
     /**
      * ========================================================
@@ -124,7 +162,7 @@ export class ReceiverService implements OnModuleInit {
    * ============================================================
    *
    * Sinkronisasi konfigurasi receiver
-   * ke PostgreSQL.
+   * ke database.
    */
   private async syncDatabase(): Promise<void> {
     for (const receiver of this.receivers) {
@@ -197,7 +235,7 @@ export class ReceiverService implements OnModuleInit {
    * ============================================================
    *
    * Mengambil receiver langsung
-   * dari PostgreSQL.
+   * dari database.
    */
   async findAllFromDatabase() {
     return this.prisma.receiver.findMany({
@@ -229,7 +267,7 @@ export class ReceiverService implements OnModuleInit {
    * ============================================================
    *
    * Mengambil satu receiver berdasarkan ID
-   * dari PostgreSQL.
+   * dari database.
    */
   async findOneFromDatabase(id: string) {
     return this.prisma.receiver.findUnique({
