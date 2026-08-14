@@ -33,7 +33,13 @@ export class VesselService implements OnModuleDestroy {
    *
    * Distance TIDAK boleh lagi bypass minimum interval.
    */
-  private readonly POSITION_MIN_DISTANCE_METERS = 100;
+  private readonly POSITION_MIN_DISTANCE_NM = 0.05;
+
+  /** Minimum course change considered significant. */
+  private readonly POSITION_COURSE_CHANGE_DEGREES = 15;
+
+  /** Maximum plausible vessel speed used for jump validation. */
+  private readonly POSITION_MAX_REASONABLE_SPEED_KNOTS = 60;
 
   private readonly POSITION_INTERVAL_STATIONARY_MS = 5 * 60 * 1000;
   private readonly POSITION_INTERVAL_SLOW_MS = 2 * 60 * 1000;
@@ -43,11 +49,12 @@ export class VesselService implements OnModuleDestroy {
   /**
    * Tidak boleh ada vessel yang terlalu lama tanpa history point.
    */
-  private readonly POSITION_MAX_INTERVAL_MS = 2 * 60 * 1000;
+  private readonly POSITION_MAX_INTERVAL_MS = 5 * 60 * 1000;
 
   /**
-   * Posisi yang meloncat terlalu jauh dianggap abnormal.
-   * 10 km dalam satu interval adalah guard sederhana.
+   * Position jump divalidasi berdasarkan elapsed time + knots,
+   * bukan distance absolut, sehingga kapal yang memang bergerak jauh
+   * tidak otomatis dianggap invalid.
    */
   private readonly POSITION_MAX_JUMP_METERS = 10_000;
 
@@ -79,10 +86,13 @@ export class VesselService implements OnModuleDestroy {
     imo?: number;
     shipType?: number;
     destination?: string;
+    recordedAt: Date;
   }> = [];
 
   private positionBufferFlushTimer?: ReturnType<typeof setInterval>;
   private isFlushingPositionBuffer = false;
+  private positionBufferRetryDelayMs = this.POSITION_BATCH_FLUSH_INTERVAL_MS;
+  private nextPositionBufferRetryAt = 0;
 
   /**
    * SMART POSITION DEBUG
@@ -90,7 +100,7 @@ export class VesselService implements OnModuleDestroy {
    * true  -> tampilkan alasan SAVE / SKIP di console.
    * false -> matikan log per AIS position.
    */
-  private readonly POSITION_DEBUG = true;
+  private readonly POSITION_DEBUG = false;
 
   /**
    * ============================================================
@@ -293,7 +303,7 @@ export class VesselService implements OnModuleDestroy {
         console.log(
           `[POSITION][SKIP] ${vessel.mmsi} | ` +
             `reason=${decision.reason} | ` +
-            `distance=${decision.distanceMeters.toFixed(2)}m | ` +
+            `distance=${decision.distanceNm.toFixed(3)}NM | ` +
             `elapsed=${Math.floor(decision.elapsedMs / 1000)}s | ` +
             `interval=${Math.floor(decision.requiredIntervalMs / 1000)}s`,
         );
@@ -304,8 +314,8 @@ export class VesselService implements OnModuleDestroy {
     if (this.POSITION_DEBUG) {
       console.log(
         `[POSITION][BUFFER] ${vessel.mmsi} | reason=${decision.reason}` +
-          (decision.distanceMeters > 0
-            ? ` | distance=${decision.distanceMeters.toFixed(2)}m`
+          (decision.distanceNm > 0
+            ? ` | distance=${decision.distanceNm.toFixed(3)}NM`
             : '') +
           (decision.elapsedMs > 0
             ? ` | elapsed=${Math.floor(decision.elapsedMs / 1000)}s`
@@ -329,6 +339,7 @@ export class VesselService implements OnModuleDestroy {
       imo: vessel.imo,
       shipType: vessel.shipType,
       destination: vessel.destination,
+      recordedAt: new Date(),
     });
 
     /**
@@ -363,23 +374,61 @@ export class VesselService implements OnModuleDestroy {
       Math.cos(toRadians(latitude1)) *
         Math.cos(toRadians(latitude2)) *
         Math.sin(dLon / 2) ** 2;
+
     return EARTH_RADIUS_METERS * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  }
+
+  private calculateDistanceNm(
+    latitude1: number,
+    longitude1: number,
+    latitude2: number,
+    longitude2: number,
+  ): number {
+    return (
+      this.calculateDistanceMeters(
+        latitude1,
+        longitude1,
+        latitude2,
+        longitude2,
+      ) / 1852
+    );
+  }
+
+  private calculateCourseDifference(
+    course1: number | null | undefined,
+    course2: number | null | undefined,
+  ): number {
+    if (course1 == null || course2 == null) {
+      return 0;
+    }
+
+    const diff = Math.abs(course1 - course2) % 360;
+    return Math.min(diff, 360 - diff);
   }
 
   private getPositionPersistenceDecision(vessel: Vessel): {
     shouldPersist: boolean;
-    reason: 'FIRST' | 'DISTANCE' | 'MAX_INTERVAL' | 'TIME' | 'ABNORMAL_JUMP';
-    distanceMeters: number;
+    reason:
+      | 'FIRST'
+      | 'DISTANCE'
+      | 'COURSE_CHANGE'
+      | 'NAV_STATUS_CHANGE'
+      | 'MAX_INTERVAL'
+      | 'TIME'
+      | 'ABNORMAL_JUMP';
+    distanceNm: number;
     elapsedMs: number;
     requiredIntervalMs: number;
+    estimatedSpeedKnots: number;
   } {
-    if (vessel.lat === undefined || vessel.lon === undefined) {
+    if (vessel.lat == null || vessel.lon == null) {
       return {
         shouldPersist: false,
         reason: 'TIME',
-        distanceMeters: 0,
+        distanceNm: 0,
         elapsedMs: 0,
         requiredIntervalMs: 0,
+        estimatedSpeedKnots: 0,
       };
     }
 
@@ -390,63 +439,102 @@ export class VesselService implements OnModuleDestroy {
       return {
         shouldPersist: true,
         reason: 'FIRST',
-        distanceMeters: 0,
+        distanceNm: 0,
         elapsedMs: 0,
         requiredIntervalMs,
+        estimatedSpeedKnots: 0,
       };
     }
 
-    const distanceMeters = this.calculateDistanceMeters(
+    const distanceNm = this.calculateDistanceNm(
       previous.latitude,
       previous.longitude,
       vessel.lat,
       vessel.lon,
     );
 
-    const elapsedMs = Date.now() - previous.recordedAt;
+    const elapsedMs = Math.max(0, Date.now() - previous.recordedAt);
+    const elapsedHours = elapsedMs / 3_600_000;
+    const estimatedSpeedKnots =
+      elapsedHours > 0 ? distanceNm / elapsedHours : 0;
 
     /**
-     * Guard terhadap GPS/AIS position jump yang tidak masuk akal.
+     * A distance jump is not automatically invalid.
+     * Validate it against elapsed time and a conservative speed limit.
      */
-    if (distanceMeters > this.POSITION_MAX_JUMP_METERS) {
+    if (
+      elapsedMs > 0 &&
+      estimatedSpeedKnots > this.POSITION_MAX_REASONABLE_SPEED_KNOTS
+    ) {
       return {
         shouldPersist: false,
         reason: 'ABNORMAL_JUMP',
-        distanceMeters,
+        distanceNm,
         elapsedMs,
         requiredIntervalMs,
+        estimatedSpeedKnots,
       };
     }
 
+    const navStatusChanged =
+      previous.navStatus != null &&
+      vessel.navStatus != null &&
+      previous.navStatus !== vessel.navStatus;
+
     /**
-     * IMPORTANT:
-     *
-     * Minimum interval adalah HARD LIMIT.
-     * Distance tidak boleh bypass interval.
+     * Navigational status changes are rare but operationally important,
+     * so they are allowed to trigger a history point immediately.
      */
+    if (navStatusChanged) {
+      return {
+        shouldPersist: true,
+        reason: 'NAV_STATUS_CHANGE',
+        distanceNm,
+        elapsedMs,
+        requiredIntervalMs,
+        estimatedSpeedKnots,
+      };
+    }
+
+    /** Hard lower bound: ordinary position writes cannot happen faster. */
     if (elapsedMs < requiredIntervalMs) {
       return {
         shouldPersist: false,
         reason: 'TIME',
-        distanceMeters,
+        distanceNm,
         elapsedMs,
         requiredIntervalMs,
+        estimatedSpeedKnots,
       };
     }
 
-    /**
-     * Setelah minimum interval terpenuhi:
-     *
-     * 1. Bergerak signifikan -> SAVE
-     * 2. Sudah terlalu lama   -> SAVE
-     */
-    if (distanceMeters >= this.POSITION_MIN_DISTANCE_METERS) {
+    const courseChange = this.calculateCourseDifference(
+      previous.cog,
+      vessel.cog,
+    );
+
+    if (
+      courseChange >= this.POSITION_COURSE_CHANGE_DEGREES &&
+      elapsedMs >= requiredIntervalMs
+    ) {
+      return {
+        shouldPersist: true,
+        reason: 'COURSE_CHANGE',
+        distanceNm,
+        elapsedMs,
+        requiredIntervalMs,
+        estimatedSpeedKnots,
+      };
+    }
+
+    if (distanceNm >= this.POSITION_MIN_DISTANCE_NM) {
       return {
         shouldPersist: true,
         reason: 'DISTANCE',
-        distanceMeters,
+        distanceNm,
         elapsedMs,
         requiredIntervalMs,
+        estimatedSpeedKnots,
       };
     }
 
@@ -454,18 +542,20 @@ export class VesselService implements OnModuleDestroy {
       return {
         shouldPersist: true,
         reason: 'MAX_INTERVAL',
-        distanceMeters,
+        distanceNm,
         elapsedMs,
         requiredIntervalMs,
+        estimatedSpeedKnots,
       };
     }
 
     return {
       shouldPersist: false,
       reason: 'TIME',
-      distanceMeters,
+      distanceNm,
       elapsedMs,
       requiredIntervalMs,
+      estimatedSpeedKnots,
     };
   }
 
@@ -492,6 +582,10 @@ export class VesselService implements OnModuleDestroy {
    */
 
   private async flushPositionBuffer(): Promise<void> {
+    if (Date.now() < this.nextPositionBufferRetryAt) {
+      return;
+    }
+
     if (this.isFlushingPositionBuffer) {
       return;
     }
@@ -550,10 +644,7 @@ export class VesselService implements OnModuleDestroy {
           const vesselId = vesselIdByMmsi.get(item.mmsi);
 
           if (vesselId === undefined) {
-            console.error(
-              `[DATABASE][POSITION] ${item.mmsi}: vessel not found after ensure`,
-            );
-            return null;
+            throw new Error(`Vessel ${item.mmsi} not found after ensure`);
           }
 
           return {
@@ -565,7 +656,7 @@ export class VesselService implements OnModuleDestroy {
             cog: item.cog,
             heading: item.heading,
             navStatus: item.navStatus,
-            recordedAt: new Date(),
+            recordedAt: item.recordedAt,
           };
         })
         .filter(
@@ -598,13 +689,16 @@ export class VesselService implements OnModuleDestroy {
         this.lastPersistedPositions.set(item.mmsi, {
           latitude: item.latitude,
           longitude: item.longitude,
-          recordedAt: Date.now(),
+          recordedAt: item.recordedAt.getTime(),
           cog: item.cog,
           navStatus: item.navStatus,
         });
 
         this.pendingPositionSaves.delete(item.mmsi);
       }
+
+      this.positionBufferRetryDelayMs = this.POSITION_BATCH_FLUSH_INTERVAL_MS;
+      this.nextPositionBufferRetryAt = 0;
 
       if (this.POSITION_DEBUG) {
         console.log(
@@ -621,30 +715,31 @@ export class VesselService implements OnModuleDestroy {
        */
       this.positionBuffer.unshift(...batch);
 
+      this.nextPositionBufferRetryAt =
+        Date.now() + this.positionBufferRetryDelayMs;
+      this.positionBufferRetryDelayMs = Math.min(
+        this.positionBufferRetryDelayMs * 2,
+        60_000,
+      );
+
       if (error instanceof Error) {
-        console.error(`[DATABASE][POSITION][BATCH] failed: ${error.message}`);
+        console.error(
+          `[DATABASE][POSITION][BATCH] failed: ${error.message} ` +
+            `retryIn=${Math.ceil((this.nextPositionBufferRetryAt - Date.now()) / 1000)}s`,
+        );
       } else {
-        console.error('[DATABASE][POSITION][BATCH] failed');
+        console.error(
+          `[DATABASE][POSITION][BATCH] failed ` +
+            `retryIn=${Math.ceil((this.nextPositionBufferRetryAt - Date.now()) / 1000)}s`,
+        );
       }
 
       /**
-       * Jika buffer terus gagal dan sudah terlalu besar,
-       * jangan membuat memory tidak terbatas.
+       * Jangan drop history secara otomatis.
+       * Karena pendingPositionSaves tetap aktif, setiap MMSI hanya
+       * dapat memiliki satu row yang menunggu. Ini memberi backpressure
+       * alami dan mencegah memory tumbuh satu row per AIS message.
        */
-      if (this.positionBuffer.length > this.POSITION_BATCH_SIZE * 10) {
-        const dropped = this.positionBuffer.splice(
-          this.POSITION_BATCH_SIZE * 5,
-        );
-
-        for (const item of dropped) {
-          this.pendingPositionSaves.delete(item.mmsi);
-        }
-
-        console.error(
-          `[DATABASE][POSITION][BATCH] dropped=${dropped.length} ` +
-            `because retry buffer exceeded safety limit`,
-        );
-      }
     } finally {
       this.isFlushingPositionBuffer = false;
 
@@ -1584,20 +1679,12 @@ export class VesselService implements OnModuleDestroy {
    */
   remove(mmsi: string): boolean {
     this.lastPersistedPositions.delete(mmsi);
-    this.pendingPositionSaves.delete(mmsi);
-
     this.lastStaticSaved.delete(mmsi);
 
     /**
-     * Hapus pending buffered position untuk MMSI ini.
-     * Database history tetap tidak dihapus.
+     * Pending history tidak dihapus karena mungkin sedang menunggu
+     * database. Setelah berhasil, pending akan dilepas oleh batch writer.
      */
-    for (let i = this.positionBuffer.length - 1; i >= 0; i -= 1) {
-      if (this.positionBuffer[i].mmsi === mmsi) {
-        this.positionBuffer.splice(i, 1);
-      }
-    }
-
     return this.cache.remove(mmsi);
   }
 
@@ -1615,11 +1702,11 @@ export class VesselService implements OnModuleDestroy {
 
     this.lastPersistedPositions.clear();
 
-    this.pendingPositionSaves.clear();
-
+    /**
+     * Jangan menghapus positionBuffer di sini. Data yang sudah lolos
+     * filter masih merupakan history yang harus ditulis ke database.
+     */
     this.lastStaticSaved.clear();
-
-    this.positionBuffer.length = 0;
   }
 
   /**

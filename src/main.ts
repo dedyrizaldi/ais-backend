@@ -47,7 +47,7 @@ function loadEnvironment(): void {
       }
     }
 
-    console.log(`📄 Loaded local environment: ${localEnvPath}`);
+    // console.log(`📄 Loaded local environment: ${localEnvPath}`);
   }
 
   /**
@@ -80,9 +80,9 @@ function loadEnvironment(): void {
       }
     }
 
-    console.log(`📄 Loaded Hostinger database environment`);
+    // console.log(`📄 Loaded Hostinger database environment`);
   } else {
-    console.log(`ℹ️ Hostinger environment file not found: ${hostingerEnvPath}`);
+    // console.log(`ℹ️ Hostinger environment file not found: ${hostingerEnvPath}`);
   }
 
   /**
@@ -92,15 +92,15 @@ function loadEnvironment(): void {
    *
    * Jangan pernah print password.
    */
-  console.log(
-    `🗄️ Database: ${process.env.DB_HOST || 'undefined'}:${process.env.DB_PORT || '3306'}/${process.env.DB_DATABASE || 'undefined'}`,
-  );
+  // console.log(
+  // `🗄️ Database: ${process.env.DB_HOST || 'undefined'}:${process.env.DB_PORT || '3306'}/${process.env.DB_DATABASE || 'undefined'}`,
+  // );
 
-  console.log(`👤 Database user: ${process.env.DB_USERNAME || 'undefined'}`);
+  // console.log(`👤 Database user: ${process.env.DB_USERNAME || 'undefined'}`);
 
-  console.log(
-    `🔐 Database password: ${process.env.DB_PASSWORD ? 'SET' : 'NOT SET'}`,
-  );
+  // console.log(
+  // `🔐 Database password: ${process.env.DB_PASSWORD ? 'SET' : 'NOT SET'}`,
+  // );
 }
 
 /**
