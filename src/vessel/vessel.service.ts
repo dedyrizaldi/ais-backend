@@ -60,6 +60,16 @@ export class VesselService {
    */
   private readonly lastStaticSaved = new Map<string, number>();
 
+  /**
+   * ============================================================
+   * DATABASE QUEUE PER MMSI
+   * ============================================================
+   *
+   * Semua operasi database untuk MMSI yang sama diproses
+   * secara berurutan untuk mencegah race condition.
+   */
+  private readonly databaseQueues = new Map<string, Promise<void>>();
+
   constructor(
     private readonly mapper: AisVesselMapper,
     private readonly prisma: PrismaService,
@@ -157,7 +167,7 @@ export class VesselService {
 
     this.lastStaticSaved.set(vessel.mmsi, now);
 
-    void this.persistVessel(vessel);
+    this.enqueueDatabaseTask(vessel.mmsi, () => this.persistVessel(vessel));
   }
 
   /**
@@ -193,7 +203,40 @@ export class VesselService {
 
     this.lastPositionSaved.set(vessel.mmsi, now);
 
-    void this.persistPosition(vessel, receiverId);
+    this.enqueueDatabaseTask(vessel.mmsi, () =>
+      this.persistPosition(vessel, receiverId),
+    );
+  }
+
+  /**
+   * ============================================================
+   * ENQUEUE DATABASE TASK
+   * ============================================================
+   *
+   * Semua operasi database untuk MMSI yang sama dijalankan
+   * secara berurutan.
+   */
+  private enqueueDatabaseTask(mmsi: string, task: () => Promise<void>): void {
+    const previous = this.databaseQueues.get(mmsi);
+
+    const queuedTask = (previous ?? Promise.resolve())
+      .catch(() => undefined)
+      .then(task)
+      .finally(() => {
+        if (this.databaseQueues.get(mmsi) === queuedTask) {
+          this.databaseQueues.delete(mmsi);
+        }
+      });
+
+    this.databaseQueues.set(mmsi, queuedTask);
+
+    void queuedTask.catch((error: unknown) => {
+      if (error instanceof Error) {
+        console.error(`[DATABASE][QUEUE] ${mmsi}: ${error.message}`);
+      } else {
+        console.error(`[DATABASE][QUEUE] ${mmsi}: database error`);
+      }
+    });
   }
 
   /**
@@ -203,50 +246,30 @@ export class VesselService {
    */
   private async persistVessel(vessel: Vessel): Promise<void> {
     try {
-      const existing = await this.prisma.vessel.findUnique({
-        where: {
-          mmsi: vessel.mmsi,
-        },
-
-        select: {
-          name: true,
-          callsign: true,
-          imo: true,
-          shipType: true,
-          destination: true,
-        },
-      });
-
       /**
        * ======================================================
-       * CREATE
+       * UPSERT VESSEL
        * ======================================================
+       *
+       * MMSI adalah unique.
+       *
+       * Jangan menggunakan:
+       *
+       * findUnique()
+       *     ↓
+       * if (!existing)
+       *     ↓
+       * create()
+       *
+       * karena dua AIS message yang datang bersamaan
+       * dapat menyebabkan race condition.
+       *
+       * Dengan upsert:
+       *
+       * MMSI belum ada → CREATE
+       * MMSI sudah ada → UPDATE
        */
-      if (!existing) {
-        await this.prisma.vessel.create({
-          data: {
-            mmsi: vessel.mmsi,
 
-            name: vessel.name,
-
-            callsign: vessel.callsign,
-
-            imo: vessel.imo,
-
-            shipType: vessel.shipType,
-
-            destination: vessel.destination,
-          },
-        });
-
-        return;
-      }
-
-      /**
-       * ======================================================
-       * BUILD UPDATE DATA
-       * ======================================================
-       */
       const updateData: {
         name?: string;
         callsign?: string;
@@ -256,61 +279,75 @@ export class VesselService {
       } = {};
 
       /**
-       * NAME
+       * ======================================================
+       * UPDATE DATA
+       * ======================================================
+       *
+       * Hanya update field yang mempunyai data.
+       *
+       * Ini penting supaya data static yang sudah tersimpan
+       * tidak ditimpa dengan undefined/null dari message AIS
+       * yang tidak lengkap.
        */
-      if (vessel.name && vessel.name !== existing.name) {
+
+      if (vessel.name) {
         updateData.name = vessel.name;
       }
 
-      /**
-       * CALLSIGN
-       */
-      if (vessel.callsign && vessel.callsign !== existing.callsign) {
+      if (vessel.callsign) {
         updateData.callsign = vessel.callsign;
       }
 
-      /**
-       * IMO
-       */
-      if (vessel.imo !== undefined && vessel.imo !== existing.imo) {
+      if (vessel.imo !== undefined) {
         updateData.imo = vessel.imo;
       }
 
-      /**
-       * SHIP TYPE
-       */
-      if (
-        vessel.shipType !== undefined &&
-        vessel.shipType !== existing.shipType
-      ) {
+      if (vessel.shipType !== undefined) {
         updateData.shipType = vessel.shipType;
       }
 
-      /**
-       * DESTINATION
-       */
-      if (vessel.destination && vessel.destination !== existing.destination) {
+      if (vessel.destination) {
         updateData.destination = vessel.destination;
       }
 
       /**
-       * Tidak ada perubahan.
+       * ======================================================
+       * UPSERT
+       * ======================================================
        */
-      if (Object.keys(updateData).length === 0) {
-        return;
-      }
 
-      /**
-       * ======================================================
-       * UPDATE
-       * ======================================================
-       */
-      await this.prisma.vessel.update({
+      await this.prisma.vessel.upsert({
         where: {
           mmsi: vessel.mmsi,
         },
 
-        data: updateData,
+        /**
+         * ====================================================
+         * CREATE
+         * ====================================================
+         */
+
+        create: {
+          mmsi: vessel.mmsi,
+
+          name: vessel.name,
+
+          callsign: vessel.callsign,
+
+          imo: vessel.imo,
+
+          shipType: vessel.shipType,
+
+          destination: vessel.destination,
+        },
+
+        /**
+         * ====================================================
+         * UPDATE
+         * ====================================================
+         */
+
+        update: updateData,
       });
     } catch (error: unknown) {
       if (error instanceof Error) {
