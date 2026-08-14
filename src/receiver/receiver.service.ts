@@ -15,8 +15,6 @@ export class ReceiverService implements OnModuleInit {
    * ============================================================
    * RECEIVER CONFIGURATION
    * ============================================================
-   *
-   * Receiver aktif yang berasal dari vts.json.
    */
   private receivers: ReceiverConnection[] = [];
 
@@ -27,39 +25,44 @@ export class ReceiverService implements OnModuleInit {
    */
   private baseUrl = '';
 
+  /**
+   * ============================================================
+   * DATABASE SYNC STATE
+   * ============================================================
+   */
+  private syncRunning = false;
+
+  private syncRetryTimer?: NodeJS.Timeout;
+
+  /**
+   * ============================================================
+   * DATABASE SYNC CONFIG
+   * ============================================================
+   */
+  private readonly syncRetryDelay = 15000;
+
   constructor(private readonly prisma: PrismaService) {}
 
   /**
    * ============================================================
    * MODULE INIT
    * ============================================================
+   *
+   * Jangan menunggu database sync di sini.
+   *
+   * Tujuannya supaya HTTP server tetap bisa startup
+   * walaupun database sedang bermasalah.
    */
   async onModuleInit(): Promise<void> {
-    await this.loadReceivers();
+    await this.loadReceivers(false);
   }
 
   /**
    * ============================================================
    * LOAD RECEIVERS
    * ============================================================
-   *
-   * Membaca konfigurasi receiver dari vts.json.
-   *
-   * Development:
-   *   src/receiver/data/vts.json
-   *
-   * Production:
-   *   dist/src/receiver/data/vts.json
-   *
-   * Karena __dirname akan menunjuk ke folder:
-   *
-   *   dist/src/receiver
-   *
-   * pada production, maka kita menggunakan:
-   *
-   *   __dirname/data/vts.json
    */
-  private async loadReceivers(): Promise<void> {
+  private async loadReceivers(syncDatabase = true): Promise<void> {
     const productionFilePath = path.join(__dirname, 'data', 'vts.json');
 
     const developmentFilePath = path.join(
@@ -76,14 +79,6 @@ export class ReceiverService implements OnModuleInit {
      * ========================================================
      * FIND CONFIG FILE
      * ========================================================
-     *
-     * Prioritaskan file yang berada di dekat hasil compiled JS.
-     *
-     * Production:
-     *   dist/src/receiver/data/vts.json
-     *
-     * Development:
-     *   src/receiver/data/vts.json
      */
     if (fs.existsSync(productionFilePath)) {
       filePath = productionFilePath;
@@ -146,53 +141,117 @@ export class ReceiverService implements OnModuleInit {
             : 'ABVDM',
     }));
 
+    this.logger.log(`Loaded ${this.receivers.length} AIS receivers`);
+
     /**
      * ========================================================
      * DATABASE SYNC
      * ========================================================
+     *
+     * Jangan blok startup.
      */
-    await this.syncDatabase();
+    if (syncDatabase) {
+      await this.syncDatabase();
+    } else {
+      void this.syncDatabaseWithRetry();
+    }
+  }
 
-    this.logger.log(`Loaded ${this.receivers.length} AIS receivers`);
+  /**
+   * ============================================================
+   * DATABASE SYNC WITH RETRY
+   * ============================================================
+   */
+  private async syncDatabaseWithRetry(): Promise<void> {
+    if (this.syncRunning) {
+      return;
+    }
+
+    this.syncRunning = true;
+
+    try {
+      await this.syncDatabase();
+
+      this.logger.log(
+        'Receiver database synchronization completed successfully',
+      );
+    } catch (error) {
+      this.logger.error(
+        'Receiver database synchronization failed.',
+        error instanceof Error ? error.stack : String(error),
+      );
+
+      this.logger.warn(
+        `Retrying receiver database synchronization in ${
+          this.syncRetryDelay / 1000
+        } seconds...`,
+      );
+
+      this.syncRetryTimer = setTimeout(() => {
+        this.syncRunning = false;
+
+        void this.syncDatabaseWithRetry();
+      }, this.syncRetryDelay);
+    }
   }
 
   /**
    * ============================================================
    * SYNC DATABASE
    * ============================================================
-   *
-   * Sinkronisasi konfigurasi receiver
-   * ke database.
    */
   private async syncDatabase(): Promise<void> {
+    if (this.receivers.length === 0) {
+      this.logger.warn('No AIS receivers found in configuration.');
+
+      return;
+    }
+
+    /**
+     * Gunakan sequential query.
+     *
+     * Jangan Promise.all() agar connection pool
+     * tidak dibebani sekaligus.
+     */
     for (const receiver of this.receivers) {
-      await this.prisma.receiver.upsert({
-        where: {
-          id: receiver.id,
-        },
+      try {
+        await this.prisma.receiver.upsert({
+          where: {
+            id: receiver.id,
+          },
 
-        create: {
-          id: receiver.id,
+          create: {
+            id: receiver.id,
 
-          name: receiver.name,
+            name: receiver.name,
 
-          host: receiver.host,
+            host: receiver.host,
 
-          port: receiver.port,
+            port: receiver.port,
 
-          status: true,
-        },
+            status: true,
+          },
 
-        update: {
-          name: receiver.name,
+          update: {
+            name: receiver.name,
 
-          host: receiver.host,
+            host: receiver.host,
 
-          port: receiver.port,
+            port: receiver.port,
 
-          status: true,
-        },
-      });
+            status: true,
+          },
+        });
+
+        this.logger.debug(`Receiver synchronized: ${receiver.id}`);
+      } catch (error) {
+        this.logger.error(
+          `Failed to synchronize receiver: ${receiver.id}`,
+          error instanceof Error ? error.stack : String(error),
+        );
+
+        throw error;
+      }
     }
 
     this.logger.log(
@@ -204,8 +263,6 @@ export class ReceiverService implements OnModuleInit {
    * ============================================================
    * FIND ALL CONFIG
    * ============================================================
-   *
-   * Receiver yang berasal dari vts.json.
    */
   findAll(): ReceiverConnection[] {
     return this.receivers;
@@ -233,9 +290,6 @@ export class ReceiverService implements OnModuleInit {
    * ============================================================
    * FIND ALL FROM DATABASE
    * ============================================================
-   *
-   * Mengambil receiver langsung
-   * dari database.
    */
   async findAllFromDatabase() {
     return this.prisma.receiver.findMany({
@@ -265,9 +319,6 @@ export class ReceiverService implements OnModuleInit {
    * ============================================================
    * FIND ONE FROM DATABASE
    * ============================================================
-   *
-   * Mengambil satu receiver berdasarkan ID
-   * dari database.
    */
   async findOneFromDatabase(id: string) {
     return this.prisma.receiver.findUnique({
@@ -297,12 +348,19 @@ export class ReceiverService implements OnModuleInit {
    * ============================================================
    * RELOAD
    * ============================================================
-   *
-   * Membaca ulang vts.json dan
-   * melakukan sinkronisasi kembali
-   * ke database.
    */
   async reload(): Promise<void> {
-    await this.loadReceivers();
+    await this.loadReceivers(true);
+  }
+
+  /**
+   * ============================================================
+   * CLEANUP
+   * ============================================================
+   */
+  onModuleDestroy(): void {
+    if (this.syncRetryTimer) {
+      clearTimeout(this.syncRetryTimer);
+    }
   }
 }
