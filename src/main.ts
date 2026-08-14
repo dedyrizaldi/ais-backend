@@ -18,19 +18,42 @@ async function bootstrap() {
       credentials: true,
     });
 
-    const port = Number(process.env.PORT) || 3000;
+    /**
+     * ============================================================
+     * PORT
+     * ============================================================
+     *
+     * Gunakan PORT yang diberikan oleh environment.
+     *
+     * Tidak menggunakan fallback 3000.
+     *
+     * Lokal:
+     * PORT harus tersedia di .env
+     *
+     * Production:
+     * PORT diberikan oleh Hostinger Node.js Manager.
+     */
+
+    const port = Number(process.env.PORT);
+
+    if (!port) {
+      throw new Error('PORT environment variable is not defined.');
+    }
 
     console.log(`🌐 Starting HTTP server on port ${port}...`);
 
     await app.listen(port, '0.0.0.0');
 
     console.log(`✅ AIS Backend running on port ${port}`);
+
     console.log(`🌍 Server listening on 0.0.0.0:${port}`);
   } catch (error) {
     console.error('❌ Failed to start AIS Backend');
+
     console.error(error);
+
     process.exit(1);
   }
 }
 
-bootstrap();
+void bootstrap();
