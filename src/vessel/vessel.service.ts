@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, OnModuleDestroy } from '@nestjs/common';
 
 import { DecodedAisMessage } from '../ais/interfaces/decoded-ais.interface';
 import { PrismaService } from '../database/prisma.service';
@@ -8,7 +8,7 @@ import { VesselCache } from './cache/vessel.cache';
 import { AisVesselMapper } from './mapper/ais-vessel.mapper';
 
 @Injectable()
-export class VesselService {
+export class VesselService implements OnModuleDestroy {
   /**
    * ============================================================
    * VESSEL CACHE
@@ -20,13 +20,77 @@ export class VesselService {
 
   /**
    * ============================================================
-   * POSITION DATABASE THROTTLE
+   * SMART POSITION HISTORY
    * ============================================================
    *
-   * Maksimal 1 posisi disimpan ke database
-   * setiap 15 detik untuk setiap vessel.
+   * History TIDAK disimpan setiap AIS message.
+   *
+   * Rule:
+   * - posisi pertama        -> SAVE
+   * - minimum interval      -> wajib terpenuhi
+   * - distance >= threshold -> SAVE
+   * - atau maximum interval -> SAVE
+   *
+   * Distance TIDAK boleh lagi bypass minimum interval.
    */
-  private readonly POSITION_SAVE_INTERVAL_MS = 15_000;
+  private readonly POSITION_MIN_DISTANCE_METERS = 100;
+
+  private readonly POSITION_INTERVAL_STATIONARY_MS = 5 * 60 * 1000;
+  private readonly POSITION_INTERVAL_SLOW_MS = 2 * 60 * 1000;
+  private readonly POSITION_INTERVAL_NORMAL_MS = 60 * 1000;
+  private readonly POSITION_INTERVAL_FAST_MS = 30 * 1000;
+
+  /**
+   * Tidak boleh ada vessel yang terlalu lama tanpa history point.
+   */
+  private readonly POSITION_MAX_INTERVAL_MS = 2 * 60 * 1000;
+
+  /**
+   * Posisi yang meloncat terlalu jauh dianggap abnormal.
+   * 10 km dalam satu interval adalah guard sederhana.
+   */
+  private readonly POSITION_MAX_JUMP_METERS = 10_000;
+
+  /**
+   * ============================================================
+   * POSITION BATCH WRITER
+   * ============================================================
+   *
+   * Posisi yang lolos smart filter dikumpulkan dulu.
+   *
+   * Flush jika:
+   * - buffer mencapai 100 row, ATAU
+   * - timer mencapai 5 detik.
+   */
+  private readonly POSITION_BATCH_SIZE = 100;
+  private readonly POSITION_BATCH_FLUSH_INTERVAL_MS = 5_000;
+
+  private readonly positionBuffer: Array<{
+    mmsi: string;
+    receiverId: string;
+    latitude: number;
+    longitude: number;
+    sog: number | null | undefined;
+    cog: number | null | undefined;
+    heading: number | null | undefined;
+    navStatus: number | null | undefined;
+    vesselName?: string;
+    callsign?: string;
+    imo?: number;
+    shipType?: number;
+    destination?: string;
+  }> = [];
+
+  private positionBufferFlushTimer?: ReturnType<typeof setInterval>;
+  private isFlushingPositionBuffer = false;
+
+  /**
+   * SMART POSITION DEBUG
+   *
+   * true  -> tampilkan alasan SAVE / SKIP di console.
+   * false -> matikan log per AIS position.
+   */
+  private readonly POSITION_DEBUG = true;
 
   /**
    * ============================================================
@@ -48,7 +112,18 @@ export class VesselService {
    * Timestamp terakhir position disimpan
    * ke database berdasarkan MMSI.
    */
-  private readonly lastPositionSaved = new Map<string, number>();
+  private readonly lastPersistedPositions = new Map<
+    string,
+    {
+      latitude: number;
+      longitude: number;
+      recordedAt: number;
+      cog: number | null | undefined;
+      navStatus: number | null | undefined;
+    }
+  >();
+
+  private readonly pendingPositionSaves = new Set<string>();
 
   /**
    * ============================================================
@@ -73,7 +148,20 @@ export class VesselService {
   constructor(
     private readonly mapper: AisVesselMapper,
     private readonly prisma: PrismaService,
-  ) {}
+  ) {
+    this.positionBufferFlushTimer = setInterval(() => {
+      void this.flushPositionBuffer();
+    }, this.POSITION_BATCH_FLUSH_INTERVAL_MS);
+  }
+
+  async onModuleDestroy(): Promise<void> {
+    if (this.positionBufferFlushTimer) {
+      clearInterval(this.positionBufferFlushTimer);
+      this.positionBufferFlushTimer = undefined;
+    }
+
+    await this.flushPositionBuffer();
+  }
 
   /**
    * ============================================================
@@ -176,36 +264,401 @@ export class VesselService {
    * ============================================================
    */
   private queuePositionSave(vessel: Vessel, receiverId?: string): void {
-    /**
-     * Position wajib lengkap.
-     */
     if (vessel.lat === undefined || vessel.lon === undefined) {
       return;
     }
 
-    /**
-     * Receiver wajib tersedia.
-     */
     if (!receiverId) {
       return;
     }
 
-    const now = Date.now();
-
-    const lastSaved = this.lastPositionSaved.get(vessel.mmsi);
-
-    if (
-      lastSaved !== undefined &&
-      now - lastSaved < this.POSITION_SAVE_INTERVAL_MS
-    ) {
+    /**
+     * Satu pending position per MMSI.
+     *
+     * Setelah posisi masuk buffer, kita anggap posisi tersebut
+     * sudah "reserved" untuk history. AIS berikutnya tidak akan
+     * membuat row tambahan sampai batch selesai diproses.
+     */
+    if (this.pendingPositionSaves.has(vessel.mmsi)) {
+      if (this.POSITION_DEBUG) {
+        console.log(`[POSITION][SKIP] ${vessel.mmsi} | reason=PENDING_BUFFER`);
+      }
       return;
     }
 
-    this.lastPositionSaved.set(vessel.mmsi, now);
+    const decision = this.getPositionPersistenceDecision(vessel);
 
-    this.enqueueDatabaseTask(vessel.mmsi, () =>
-      this.persistPosition(vessel, receiverId),
+    if (!decision.shouldPersist) {
+      if (this.POSITION_DEBUG) {
+        console.log(
+          `[POSITION][SKIP] ${vessel.mmsi} | ` +
+            `reason=${decision.reason} | ` +
+            `distance=${decision.distanceMeters.toFixed(2)}m | ` +
+            `elapsed=${Math.floor(decision.elapsedMs / 1000)}s | ` +
+            `interval=${Math.floor(decision.requiredIntervalMs / 1000)}s`,
+        );
+      }
+      return;
+    }
+
+    if (this.POSITION_DEBUG) {
+      console.log(
+        `[POSITION][BUFFER] ${vessel.mmsi} | reason=${decision.reason}` +
+          (decision.distanceMeters > 0
+            ? ` | distance=${decision.distanceMeters.toFixed(2)}m`
+            : '') +
+          (decision.elapsedMs > 0
+            ? ` | elapsed=${Math.floor(decision.elapsedMs / 1000)}s`
+            : ''),
+      );
+    }
+
+    this.pendingPositionSaves.add(vessel.mmsi);
+
+    this.positionBuffer.push({
+      mmsi: vessel.mmsi,
+      receiverId,
+      latitude: vessel.lat,
+      longitude: vessel.lon,
+      sog: vessel.sog,
+      cog: vessel.cog,
+      heading: vessel.hdg,
+      navStatus: vessel.navStatus,
+      vesselName: vessel.name,
+      callsign: vessel.callsign,
+      imo: vessel.imo,
+      shipType: vessel.shipType,
+      destination: vessel.destination,
+    });
+
+    /**
+     * Update hanya dilakukan setelah batch benar-benar berhasil.
+     * Dengan demikian jika database gagal, posisi masih bisa retry.
+     */
+    if (this.positionBuffer.length >= this.POSITION_BATCH_SIZE) {
+      void this.flushPositionBuffer();
+    }
+  }
+
+  private getPositionSaveIntervalMs(sog: number | null | undefined): number {
+    const speed = sog ?? 0;
+    if (speed < 1) return this.POSITION_INTERVAL_STATIONARY_MS;
+    if (speed < 5) return this.POSITION_INTERVAL_SLOW_MS;
+    if (speed < 10) return this.POSITION_INTERVAL_NORMAL_MS;
+    return this.POSITION_INTERVAL_FAST_MS;
+  }
+
+  private calculateDistanceMeters(
+    latitude1: number,
+    longitude1: number,
+    latitude2: number,
+    longitude2: number,
+  ): number {
+    const EARTH_RADIUS_METERS = 6_371_000;
+    const toRadians = (degrees: number) => (degrees * Math.PI) / 180;
+    const dLat = toRadians(latitude2 - latitude1);
+    const dLon = toRadians(longitude2 - longitude1);
+    const a =
+      Math.sin(dLat / 2) ** 2 +
+      Math.cos(toRadians(latitude1)) *
+        Math.cos(toRadians(latitude2)) *
+        Math.sin(dLon / 2) ** 2;
+    return EARTH_RADIUS_METERS * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  }
+
+  private getPositionPersistenceDecision(vessel: Vessel): {
+    shouldPersist: boolean;
+    reason: 'FIRST' | 'DISTANCE' | 'MAX_INTERVAL' | 'TIME' | 'ABNORMAL_JUMP';
+    distanceMeters: number;
+    elapsedMs: number;
+    requiredIntervalMs: number;
+  } {
+    if (vessel.lat === undefined || vessel.lon === undefined) {
+      return {
+        shouldPersist: false,
+        reason: 'TIME',
+        distanceMeters: 0,
+        elapsedMs: 0,
+        requiredIntervalMs: 0,
+      };
+    }
+
+    const previous = this.lastPersistedPositions.get(vessel.mmsi);
+    const requiredIntervalMs = this.getPositionSaveIntervalMs(vessel.sog);
+
+    if (!previous) {
+      return {
+        shouldPersist: true,
+        reason: 'FIRST',
+        distanceMeters: 0,
+        elapsedMs: 0,
+        requiredIntervalMs,
+      };
+    }
+
+    const distanceMeters = this.calculateDistanceMeters(
+      previous.latitude,
+      previous.longitude,
+      vessel.lat,
+      vessel.lon,
     );
+
+    const elapsedMs = Date.now() - previous.recordedAt;
+
+    /**
+     * Guard terhadap GPS/AIS position jump yang tidak masuk akal.
+     */
+    if (distanceMeters > this.POSITION_MAX_JUMP_METERS) {
+      return {
+        shouldPersist: false,
+        reason: 'ABNORMAL_JUMP',
+        distanceMeters,
+        elapsedMs,
+        requiredIntervalMs,
+      };
+    }
+
+    /**
+     * IMPORTANT:
+     *
+     * Minimum interval adalah HARD LIMIT.
+     * Distance tidak boleh bypass interval.
+     */
+    if (elapsedMs < requiredIntervalMs) {
+      return {
+        shouldPersist: false,
+        reason: 'TIME',
+        distanceMeters,
+        elapsedMs,
+        requiredIntervalMs,
+      };
+    }
+
+    /**
+     * Setelah minimum interval terpenuhi:
+     *
+     * 1. Bergerak signifikan -> SAVE
+     * 2. Sudah terlalu lama   -> SAVE
+     */
+    if (distanceMeters >= this.POSITION_MIN_DISTANCE_METERS) {
+      return {
+        shouldPersist: true,
+        reason: 'DISTANCE',
+        distanceMeters,
+        elapsedMs,
+        requiredIntervalMs,
+      };
+    }
+
+    if (elapsedMs >= this.POSITION_MAX_INTERVAL_MS) {
+      return {
+        shouldPersist: true,
+        reason: 'MAX_INTERVAL',
+        distanceMeters,
+        elapsedMs,
+        requiredIntervalMs,
+      };
+    }
+
+    return {
+      shouldPersist: false,
+      reason: 'TIME',
+      distanceMeters,
+      elapsedMs,
+      requiredIntervalMs,
+    };
+  }
+
+  private shouldPersistPosition(vessel: Vessel): boolean {
+    return this.getPositionPersistenceDecision(vessel).shouldPersist;
+  }
+
+  private markPositionAsPersisted(vessel: Vessel): void {
+    if (vessel.lat === undefined || vessel.lon === undefined) return;
+
+    this.lastPersistedPositions.set(vessel.mmsi, {
+      latitude: vessel.lat,
+      longitude: vessel.lon,
+      recordedAt: Date.now(),
+      cog: vessel.cog,
+      navStatus: vessel.navStatus,
+    });
+  }
+
+  /**
+   * ============================================================
+   * BATCH POSITION WRITER
+   * ============================================================
+   */
+
+  private async flushPositionBuffer(): Promise<void> {
+    if (this.isFlushingPositionBuffer) {
+      return;
+    }
+
+    if (this.positionBuffer.length === 0) {
+      return;
+    }
+
+    this.isFlushingPositionBuffer = true;
+
+    const batch = this.positionBuffer.splice(0, this.POSITION_BATCH_SIZE);
+
+    try {
+      /**
+       * Pastikan semua vessel yang ada di batch tersedia.
+       *
+       * createMany + skipDuplicates aman terhadap race dengan
+       * static upsert.
+       */
+      const uniqueVessels = Array.from(
+        new Map(batch.map((item) => [item.mmsi, item])).values(),
+      );
+
+      if (uniqueVessels.length > 0) {
+        await this.prisma.vessel.createMany({
+          data: uniqueVessels.map((item) => ({
+            mmsi: item.mmsi,
+            name: item.vesselName,
+            callsign: item.callsign,
+            imo: item.imo,
+            shipType: item.shipType,
+            destination: item.destination,
+          })),
+          skipDuplicates: true,
+        });
+      }
+
+      const vessels = await this.prisma.vessel.findMany({
+        where: {
+          mmsi: {
+            in: uniqueVessels.map((item) => item.mmsi),
+          },
+        },
+        select: {
+          id: true,
+          mmsi: true,
+        },
+      });
+
+      const vesselIdByMmsi = new Map(
+        vessels.map((vessel) => [vessel.mmsi, vessel.id]),
+      );
+
+      const positionRows = batch
+        .map((item) => {
+          const vesselId = vesselIdByMmsi.get(item.mmsi);
+
+          if (vesselId === undefined) {
+            console.error(
+              `[DATABASE][POSITION] ${item.mmsi}: vessel not found after ensure`,
+            );
+            return null;
+          }
+
+          return {
+            vesselId,
+            receiverId: item.receiverId,
+            latitude: item.latitude,
+            longitude: item.longitude,
+            sog: item.sog,
+            cog: item.cog,
+            heading: item.heading,
+            navStatus: item.navStatus,
+            recordedAt: new Date(),
+          };
+        })
+        .filter(
+          (
+            row,
+          ): row is {
+            vesselId: bigint;
+            receiverId: string;
+            latitude: number;
+            longitude: number;
+            sog: number | null | undefined;
+            cog: number | null | undefined;
+            heading: number | null | undefined;
+            navStatus: number | null | undefined;
+            recordedAt: Date;
+          } => row !== null,
+        );
+
+      if (positionRows.length > 0) {
+        await this.prisma.vesselPosition.createMany({
+          data: positionRows,
+        });
+      }
+
+      /**
+       * Batch berhasil.
+       * Sekarang baru tandai posisi sebagai persisted.
+       */
+      for (const item of batch) {
+        this.lastPersistedPositions.set(item.mmsi, {
+          latitude: item.latitude,
+          longitude: item.longitude,
+          recordedAt: Date.now(),
+          cog: item.cog,
+          navStatus: item.navStatus,
+        });
+
+        this.pendingPositionSaves.delete(item.mmsi);
+      }
+
+      if (this.POSITION_DEBUG) {
+        console.log(
+          `[POSITION][BATCH] inserted=${positionRows.length} ` +
+            `bufferRemaining=${this.positionBuffer.length}`,
+        );
+      }
+    } catch (error: unknown) {
+      /**
+       * Database gagal.
+       *
+       * Kembalikan batch ke depan buffer agar dapat dicoba lagi.
+       * pending tetap ada sampai data benar-benar berhasil.
+       */
+      this.positionBuffer.unshift(...batch);
+
+      if (error instanceof Error) {
+        console.error(`[DATABASE][POSITION][BATCH] failed: ${error.message}`);
+      } else {
+        console.error('[DATABASE][POSITION][BATCH] failed');
+      }
+
+      /**
+       * Jika buffer terus gagal dan sudah terlalu besar,
+       * jangan membuat memory tidak terbatas.
+       */
+      if (this.positionBuffer.length > this.POSITION_BATCH_SIZE * 10) {
+        const dropped = this.positionBuffer.splice(
+          this.POSITION_BATCH_SIZE * 5,
+        );
+
+        for (const item of dropped) {
+          this.pendingPositionSaves.delete(item.mmsi);
+        }
+
+        console.error(
+          `[DATABASE][POSITION][BATCH] dropped=${dropped.length} ` +
+            `because retry buffer exceeded safety limit`,
+        );
+      }
+    } finally {
+      this.isFlushingPositionBuffer = false;
+
+      /**
+       * Jika selama flush buffer sudah kembali penuh,
+       * langsung lanjutkan flush berikutnya.
+       */
+      if (
+        this.positionBuffer.length >= this.POSITION_BATCH_SIZE &&
+        !this.isFlushingPositionBuffer
+      ) {
+        void this.flushPositionBuffer();
+      }
+    }
   }
 
   /**
@@ -354,86 +807,6 @@ export class VesselService {
         console.error(`[DATABASE][VESSEL] ${vessel.mmsi}: ${error.message}`);
       } else {
         console.error(`[DATABASE][VESSEL] ${vessel.mmsi}: database error`);
-      }
-    }
-  }
-
-  /**
-   * ============================================================
-   * PERSIST POSITION
-   * ============================================================
-   */
-  private async persistPosition(
-    vessel: Vessel,
-    receiverId: string,
-  ): Promise<void> {
-    try {
-      /**
-       * ======================================================
-       * PASTIKAN VESSEL ADA
-       * ======================================================
-       */
-      await this.prisma.vessel.upsert({
-        where: {
-          mmsi: vessel.mmsi,
-        },
-
-        create: {
-          mmsi: vessel.mmsi,
-
-          name: vessel.name,
-
-          callsign: vessel.callsign,
-
-          imo: vessel.imo,
-
-          shipType: vessel.shipType,
-
-          destination: vessel.destination,
-        },
-
-        update: {},
-      });
-
-      /**
-       * ======================================================
-       * INSERT POSITION
-       * ======================================================
-       */
-      await this.prisma.vesselPosition.create({
-        data: {
-          vessel: {
-            connect: {
-              mmsi: vessel.mmsi,
-            },
-          },
-
-          receiver: {
-            connect: {
-              id: receiverId,
-            },
-          },
-
-          latitude: vessel.lat!,
-
-          longitude: vessel.lon!,
-
-          sog: vessel.sog,
-
-          cog: vessel.cog,
-
-          heading: vessel.hdg,
-
-          navStatus: vessel.navStatus,
-
-          recordedAt: new Date(),
-        },
-      });
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        console.error(`[DATABASE][POSITION] ${vessel.mmsi}: ${error.message}`);
-      } else {
-        console.error(`[DATABASE][POSITION] ${vessel.mmsi}: database error`);
       }
     }
   }
@@ -1181,9 +1554,9 @@ export class VesselService {
       /**
        * POSITION
        */
-      for (const mmsi of this.lastPositionSaved.keys()) {
+      for (const mmsi of this.lastPersistedPositions.keys()) {
         if (!this.cache.has(mmsi)) {
-          this.lastPositionSaved.delete(mmsi);
+          this.lastPersistedPositions.delete(mmsi);
         }
       }
 
@@ -1210,9 +1583,20 @@ export class VesselService {
    * Database tidak dihapus.
    */
   remove(mmsi: string): boolean {
-    this.lastPositionSaved.delete(mmsi);
+    this.lastPersistedPositions.delete(mmsi);
+    this.pendingPositionSaves.delete(mmsi);
 
     this.lastStaticSaved.delete(mmsi);
+
+    /**
+     * Hapus pending buffered position untuk MMSI ini.
+     * Database history tetap tidak dihapus.
+     */
+    for (let i = this.positionBuffer.length - 1; i >= 0; i -= 1) {
+      if (this.positionBuffer[i].mmsi === mmsi) {
+        this.positionBuffer.splice(i, 1);
+      }
+    }
 
     return this.cache.remove(mmsi);
   }
@@ -1229,9 +1613,13 @@ export class VesselService {
   clear(): void {
     this.cache.clear();
 
-    this.lastPositionSaved.clear();
+    this.lastPersistedPositions.clear();
+
+    this.pendingPositionSaves.clear();
 
     this.lastStaticSaved.clear();
+
+    this.positionBuffer.length = 0;
   }
 
   /**
