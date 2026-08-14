@@ -21,7 +21,9 @@ import { PrismaClient } from '../generated/prisma/client';
  */
 function loadEnvironment(): void {
   /**
-   * Local environment.
+   * ----------------------------------------------------------
+   * Local environment
+   * ----------------------------------------------------------
    */
   dotenv.config({
     path: path.resolve(process.cwd(), '.env'),
@@ -29,7 +31,9 @@ function loadEnvironment(): void {
   });
 
   /**
-   * Hostinger environment.
+   * ----------------------------------------------------------
+   * Hostinger environment
+   * ----------------------------------------------------------
    */
   const hostingerEnvPath =
     process.env.HBUILD_CONFIG_PATH ||
@@ -37,7 +41,7 @@ function loadEnvironment(): void {
 
   dotenv.config({
     path: hostingerEnvPath,
-    override: false,
+    override: true,
   });
 }
 
@@ -90,7 +94,6 @@ export class PrismaService extends PrismaClient implements OnModuleDestroy {
      * PRISMA MARIADB ADAPTER
      * ========================================================
      */
-
     const adapter = new PrismaMariaDb({
       host,
       port,
@@ -101,24 +104,23 @@ export class PrismaService extends PrismaClient implements OnModuleDestroy {
       /**
        * Shared hosting.
        *
-       * Mulai dengan pool kecil.
+       * Jangan terlalu besar karena Hostinger
+       * mempunyai batas connection.
        */
       connectionLimit: 2,
 
       /**
-       * Waktu maksimal menunggu connection.
+       * Maksimal menunggu connection dari pool.
        */
       acquireTimeout: 30000,
 
       /**
-       * Waktu maksimal membuat connection.
+       * Maksimal waktu membuat connection.
        */
       connectTimeout: 10000,
 
       /**
        * Idle connection timeout.
-       *
-       * Dalam detik.
        */
       idleTimeout: 300,
 
@@ -135,7 +137,6 @@ export class PrismaService extends PrismaClient implements OnModuleDestroy {
      *
      * super() HARUS dipanggil sebelum menggunakan this.
      */
-
     super({
       adapter,
     });
@@ -147,7 +148,6 @@ export class PrismaService extends PrismaClient implements OnModuleDestroy {
      *
      * Password tidak pernah ditampilkan.
      */
-
     this.logger.log(
       `Database configuration: ${host}:${port}/${database} as ${user}`,
     );
@@ -158,7 +158,6 @@ export class PrismaService extends PrismaClient implements OnModuleDestroy {
    * MODULE DESTROY
    * ==========================================================
    */
-
   async onModuleDestroy(): Promise<void> {
     this.logger.log('Disconnecting from database...');
 
